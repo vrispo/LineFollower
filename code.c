@@ -51,6 +51,108 @@ uint16_t CCR3_Val = 166;
 uint16_t CCR4_Val = 83;
 uint16_t PrescalerValue = 0;
 
+/*
+ * OUR FUNCTIONS start
+ */
+void breakleft(){
+	 /*pin 14-15 a 11*/
+	 GPIO_SetBits(GPIOD, GPIO_Pin_14|GPIO_Pin_15);
+}
+
+void folleleft(){
+	 /*pin 14-15 a 00*/
+	 GPIO_ResetBits(GPIOD, GPIO_Pin_14|GPIO_Pin_15);
+}
+
+void forwardleft(){
+	 /*pin 14-15 a 10*/
+	 GPIO_SetBits(GPIOD, GPIO_Pin_15);
+	 GPIO_ResetBits(GPIOD, GPIO_Pin_14);
+}
+void backwardleft(){
+	 /*pin 14-15 a 01*/
+	 GPIO_SetBits(GPIOD, GPIO_Pin_14);
+	 GPIO_ResetBits(GPIOD, GPIO_Pin_15);
+}
+
+/*lead right motor*/
+void breakright(){
+	 /*pin 12-13 a 11*/
+	 GPIO_SetBits(GPIOD, GPIO_Pin_12|GPIO_Pin_13);
+}
+
+void folleright(){
+	 /*pin 12-13 a 00*/
+	 GPIO_ResetBits(GPIOD, GPIO_Pin_12|GPIO_Pin_13);
+}
+
+void forwardright(){
+	 /*pin 12-13 a 10*/
+	 GPIO_SetBits(GPIOD, GPIO_Pin_13);
+	 GPIO_ResetBits(GPIOD, GPIO_Pin_12);
+}
+void backwardright(){
+	 /*pin 12-13 a 01*/
+	 GPIO_SetBits(GPIOD, GPIO_Pin_12);
+	 GPIO_ResetBits(GPIOD, GPIO_Pin_13);
+}
+
+void InitMotors(){
+	/*Pin to lead the motors: Pin12-13 for motor dx - Pin14-15 for sx motor*/
+	/*
+	 * pin 13-15 bit1 msb
+	 * pin 12-14 bit0 lsb
+	 * comandi motore:
+	 * 00:folle
+	 * 01:indietro
+	 * 10:avanti
+	 * 11:bloccato
+	 * */
+	GPIO_InitTypeDef GPIO_InitStructure;
+
+	GPIO_InitStructure.GPIO_Pin=GPIO_Pin_12|GPIO_Pin_13|GPIO_Pin_14|GPIO_Pin_15;
+	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_OUT;
+	GPIO_InitStructure.GPIO_OType=GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_Speed=GPIO_Speed_100MHz;
+	GPIO_InitStructure.GPIO_PuPd=GPIO_PuPd_NOPULL;
+	GPIO_Init(GPIOD, &GPIO_InitStructure);
+
+	forwardleft();
+	forwardright();
+}
+
+ /*init line sensor*/
+ void InitLineSensor(){
+		GPIO_InitTypeDef GPIO_InitStructure;
+
+		/*inizializzazione pin PA9 on/off led sensore luminoso*/
+		GPIO_InitStructure.GPIO_Pin=GPIO_Pin_9;
+		GPIO_InitStructure.GPIO_Mode=GPIO_Mode_OUT;
+		GPIO_InitStructure.GPIO_OType=GPIO_OType_PP;
+		GPIO_InitStructure.GPIO_Speed=GPIO_Speed_100MHz;
+		GPIO_InitStructure.GPIO_PuPd=GPIO_PuPd_NOPULL;
+		GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+		/*inizializzazione pin pb6 pb4 (lettura sensore)*/
+		GPIO_InitStructure.GPIO_Pin=GPIO_Pin_6|GPIO_Pin_4;
+		GPIO_InitStructure.GPIO_Mode=GPIO_Mode_IN;
+		GPIO_Init(GPIOB, &GPIO_InitStructure);
+
+		/*inizializzazione pin pd7 pd5 pd3 pd1 (lettura sensore)*/
+		GPIO_InitStructure.GPIO_Pin=GPIO_Pin_7|GPIO_Pin_5|GPIO_Pin_3|GPIO_Pin_1;
+		GPIO_Init(GPIOD, &GPIO_InitStructure);
+
+		/*inizializzazione pin pc12 pc10 (lettura sensore)*/
+		GPIO_InitStructure.GPIO_Pin=GPIO_Pin_12|GPIO_Pin_10;
+		GPIO_Init(GPIOC, &GPIO_InitStructure);
+
+		/*accensione led sensore luminoso*/
+		GPIO_SetBits(GPIOA, GPIO_Pin_9);
+ }
+
+/*
+ * OUR FUNCTIONS end
+ */
 
 /*
  * SysTick ISR2
@@ -214,7 +316,6 @@ int main(void)
 	EE_systick_start();
 
 	STM_EVAL_LEDInit(LED4);
-
 	PWM_Config_and_En();
 
 	/*Setup motors */
@@ -232,99 +333,3 @@ int main(void)
 	for (;;);
 
 }
-
-void InitMotors(){
-	/*Pin to lead the motors: Pin12-13 for motor dx - Pin14-15 for sx motor*/
-	/*
-	 * pin 13-15 bit1 msb
-	 * pin 12-14 bit0 lsb
-	 * comandi motore:
-	 * 00:folle
-	 * 01:indietro
-	 * 10:avanti
-	 * 11:bloccato
-	 * */
-	GPIO_InitTypeDef GPIO_InitStructure;
-
-	GPIO_InitStructure.GPIO_Pin=GPIO_Pin_12|GPIO_Pin_13|GPIO_Pin_14|GPIO_Pin_15;
-	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_OUT;
-	GPIO_InitStructure.GPIO_OType=GPIO_OType_PP;
-	GPIO_InitStructure.GPIO_Speed=GPIO_Speed_100MHz;
-	GPIO_InitStructure.GPIO_PuPd=GPIO_PuPd_NOPULL;
-	GPIO_Init(GPIOD, &GPIO_InitStructure);
-
-	GPIO_SetBits(GPIOD, GPIO_Pin_13|GPIO_Pin_14);
-	GPIO_ResetBits(GPIOD, GPIO_Pin_12|GPIO_Pin_15);
-}
-
- void breakleft(){
-	 /*pin 14-15 a 11*/
-	 GPIO_SetBits(GPIOD, GPIO_Pin_14|GPIO_Pin_15);
- }
-
- void folleleft(){
-	 /*pin 14-15 a 00*/
-	 GPIO_ResetBits(GPIOD, GPIO_Pin_14|GPIO_Pin_15);
- }
-
- void forwardleft(){
-	 /*pin 14-15 a 10*/
-	 GPIO_SetBits(GPIOD, GPIO_Pin_15);
-	 GPIO_ResetBits(GPIOD, GPIO_Pin_14);
- }
- void backwardleft(){
-	 /*pin 14-15 a 01*/
-	 GPIO_SetBits(GPIOD, GPIO_Pin_14);
-	 GPIO_ResetBits(GPIOD, GPIO_Pin_15);
- }
-
- /*lead right motor*/
- void breakright(){
-	 /*pin 12-13 a 11*/
-	 GPIO_SetBits(GPIOD, GPIO_Pin_12|GPIO_Pin_13);
- }
-
- void folleright(){
-	 /*pin 12-13 a 00*/
-	 GPIO_ResetBits(GPIOD, GPIO_Pin_12|GPIO_Pin_13);
- }
-
- void forwardright(){
-	 /*pin 12-13 a 10*/
-	 GPIO_SetBits(GPIOD, GPIO_Pin_13);
-	 GPIO_ResetBits(GPIOD, GPIO_Pin_12);
- }
- void backwardright(){
-	 /*pin 12-13 a 01*/
-	 GPIO_SetBits(GPIOD, GPIO_Pin_12);
-	 GPIO_ResetBits(GPIOD, GPIO_Pin_13);
- }
-
- /*init line sensor*/
- void InitLineSensor(){
-		GPIO_InitTypeDef GPIO_InitStructure;
-
-		/*inizializzazione pin PA9 on/off led sensore luminoso*/
-		GPIO_InitStructure.GPIO_Pin=GPIO_Pin_9;
-		GPIO_InitStructure.GPIO_Mode=GPIO_Mode_OUT;
-		GPIO_InitStructure.GPIO_OType=GPIO_OType_PP;
-		GPIO_InitStructure.GPIO_Speed=GPIO_Speed_100MHz;
-		GPIO_InitStructure.GPIO_PuPd=GPIO_PuPd_NOPULL;
-		GPIO_Init(GPIOA, &GPIO_InitStructure);
-
-		/*inizializzazione pin pb6 pb4 (lettura sensore)*/
-		GPIO_InitStructure.GPIO_Pin=GPIO_Pin_6|GPIO_Pin_4;
-		GPIO_InitStructure.GPIO_Mode=GPIO_Mode_IN;
-		GPIO_Init(GPIOB, &GPIO_InitStructure);
-
-		/*inizializzazione pin pd7 pd5 pd3 pd1 (lettura sensore)*/
-		GPIO_InitStructure.GPIO_Pin=GPIO_Pin_7|GPIO_Pin_5|GPIO_Pin_3|GPIO_Pin_1;
-		GPIO_Init(GPIOD, &GPIO_InitStructure);
-
-		/*inizializzazione pin pc12 pc10 (lettura sensore)*/
-		GPIO_InitStructure.GPIO_Pin=GPIO_Pin_12|GPIO_Pin_10;
-		GPIO_Init(GPIOC, &GPIO_InitStructure);
-
-		/*accensione led sensore luminoso*/
-		GPIO_SetBits(GPIOA, GPIO_Pin_9);
- }

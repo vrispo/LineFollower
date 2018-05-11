@@ -75,7 +75,7 @@ EEBASE := $(shell cygpath `cygpath -ms '${ERIKA_FILES}'`)
 else # ERIKA_FILES
 
 ifndef EEBASE
-        EEBASE := $(shell cygpath `cygpath -ms 'C:\Users\Veronica\Desktop\eclipse\plugins\com.eu.evidence.ee_2.8.0.20171025_0922\ee_files'`)
+        EEBASE := $(shell cygpath `cygpath -ms 'C:\Users\Veronica\Desktop\eclipseErika\plugins\com.eu.evidence.ee_2.8.0.20171025_0922\ee_files'`)
 else
         $(warning The usage of EEBASE is deprecated. Please use ERIKA_FILES)
 endif

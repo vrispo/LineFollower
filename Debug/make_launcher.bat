@@ -42,6 +42,6 @@
 :endok
 @echo %EE_BASH_PATH% found!
 
-@set ERIKA_FILES=C:\Users\Veronica\Desktop\eclipse\plugins\com.eu.evidence.ee_2.8.0.20171025_0922\ee_files
+@set ERIKA_FILES=C:\Users\Veronica\Desktop\eclipseErika\plugins\com.eu.evidence.ee_2.8.0.20171025_0922\ee_files
 
 @%EE_BASH_PATH% -l -c "cd \"%CD%\"; make %1 %2 %3 %4 %5 %6 %7 %8 %9"
