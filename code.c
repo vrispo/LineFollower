@@ -217,6 +217,12 @@ int main(void)
 
 	PWM_Config_and_En();
 
+	/*Setup motors */
+	InitMotors();
+
+	/*Start line sensor*/
+	InitLineSensor();
+
 	/* Program cyclic alarms which will fire after an initial offset,
 	 * and after that periodically
 	 * */
