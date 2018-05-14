@@ -279,6 +279,7 @@ void PWM_Config_and_En(void)
 
 	  /* TIM3 enable counter */
 	  TIM_Cmd(TIM3, ENABLE);
+
 }
 
 /**
@@ -329,7 +330,18 @@ int main(void)
 	 * */
 	SetRelAlarm(AlarmLedBlink, 10, 500);
 
+	/*start
+	TIM_HandleTypeDef htim3;
+	htim3.Instance = TIM3;
+	htim3.Instance->CCR1 = 25;
+	HAL_Delay(2000);
+	htim3.Instance->CCR1 = 75;
+	HAL_Delay(2000);
+	htim3.Instance->CCR1 = 125;
+	HAL_Delay(2000);
+	end*/
 	/* Forever loop: background activities (if any) should go here */
 	for (;;);
+
 
 }

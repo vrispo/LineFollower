@@ -809,26 +809,26 @@ OUTPUT(c_mX.elf elf32-littlearm)
  .debug_aranges
                 0x00000250       0x20 libstm32f4xxspd.a(stm32f4xx_tim.o)
 
-.debug_line     0x00000000     0x3200
- .debug_line    0x00000000      0x52a obj/code.o
- .debug_line    0x0000052a      0x189 obj/eecfg.o
- .debug_line    0x000006b3       0xe6 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
- .debug_line    0x00000799      0x27f obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
- .debug_line    0x00000a18      0x1bf libee.a(ee_hal_structs.o)
- .debug_line    0x00000bd7      0x201 libee.a(ee_utils.o)
- .debug_line    0x00000dd8       0xe5 libee.a(ee_gnu_change_context_isr.o)
- .debug_line    0x00000ebd      0x2c4 libee.a(ee_altick.o)
- .debug_line    0x00001181      0x27b libee.a(ee_alsetrel.o)
- .debug_line    0x000013fc      0x224 libee.a(ee_irqsc.o)
- .debug_line    0x00001620      0x1e9 libee.a(ee_rqexchg.o)
- .debug_line    0x00001809      0x1f7 libee.a(ee_rqinsert.o)
- .debug_line    0x00001a00      0x1f2 libee.a(ee_context.o)
- .debug_line    0x00001bf2      0x213 libee.a(ee_context.o)
- .debug_line    0x00001e05      0x252 libee.a(ee_thendin.o)
- .debug_line    0x00002057      0x335 libstm32f4discovery.a(stm32f4_discovery.o)
- .debug_line    0x0000238c      0x36d libstm32f4xxspd.a(stm32f4xx_gpio.o)
- .debug_line    0x000026f9      0x431 libstm32f4xxspd.a(stm32f4xx_rcc.o)
- .debug_line    0x00002b2a      0x6d6 libstm32f4xxspd.a(stm32f4xx_tim.o)
+.debug_line     0x00000000     0x3202
+ .debug_line    0x00000000      0x52c obj/code.o
+ .debug_line    0x0000052c      0x189 obj/eecfg.o
+ .debug_line    0x000006b5       0xe6 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+ .debug_line    0x0000079b      0x27f obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
+ .debug_line    0x00000a1a      0x1bf libee.a(ee_hal_structs.o)
+ .debug_line    0x00000bd9      0x201 libee.a(ee_utils.o)
+ .debug_line    0x00000dda       0xe5 libee.a(ee_gnu_change_context_isr.o)
+ .debug_line    0x00000ebf      0x2c4 libee.a(ee_altick.o)
+ .debug_line    0x00001183      0x27b libee.a(ee_alsetrel.o)
+ .debug_line    0x000013fe      0x224 libee.a(ee_irqsc.o)
+ .debug_line    0x00001622      0x1e9 libee.a(ee_rqexchg.o)
+ .debug_line    0x0000180b      0x1f7 libee.a(ee_rqinsert.o)
+ .debug_line    0x00001a02      0x1f2 libee.a(ee_context.o)
+ .debug_line    0x00001bf4      0x213 libee.a(ee_context.o)
+ .debug_line    0x00001e07      0x252 libee.a(ee_thendin.o)
+ .debug_line    0x00002059      0x335 libstm32f4discovery.a(stm32f4_discovery.o)
+ .debug_line    0x0000238e      0x36d libstm32f4xxspd.a(stm32f4xx_gpio.o)
+ .debug_line    0x000026fb      0x431 libstm32f4xxspd.a(stm32f4xx_rcc.o)
+ .debug_line    0x00002b2c      0x6d6 libstm32f4xxspd.a(stm32f4xx_tim.o)
 
 .debug_str      0x00000000     0x240c
  .debug_str     0x00000000      0x7fe obj/code.o
