@@ -231,7 +231,7 @@ void PWM_Config_and_En(void)
 	  ----------------------------------------------------------------------- */
 
 	  /* Compute the prescaler value */
-	  PrescalerValue = (uint16_t) ((SystemCoreClock /2) / 28000000) - 1;
+	  PrescalerValue = (uint16_t) ((SystemCoreClock /2) / 2000000) - 1;
 
 	  /* Time base configuration */
 	  TIM_TimeBaseStructure.TIM_Period = 665;
