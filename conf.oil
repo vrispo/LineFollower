@@ -98,21 +98,6 @@ CPU mySystem {
 
 	};
 	
-	COUNTER myCounter;
-	
-	ALARM AlarmLedBlink {
-		COUNTER = myCounter;
-		ACTION = ACTIVATETASK { TASK = TaskLedBlink; };
-	};
-	
-	TASK TaskLedBlink {
-		PRIORITY = 0x01;   /* Low priority */
-		AUTOSTART = FALSE;
-		STACK = SHARED;
-		ACTIVATION = 1;    /* only one pending activation */
-		SCHEDULE = FULL;
-	};
-	
 	ISR systick_handler {
 		CATEGORY = 2;
 		ENTRY = "SYSTICK";

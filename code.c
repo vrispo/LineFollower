@@ -159,8 +159,7 @@ void InitMotors(){
  */
 ISR2(systick_handler)
 {
-	/* count the interrupts, waking up expired alarms */
-	CounterTick(myCounter);
+
 }
 
 /**
@@ -176,7 +175,7 @@ void PWM_Config_and_En(void)
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
 
 	/* GPIOC and GPIOB clock enable */
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC | RCC_AHB1Periph_GPIOB, ENABLE);
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);
 
 	/* GPIOC Configuration: TIM3 CH1 (PC6) and TIM3 CH2 (PC7) */
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7 ;
@@ -186,20 +185,9 @@ void PWM_Config_and_En(void)
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP ;
 	GPIO_Init(GPIOC, &GPIO_InitStructure);
 
-	/* GPIOB Configuration:  TIM3 CH3 (PB0) and TIM3 CH4 (PB1) */
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
-	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP ;
-	GPIO_Init(GPIOB, &GPIO_InitStructure);
-
 	/* Connect TIM3 pins to AF2 */
 	GPIO_PinAFConfig(GPIOC, GPIO_PinSource6, GPIO_AF_TIM3);
 	GPIO_PinAFConfig(GPIOC, GPIO_PinSource7, GPIO_AF_TIM3);
-	GPIO_PinAFConfig(GPIOB, GPIO_PinSource0, GPIO_AF_TIM3);
-	GPIO_PinAFConfig(GPIOB, GPIO_PinSource1, GPIO_AF_TIM3);
-
 
 	  /* -----------------------------------------------------------------------
 	    TIM3 Configuration: generate 4 PWM signals with 4 different duty cycles.
@@ -259,35 +247,11 @@ void PWM_Config_and_En(void)
 
 	  TIM_OC2PreloadConfig(TIM3, TIM_OCPreload_Enable);
 
-	  /* PWM1 Mode configuration: Channel3 */
-	  TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
-	  TIM_OCInitStructure.TIM_Pulse = CCR3_Val;
-
-	  TIM_OC3Init(TIM3, &TIM_OCInitStructure);
-
-	  TIM_OC3PreloadConfig(TIM3, TIM_OCPreload_Enable);
-
-	  /* PWM1 Mode configuration: Channel4 */
-	  TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
-	  TIM_OCInitStructure.TIM_Pulse = CCR4_Val;
-
-	  TIM_OC4Init(TIM3, &TIM_OCInitStructure);
-
-	  TIM_OC4PreloadConfig(TIM3, TIM_OCPreload_Enable);
-
 	  TIM_ARRPreloadConfig(TIM3, ENABLE);
 
 	  /* TIM3 enable counter */
 	  TIM_Cmd(TIM3, ENABLE);
 
-}
-
-/**
- * This task blinks led 4.
- */
-TASK(TaskLedBlink)
-{
-	STM_EVAL_LEDToggle(LED4);
 }
 
 /**
@@ -316,7 +280,6 @@ int main(void)
 	EE_systick_enable_int();
 	EE_systick_start();
 
-	STM_EVAL_LEDInit(LED4);
 	PWM_Config_and_En();
 
 	/*Setup motors */
@@ -325,23 +288,6 @@ int main(void)
 	/*Start line sensor*/
 	InitLineSensor();
 
-	/* Program cyclic alarms which will fire after an initial offset,
-	 * and after that periodically
-	 * */
-	SetRelAlarm(AlarmLedBlink, 10, 500);
-
-	/*start
-	TIM_HandleTypeDef htim3;
-	htim3.Instance = TIM3;
-	htim3.Instance->CCR1 = 25;
-	HAL_Delay(2000);
-	htim3.Instance->CCR1 = 75;
-	HAL_Delay(2000);
-	htim3.Instance->CCR1 = 125;
-	HAL_Delay(2000);
-	end*/
 	/* Forever loop: background activities (if any) should go here */
 	for (;;);
-
-
 }

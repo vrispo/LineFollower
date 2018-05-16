@@ -18,8 +18,7 @@ obj/pkg/kernel/fp/src/ee_rqinsert.o: \
  /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/fp/inc/ee_internal.h \
  /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/fp/inc/ee_common.h \
  /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/fp/inc/ee_irq.h \
- /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/fp/inc/ee_kernel.h \
- /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/alarms/inc/ee_alarms.h
+ /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/fp/inc/ee_kernel.h
 
 /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/ee_internal.h:
 
@@ -58,5 +57,3 @@ eecfg.h:
 /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/fp/inc/ee_irq.h:
 
 /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/fp/inc/ee_kernel.h:
-
-/cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/alarms/inc/ee_alarms.h:
