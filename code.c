@@ -108,6 +108,8 @@ void InitMotors(){
 	 * 10:avanti
 	 * 11:bloccato
 	 * */
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
+
 	GPIO_InitTypeDef GPIO_InitStructure;
 
 	GPIO_InitStructure.GPIO_Pin=GPIO_Pin_12|GPIO_Pin_13|GPIO_Pin_14|GPIO_Pin_15;
@@ -241,7 +243,7 @@ void PWM_Config_and_En(void)
 
 	  /* PWM1 Mode configuration: Channel2 */
 	  TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
-	  TIM_OCInitStructure.TIM_Pulse = CCR2_Val;
+	  TIM_OCInitStructure.TIM_Pulse = CCR1_Val;
 
 	  TIM_OC2Init(TIM3, &TIM_OCInitStructure);
 
@@ -280,13 +282,13 @@ int main(void)
 	EE_systick_enable_int();
 	EE_systick_start();
 
-	PWM_Config_and_En();
-
 	/*Setup motors */
 	InitMotors();
 
+	PWM_Config_and_En();
+
 	/*Start line sensor*/
-	InitLineSensor();
+	//InitLineSensor();
 
 	/* Forever loop: background activities (if any) should go here */
 	for (;;);

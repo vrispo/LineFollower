@@ -94,12 +94,12 @@ END GROUP
                 0x0800032c                forwardright
                 0x0800034c                backwardright
                 0x0800036c                InitMotors
-                0x080003a8                InitLineSensor
-                0x08000420                systick_handler
-                0x080004dc                ISR2_systick_handler
-                0x080004e8                PWM_Config_and_En
-                0x080005f4                FuncTaskMotorControl
-                0x08000600                main
+                0x080003b0                InitLineSensor
+                0x08000428                systick_handler
+                0x080004e4                ISR2_systick_handler
+                0x080004f0                PWM_Config_and_En
+                0x080005f8                FuncTaskMotorControl
+                0x08000604                main
  .text          0x08000668       0x34 obj/eecfg.o
  .text          0x0800069c        0x0 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
  .text.EE_cortex_mx_default_reset_ISR
