@@ -97,9 +97,17 @@ void backwardright(){
 	 GPIO_ResetBits(GPIOD, GPIO_Pin_13);
 }
 
+void EnableMotors(){
+	GPIO_SetBits(GPIOD, GPIO_Pin_8);
+}
+
+void DisableMotors(){
+	GPIO_ResetBits(GPIOD, GPIO_Pin_8);
+}
+
 void InitMotors(){
 	/*Pin to lead the motors: Pin12-13 for motor dx - Pin14-15 for sx motor*/
-	/*Pin to enable motor driver: PinD7*/
+	/*Pin to enable motor driver: PinD8*/
 	/*
 	 * pin 13-15 bit1 msb
 	 * pin 12-14 bit0 lsb
@@ -113,7 +121,7 @@ void InitMotors(){
 
 	GPIO_InitTypeDef GPIO_InitStructure;
 
-	GPIO_InitStructure.GPIO_Pin=GPIO_Pin_12|GPIO_Pin_13|GPIO_Pin_14|GPIO_Pin_15|GPIO_Pin_7;
+	GPIO_InitStructure.GPIO_Pin=GPIO_Pin_12|GPIO_Pin_13|GPIO_Pin_14|GPIO_Pin_15|GPIO_Pin_8;
 	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_OUT;
 	GPIO_InitStructure.GPIO_OType=GPIO_OType_PP;
 	GPIO_InitStructure.GPIO_Speed=GPIO_Speed_100MHz;
@@ -124,14 +132,6 @@ void InitMotors(){
 
 	forwardleft();
 	forwardright();
-}
-
-void EnableMotors(){
-	GPIO_SetBits(GPIOD, GPIO_Pin_7);
-}
-
-void DisableMotors(){
-	GPIO_ResetBits(GPIOD, GPIO_Pin_7);
 }
 
  /*init line sensor*/
