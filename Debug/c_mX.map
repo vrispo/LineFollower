@@ -38,6 +38,8 @@ Common symbol       size              file
 
 TIM_TimeBaseStructure
                     0xc               obj/code.o
+GPIO_InitStructure_LightSensors
+                    0x40              obj/code.o
 EE_IRQ_nesting_level
                     0x4               libee.a(ee_hal_structs.o)
 TIM_OCInitStructure
@@ -74,7 +76,7 @@ LOAD C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libm.a
 LOAD C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libnosys.a
 END GROUP
 
-.text           0x08000000     0x3c94
+.text           0x08000000     0x3d24
  *(.isr_vector)
  .isr_vector    0x08000000      0x188 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
                 0x08000000                __isr_vector
@@ -84,7 +86,7 @@ END GROUP
  .text          0x080001e4       0x74 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/crt0.o
                 0x080001e4                _start
                 0x080001e4                _mainCRTStartup
- .text          0x08000258      0x448 obj/code.o
+ .text          0x08000258      0x4d8 obj/code.o
                 0x0800028c                breakleft
                 0x080002a4                folleleft
                 0x080002bc                forwardleft
@@ -97,320 +99,321 @@ END GROUP
                 0x08000384                DisableMotors
                 0x0800039c                InitMotors
                 0x080003e4                InitLineSensor
-                0x0800045c                systick_handler
-                0x08000518                ISR2_systick_handler
-                0x08000524                PWM_Config_and_En
-                0x0800062c                FuncTaskMotorControl
-                0x08000638                main
- .text          0x080006a0       0x34 obj/eecfg.o
- .text          0x080006d4        0x0 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+                0x08000450                LineSensors_ReadPin
+                0x080004d8                systick_handler
+                0x08000594                ISR2_systick_handler
+                0x080005a0                PWM_Config_and_En
+                0x080006a8                FuncTaskMotorControl
+                0x080006b4                main
+ .text          0x08000730       0x34 obj/eecfg.o
+ .text          0x08000764        0x0 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
  .text.EE_cortex_mx_default_reset_ISR
-                0x080006d4       0x40 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
-                0x080006d4                EE_cortex_mx_default_reset_ISR
+                0x08000764       0x40 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+                0x08000764                EE_cortex_mx_default_reset_ISR
  .text.EE_cortex_mx_default_ISR
-                0x08000714        0x4 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
-                0x08000714                EE_CORTEX_MX_DMA1_STREAM4_ISR
-                0x08000714                EE_CORTEX_MX_USART6_ISR
-                0x08000714                EE_CORTEX_MX_DMA1_STREAM6_ISR
-                0x08000714                EE_CORTEX_MX_CRYP_ISR
-                0x08000714                EE_CORTEX_MX_DMA1_STREAM5_ISR
-                0x08000714                EE_CORTEX_MX_BUS_FAULT_ISR
-                0x08000714                EE_CORTEX_MX_PVD_ISR
-                0x08000714                EE_CORTEX_MX_SPI2_ISR
-                0x08000714                EE_CORTEX_MX_CAN1_RX1_ISR
-                0x08000714                EE_CORTEX_MX_DMA2_STREAM5_ISR
-                0x08000714                EE_CORTEX_MX_TIM6_DAC_ISR
-                0x08000714                EE_CORTEX_MX_I2C2_EV_ISR
-                0x08000714                EE_CORTEX_MX_TIM1_UP_TIM10_ISR
-                0x08000714                EE_CORTEX_MX_CAN1_RX0_ISR
-                0x08000714                EE_CORTEX_MX_USART1_ISR
-                0x08000714                EE_CORTEX_MX_TIM8_CC_ISR
-                0x08000714                EE_CORTEX_MX_RTC_Alarm_ISR
-                0x08000714                EE_CORTEX_MX_EXTI2_ISR
-                0x08000714                EE_CORTEX_MX_OTG_HS_ISR
-                0x08000714                EE_CORTEX_MX_DCMI_ISR
-                0x08000714                EE_CORTEX_MX_DMA2_STREAM0_ISR
-                0x08000714                EE_CORTEX_MX_SPI1_ISR
-                0x08000714                EE_cortex_mx_default_ISR
-                0x08000714                EE_CORTEX_MX_ETH_WKUP_ISR
-                0x08000714                EE_CORTEX_MX_TIM8_TRG_COM_TIM14_ISR
-                0x08000714                EE_CORTEX_MX_USAGE_FAULT_ISR
-                0x08000714                EE_CORTEX_MX_TIM7_ISR
-                0x08000714                EE_CORTEX_MX_TIM2_ISR
-                0x08000714                EE_CORTEX_MX_I2C1_EV_ISR
-                0x08000714                EE_CORTEX_MX_TIM1_TRG_COM_TIM11_ISR
-                0x08000714                EE_CORTEX_MX_UART5_ISR
-                0x08000714                EE_CORTEX_MX_UART4_ISR
-                0x08000714                EE_CORTEX_MX_NMI_ISR
-                0x08000714                EE_CORTEX_MX_TIM3_ISR
-                0x08000714                EE_CORTEX_MX_USART3_ISR
-                0x08000714                EE_CORTEX_MX_DMA2_STREAM4_ISR
-                0x08000714                EE_CORTEX_MX_EXTI4_ISR
-                0x08000714                EE_CORTEX_MX_ADC_ISR
-                0x08000714                EE_CORTEX_MX_OTG_HS_EP1_IN_ISR
-                0x08000714                EE_CORTEX_MX_DMA2_STREAM1_ISR
-                0x08000714                EE_CORTEX_MX_CAN1_TX_ISR
-                0x08000714                EE_CORTEX_MX_USART2_ISR
-                0x08000714                EE_CORTEX_MX_SDIO_ISR
-                0x08000714                EE_CORTEX_MX_I2C2_ER_ISR
-                0x08000714                EE_CORTEX_MX_I2C3_EV_ISR
-                0x08000714                EE_CORTEX_MX_HARD_FAULT_ISR
-                0x08000714                EE_CORTEX_MX_DMA1_STREAM3_ISR
-                0x08000714                EE_CORTEX_MX_OTG_HS_EP1_OUT_ISR
-                0x08000714                EE_CORTEX_MX_TIM8_BRK_TIM12_ISR
-                0x08000714                EE_CORTEX_MX_CAN1_SCE_ISR
-                0x08000714                EE_CORTEX_MX_DMA1_STREAM1_ISR
-                0x08000714                EE_CORTEX_MX_TIM4_ISR
-                0x08000714                EE_CORTEX_MX_DMA2_STREAM3_ISR
-                0x08000714                EE_CORTEX_MX_ETH_ISR
-                0x08000714                EE_CORTEX_MX_OTG_FS_ISR
-                0x08000714                EE_CORTEX_MX_CAN2_RX0_ISR
-                0x08000714                EE_CORTEX_MX_CAN2_SCE_ISR
-                0x08000714                EE_CORTEX_MX_FPU_ISR
-                0x08000714                EE_CORTEX_MX_RTC_WKUP_ISR
-                0x08000714                EE_CORTEX_MX_TIM8_UP_TIM13_ISR
-                0x08000714                EE_CORTEX_MX_OTG_FS_WKUP_ISR
-                0x08000714                EE_CORTEX_MX_DMA1_STREAM2_ISR
-                0x08000714                EE_CORTEX_MX_EXTI9_5_ISR
-                0x08000714                EE_CORTEX_MX_EXTI3_ISR
-                0x08000714                EE_CORTEX_MX_EXTI0_ISR
-                0x08000714                EE_CORTEX_MX_I2C1_ER_ISR
-                0x08000714                EE_CORTEX_MX_FLASH_ISR
-                0x08000714                EE_CORTEX_MX_OTG_HS_WKUP_ISR
-                0x08000714                EE_CORTEX_MX_TIM1_BRK_TIM9_ISR
-                0x08000714                EE_CORTEX_MX_I2C3_ER_ISR
-                0x08000714                EE_CORTEX_MX_TIM1_CC_ISR
-                0x08000714                EE_CORTEX_MX_SPI3_ISR
-                0x08000714                EE_CORTEX_MX_EXTI15_10_ISR
-                0x08000714                EE_CORTEX_MX_CAN2_TX_ISR
-                0x08000714                EE_CORTEX_MX_RCC_ISR
-                0x08000714                EE_CORTEX_MX_FSMC_ISR
-                0x08000714                EE_CORTEX_MX_DMA2_STREAM2_ISR
-                0x08000714                EE_CORTEX_MX_DMA2_STREAM7_ISR
-                0x08000714                EE_CORTEX_MX_EXTI1_ISR
-                0x08000714                EE_CORTEX_MX_DEBUG_MONITOR_ISR
-                0x08000714                EE_CORTEX_MX_WWDG_ISR
-                0x08000714                EE_CORTEX_MX_MPU_FAULT_ISR
-                0x08000714                EE_CORTEX_MX_HASH_RNG_ISR
-                0x08000714                EE_CORTEX_MX_DMA2_STREAM6_ISR
-                0x08000714                EE_CORTEX_MX_TIM5_ISR
-                0x08000714                EE_CORTEX_MX_DMA1_STREAM0_ISR
-                0x08000714                EE_CORTEX_MX_TAMP_STAMP_ISR
-                0x08000714                EE_CORTEX_MX_CAN2_RX1_ISR
-                0x08000714                EE_CORTEX_MX_DMA1_Stream7_ISR
- .text._exit    0x08000718        0x6 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
-                0x08000718                _exit
- *fill*         0x0800071e        0x2 
- .text          0x08000720      0x248 obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
-                0x08000720                SystemInit
-                0x0800077c                SystemCoreClockUpdate
- .text          0x08000968       0x34 libee.a(ee_hal_structs.o)
- .text          0x0800099c       0x70 libee.a(ee_utils.o)
-                0x080009d0                EE_system_init
- .text          0x08000a0c       0x80 libee.a(ee_gnu_change_context_isr.o)
-                0x08000a0c                EE_set_switch_context_pri
-                0x08000a26                EE_switch_context
-                0x08000a30                EE_cortex_mx_pendsv_ISR
-                0x08000a6e                EE_cortex_mx_svc_ISR
- .text          0x08000a8c       0xa4 libee.a(ee_irqsc.o)
-                0x08000ac0                EE_IRQ_end_instance
- .text          0x08000b30       0x78 libee.a(ee_rqexchg.o)
-                0x08000b64                EE_rq2stk_exchange
- .text          0x08000ba8       0x54 libee.a(ee_context.o)
-                0x08000bdc                EE_cortex_mx_change_context
- .text          0x08000bfc       0x70 libee.a(ee_context.o)
-                0x08000c30                EE_std_run_task_code
- .text          0x08000c6c       0xfc libee.a(ee_thendin.o)
-                0x08000ca0                EE_thread_end_instance
- .text          0x08000d68       0xb4 libee.a(ee_rqinsert.o)
-                0x08000d9c                EE_rq_insert
- .text          0x08000e1c      0x484 libstm32f4xxspd.a(stm32f4xx_gpio.o)
-                0x08000e1c                GPIO_DeInit
-                0x08000f3c                GPIO_Init
-                0x08001058                GPIO_StructInit
-                0x0800108c                GPIO_PinLockConfig
-                0x080010d0                GPIO_ReadInputDataBit
-                0x08001104                GPIO_ReadInputData
-                0x0800111c                GPIO_ReadOutputDataBit
-                0x08001150                GPIO_ReadOutputData
-                0x08001168                GPIO_SetBits
-                0x08001184                GPIO_ResetBits
-                0x080011a0                GPIO_WriteBit
-                0x080011d0                GPIO_Write
-                0x080011ec                GPIO_ToggleBits
-                0x08001210                GPIO_PinAFConfig
- .text          0x080012a0      0xa78 libstm32f4xxspd.a(stm32f4xx_rcc.o)
-                0x080012a0                RCC_DeInit
-                0x080012f0                RCC_HSEConfig
-                0x08001314                RCC_WaitForHSEStartUp
-                0x08001364                RCC_AdjustHSICalibrationValue
-                0x080013a0                RCC_HSICmd
-                0x080013c0                RCC_LSEConfig
-                0x08001400                RCC_LSICmd
-                0x08001420                RCC_PLLConfig
-                0x0800145c                RCC_PLLCmd
-                0x0800147c                RCC_PLLI2SConfig
-                0x080014a4                RCC_PLLI2SCmd
-                0x080014c4                RCC_ClockSecuritySystemCmd
-                0x080014e4                RCC_MCO1Config
-                0x08001520                RCC_MCO2Config
-                0x0800155c                RCC_SYSCLKConfig
-                0x08001594                RCC_GetSYSCLKSource
-                0x080015b0                RCC_HCLKConfig
-                0x080015e8                RCC_PCLK1Config
-                0x08001620                RCC_PCLK2Config
-                0x08001658                RCC_GetClocksFreq
-                0x080017ac                RCC_RTCCLKConfig
-                0x08001808                RCC_RTCCLKCmd
-                0x08001828                RCC_BackupResetCmd
-                0x08001848                RCC_I2SCLKConfig
-                0x08001864                RCC_AHB1PeriphClockCmd
-                0x080018a0                RCC_AHB2PeriphClockCmd
-                0x080018dc                RCC_AHB3PeriphClockCmd
-                0x08001918                RCC_APB1PeriphClockCmd
-                0x08001954                RCC_APB2PeriphClockCmd
-                0x08001990                RCC_AHB1PeriphResetCmd
-                0x080019cc                RCC_AHB2PeriphResetCmd
-                0x08001a08                RCC_AHB3PeriphResetCmd
-                0x08001a44                RCC_APB1PeriphResetCmd
-                0x08001a80                RCC_APB2PeriphResetCmd
-                0x08001abc                RCC_AHB1PeriphClockLPModeCmd
-                0x08001af8                RCC_AHB2PeriphClockLPModeCmd
-                0x08001b34                RCC_AHB3PeriphClockLPModeCmd
-                0x08001b70                RCC_APB1PeriphClockLPModeCmd
-                0x08001bac                RCC_APB2PeriphClockLPModeCmd
-                0x08001be8                RCC_ITConfig
-                0x08001c34                RCC_GetFlagStatus
-                0x08001ca8                RCC_ClearFlag
-                0x08001cc4                RCC_GetITStatus
-                0x08001cf8                RCC_ClearITPendingBit
- .text          0x08001d18     0x1bf8 libstm32f4xxspd.a(stm32f4xx_tim.o)
-                0x08001d18                TIM_DeInit
-                0x08001ed8                TIM_TimeBaseInit
-                0x08001fac                TIM_TimeBaseStructInit
-                0x08001fe0                TIM_PrescalerConfig
-                0x08002008                TIM_CounterModeConfig
-                0x08002040                TIM_SetCounter
-                0x0800205c                TIM_SetAutoreload
-                0x08002078                TIM_GetCounter
-                0x08002090                TIM_GetPrescaler
-                0x080020a8                TIM_UpdateDisableConfig
-                0x080020e8                TIM_UpdateRequestConfig
-                0x08002128                TIM_ARRPreloadConfig
-                0x08002168                TIM_SelectOnePulseMode
-                0x080021a0                TIM_SetClockDivision
-                0x080021d8                TIM_Cmd
-                0x08002218                TIM_OC1Init
-                0x0800230c                TIM_OC2Init
-                0x0800241c                TIM_OC3Init
-                0x08002528                TIM_OC4Init
-                0x080025f4                TIM_OCStructInit
-                0x08002638                TIM_SelectOCxM
-                0x080026e8                TIM_SetCompare1
-                0x08002704                TIM_SetCompare2
-                0x08002720                TIM_SetCompare3
-                0x0800273c                TIM_SetCompare4
-                0x08002758                TIM_ForcedOC1Config
-                0x08002790                TIM_ForcedOC2Config
-                0x080027cc                TIM_ForcedOC3Config
-                0x08002804                TIM_ForcedOC4Config
-                0x08002840                TIM_OC1PreloadConfig
-                0x08002878                TIM_OC2PreloadConfig
-                0x080028b4                TIM_OC3PreloadConfig
-                0x080028ec                TIM_OC4PreloadConfig
-                0x08002928                TIM_OC1FastConfig
-                0x08002960                TIM_OC2FastConfig
-                0x0800299c                TIM_OC3FastConfig
-                0x080029d4                TIM_OC4FastConfig
-                0x08002a10                TIM_ClearOC1Ref
-                0x08002a48                TIM_ClearOC2Ref
-                0x08002a84                TIM_ClearOC3Ref
-                0x08002abc                TIM_ClearOC4Ref
-                0x08002af8                TIM_OC1PolarityConfig
-                0x08002b30                TIM_OC1NPolarityConfig
-                0x08002b68                TIM_OC2PolarityConfig
-                0x08002ba4                TIM_OC2NPolarityConfig
-                0x08002be0                TIM_OC3PolarityConfig
-                0x08002c1c                TIM_OC3NPolarityConfig
-                0x08002c58                TIM_OC4PolarityConfig
-                0x08002c94                TIM_CCxCmd
-                0x08002ce8                TIM_CCxNCmd
-                0x08002d3c                TIM_ICInit
-                0x08002de4                TIM_ICStructInit
-                0x08002e14                TIM_PWMIConfig
-                0x08002ecc                TIM_GetCapture1
-                0x08002ee4                TIM_GetCapture2
-                0x08002efc                TIM_GetCapture3
-                0x08002f14                TIM_GetCapture4
-                0x08002f2c                TIM_SetIC1Prescaler
-                0x08002f64                TIM_SetIC2Prescaler
-                0x08002fa0                TIM_SetIC3Prescaler
-                0x08002fd8                TIM_SetIC4Prescaler
-                0x08003014                TIM_BDTRConfig
-                0x08003064                TIM_BDTRStructInit
-                0x080030a0                TIM_CtrlPWMOutputs
-                0x080030ec                TIM_SelectCOM
-                0x0800312c                TIM_CCPreloadControl
-                0x0800316c                TIM_ITConfig
-                0x080031b4                TIM_GenerateEvent
-                0x080031d0                TIM_GetFlagStatus
-                0x08003208                TIM_ClearFlag
-                0x08003228                TIM_GetITStatus
-                0x0800327c                TIM_ClearITPendingBit
-                0x0800329c                TIM_DMAConfig
-                0x080032c4                TIM_DMACmd
-                0x0800330c                TIM_SelectCCDMA
-                0x0800334c                TIM_InternalClockConfig
-                0x08003370                TIM_ITRxExternalClockConfig
-                0x080033a0                TIM_TIxExternalClockConfig
-                0x080033fc                TIM_ETRClockMode1Config
-                0x0800345c                TIM_ETRClockMode2Config
-                0x0800349c                TIM_SelectInputTrigger
-                0x080034d4                TIM_SelectOutputTrigger
-                0x0800350c                TIM_SelectSlaveMode
-                0x08003544                TIM_SelectMasterSlaveMode
-                0x0800357c                TIM_ETRConfig
-                0x080035d0                TIM_EncoderInterfaceConfig
-                0x08003668                TIM_SelectHallSensor
-                0x080036a8                TIM_RemapConfig
- .text          0x08003910        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-exit.o)
- .text.exit     0x08003910       0x28 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-exit.o)
-                0x08003910                exit
- .text          0x08003938        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-impure.o)
- .text          0x08003938        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-init.o)
+                0x080007a4        0x4 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+                0x080007a4                EE_CORTEX_MX_DMA1_STREAM4_ISR
+                0x080007a4                EE_CORTEX_MX_USART6_ISR
+                0x080007a4                EE_CORTEX_MX_DMA1_STREAM6_ISR
+                0x080007a4                EE_CORTEX_MX_CRYP_ISR
+                0x080007a4                EE_CORTEX_MX_DMA1_STREAM5_ISR
+                0x080007a4                EE_CORTEX_MX_BUS_FAULT_ISR
+                0x080007a4                EE_CORTEX_MX_PVD_ISR
+                0x080007a4                EE_CORTEX_MX_SPI2_ISR
+                0x080007a4                EE_CORTEX_MX_CAN1_RX1_ISR
+                0x080007a4                EE_CORTEX_MX_DMA2_STREAM5_ISR
+                0x080007a4                EE_CORTEX_MX_TIM6_DAC_ISR
+                0x080007a4                EE_CORTEX_MX_I2C2_EV_ISR
+                0x080007a4                EE_CORTEX_MX_TIM1_UP_TIM10_ISR
+                0x080007a4                EE_CORTEX_MX_CAN1_RX0_ISR
+                0x080007a4                EE_CORTEX_MX_USART1_ISR
+                0x080007a4                EE_CORTEX_MX_TIM8_CC_ISR
+                0x080007a4                EE_CORTEX_MX_RTC_Alarm_ISR
+                0x080007a4                EE_CORTEX_MX_EXTI2_ISR
+                0x080007a4                EE_CORTEX_MX_OTG_HS_ISR
+                0x080007a4                EE_CORTEX_MX_DCMI_ISR
+                0x080007a4                EE_CORTEX_MX_DMA2_STREAM0_ISR
+                0x080007a4                EE_CORTEX_MX_SPI1_ISR
+                0x080007a4                EE_cortex_mx_default_ISR
+                0x080007a4                EE_CORTEX_MX_ETH_WKUP_ISR
+                0x080007a4                EE_CORTEX_MX_TIM8_TRG_COM_TIM14_ISR
+                0x080007a4                EE_CORTEX_MX_USAGE_FAULT_ISR
+                0x080007a4                EE_CORTEX_MX_TIM7_ISR
+                0x080007a4                EE_CORTEX_MX_TIM2_ISR
+                0x080007a4                EE_CORTEX_MX_I2C1_EV_ISR
+                0x080007a4                EE_CORTEX_MX_TIM1_TRG_COM_TIM11_ISR
+                0x080007a4                EE_CORTEX_MX_UART5_ISR
+                0x080007a4                EE_CORTEX_MX_UART4_ISR
+                0x080007a4                EE_CORTEX_MX_NMI_ISR
+                0x080007a4                EE_CORTEX_MX_TIM3_ISR
+                0x080007a4                EE_CORTEX_MX_USART3_ISR
+                0x080007a4                EE_CORTEX_MX_DMA2_STREAM4_ISR
+                0x080007a4                EE_CORTEX_MX_EXTI4_ISR
+                0x080007a4                EE_CORTEX_MX_ADC_ISR
+                0x080007a4                EE_CORTEX_MX_OTG_HS_EP1_IN_ISR
+                0x080007a4                EE_CORTEX_MX_DMA2_STREAM1_ISR
+                0x080007a4                EE_CORTEX_MX_CAN1_TX_ISR
+                0x080007a4                EE_CORTEX_MX_USART2_ISR
+                0x080007a4                EE_CORTEX_MX_SDIO_ISR
+                0x080007a4                EE_CORTEX_MX_I2C2_ER_ISR
+                0x080007a4                EE_CORTEX_MX_I2C3_EV_ISR
+                0x080007a4                EE_CORTEX_MX_HARD_FAULT_ISR
+                0x080007a4                EE_CORTEX_MX_DMA1_STREAM3_ISR
+                0x080007a4                EE_CORTEX_MX_OTG_HS_EP1_OUT_ISR
+                0x080007a4                EE_CORTEX_MX_TIM8_BRK_TIM12_ISR
+                0x080007a4                EE_CORTEX_MX_CAN1_SCE_ISR
+                0x080007a4                EE_CORTEX_MX_DMA1_STREAM1_ISR
+                0x080007a4                EE_CORTEX_MX_TIM4_ISR
+                0x080007a4                EE_CORTEX_MX_DMA2_STREAM3_ISR
+                0x080007a4                EE_CORTEX_MX_ETH_ISR
+                0x080007a4                EE_CORTEX_MX_OTG_FS_ISR
+                0x080007a4                EE_CORTEX_MX_CAN2_RX0_ISR
+                0x080007a4                EE_CORTEX_MX_CAN2_SCE_ISR
+                0x080007a4                EE_CORTEX_MX_FPU_ISR
+                0x080007a4                EE_CORTEX_MX_RTC_WKUP_ISR
+                0x080007a4                EE_CORTEX_MX_TIM8_UP_TIM13_ISR
+                0x080007a4                EE_CORTEX_MX_OTG_FS_WKUP_ISR
+                0x080007a4                EE_CORTEX_MX_DMA1_STREAM2_ISR
+                0x080007a4                EE_CORTEX_MX_EXTI9_5_ISR
+                0x080007a4                EE_CORTEX_MX_EXTI3_ISR
+                0x080007a4                EE_CORTEX_MX_EXTI0_ISR
+                0x080007a4                EE_CORTEX_MX_I2C1_ER_ISR
+                0x080007a4                EE_CORTEX_MX_FLASH_ISR
+                0x080007a4                EE_CORTEX_MX_OTG_HS_WKUP_ISR
+                0x080007a4                EE_CORTEX_MX_TIM1_BRK_TIM9_ISR
+                0x080007a4                EE_CORTEX_MX_I2C3_ER_ISR
+                0x080007a4                EE_CORTEX_MX_TIM1_CC_ISR
+                0x080007a4                EE_CORTEX_MX_SPI3_ISR
+                0x080007a4                EE_CORTEX_MX_EXTI15_10_ISR
+                0x080007a4                EE_CORTEX_MX_CAN2_TX_ISR
+                0x080007a4                EE_CORTEX_MX_RCC_ISR
+                0x080007a4                EE_CORTEX_MX_FSMC_ISR
+                0x080007a4                EE_CORTEX_MX_DMA2_STREAM2_ISR
+                0x080007a4                EE_CORTEX_MX_DMA2_STREAM7_ISR
+                0x080007a4                EE_CORTEX_MX_EXTI1_ISR
+                0x080007a4                EE_CORTEX_MX_DEBUG_MONITOR_ISR
+                0x080007a4                EE_CORTEX_MX_WWDG_ISR
+                0x080007a4                EE_CORTEX_MX_MPU_FAULT_ISR
+                0x080007a4                EE_CORTEX_MX_HASH_RNG_ISR
+                0x080007a4                EE_CORTEX_MX_DMA2_STREAM6_ISR
+                0x080007a4                EE_CORTEX_MX_TIM5_ISR
+                0x080007a4                EE_CORTEX_MX_DMA1_STREAM0_ISR
+                0x080007a4                EE_CORTEX_MX_TAMP_STAMP_ISR
+                0x080007a4                EE_CORTEX_MX_CAN2_RX1_ISR
+                0x080007a4                EE_CORTEX_MX_DMA1_Stream7_ISR
+ .text._exit    0x080007a8        0x6 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+                0x080007a8                _exit
+ *fill*         0x080007ae        0x2 
+ .text          0x080007b0      0x248 obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
+                0x080007b0                SystemInit
+                0x0800080c                SystemCoreClockUpdate
+ .text          0x080009f8       0x34 libee.a(ee_hal_structs.o)
+ .text          0x08000a2c       0x70 libee.a(ee_utils.o)
+                0x08000a60                EE_system_init
+ .text          0x08000a9c       0x80 libee.a(ee_gnu_change_context_isr.o)
+                0x08000a9c                EE_set_switch_context_pri
+                0x08000ab6                EE_switch_context
+                0x08000ac0                EE_cortex_mx_pendsv_ISR
+                0x08000afe                EE_cortex_mx_svc_ISR
+ .text          0x08000b1c       0xa4 libee.a(ee_irqsc.o)
+                0x08000b50                EE_IRQ_end_instance
+ .text          0x08000bc0       0x78 libee.a(ee_rqexchg.o)
+                0x08000bf4                EE_rq2stk_exchange
+ .text          0x08000c38       0x54 libee.a(ee_context.o)
+                0x08000c6c                EE_cortex_mx_change_context
+ .text          0x08000c8c       0x70 libee.a(ee_context.o)
+                0x08000cc0                EE_std_run_task_code
+ .text          0x08000cfc       0xfc libee.a(ee_thendin.o)
+                0x08000d30                EE_thread_end_instance
+ .text          0x08000df8       0xb4 libee.a(ee_rqinsert.o)
+                0x08000e2c                EE_rq_insert
+ .text          0x08000eac      0x484 libstm32f4xxspd.a(stm32f4xx_gpio.o)
+                0x08000eac                GPIO_DeInit
+                0x08000fcc                GPIO_Init
+                0x080010e8                GPIO_StructInit
+                0x0800111c                GPIO_PinLockConfig
+                0x08001160                GPIO_ReadInputDataBit
+                0x08001194                GPIO_ReadInputData
+                0x080011ac                GPIO_ReadOutputDataBit
+                0x080011e0                GPIO_ReadOutputData
+                0x080011f8                GPIO_SetBits
+                0x08001214                GPIO_ResetBits
+                0x08001230                GPIO_WriteBit
+                0x08001260                GPIO_Write
+                0x0800127c                GPIO_ToggleBits
+                0x080012a0                GPIO_PinAFConfig
+ .text          0x08001330      0xa78 libstm32f4xxspd.a(stm32f4xx_rcc.o)
+                0x08001330                RCC_DeInit
+                0x08001380                RCC_HSEConfig
+                0x080013a4                RCC_WaitForHSEStartUp
+                0x080013f4                RCC_AdjustHSICalibrationValue
+                0x08001430                RCC_HSICmd
+                0x08001450                RCC_LSEConfig
+                0x08001490                RCC_LSICmd
+                0x080014b0                RCC_PLLConfig
+                0x080014ec                RCC_PLLCmd
+                0x0800150c                RCC_PLLI2SConfig
+                0x08001534                RCC_PLLI2SCmd
+                0x08001554                RCC_ClockSecuritySystemCmd
+                0x08001574                RCC_MCO1Config
+                0x080015b0                RCC_MCO2Config
+                0x080015ec                RCC_SYSCLKConfig
+                0x08001624                RCC_GetSYSCLKSource
+                0x08001640                RCC_HCLKConfig
+                0x08001678                RCC_PCLK1Config
+                0x080016b0                RCC_PCLK2Config
+                0x080016e8                RCC_GetClocksFreq
+                0x0800183c                RCC_RTCCLKConfig
+                0x08001898                RCC_RTCCLKCmd
+                0x080018b8                RCC_BackupResetCmd
+                0x080018d8                RCC_I2SCLKConfig
+                0x080018f4                RCC_AHB1PeriphClockCmd
+                0x08001930                RCC_AHB2PeriphClockCmd
+                0x0800196c                RCC_AHB3PeriphClockCmd
+                0x080019a8                RCC_APB1PeriphClockCmd
+                0x080019e4                RCC_APB2PeriphClockCmd
+                0x08001a20                RCC_AHB1PeriphResetCmd
+                0x08001a5c                RCC_AHB2PeriphResetCmd
+                0x08001a98                RCC_AHB3PeriphResetCmd
+                0x08001ad4                RCC_APB1PeriphResetCmd
+                0x08001b10                RCC_APB2PeriphResetCmd
+                0x08001b4c                RCC_AHB1PeriphClockLPModeCmd
+                0x08001b88                RCC_AHB2PeriphClockLPModeCmd
+                0x08001bc4                RCC_AHB3PeriphClockLPModeCmd
+                0x08001c00                RCC_APB1PeriphClockLPModeCmd
+                0x08001c3c                RCC_APB2PeriphClockLPModeCmd
+                0x08001c78                RCC_ITConfig
+                0x08001cc4                RCC_GetFlagStatus
+                0x08001d38                RCC_ClearFlag
+                0x08001d54                RCC_GetITStatus
+                0x08001d88                RCC_ClearITPendingBit
+ .text          0x08001da8     0x1bf8 libstm32f4xxspd.a(stm32f4xx_tim.o)
+                0x08001da8                TIM_DeInit
+                0x08001f68                TIM_TimeBaseInit
+                0x0800203c                TIM_TimeBaseStructInit
+                0x08002070                TIM_PrescalerConfig
+                0x08002098                TIM_CounterModeConfig
+                0x080020d0                TIM_SetCounter
+                0x080020ec                TIM_SetAutoreload
+                0x08002108                TIM_GetCounter
+                0x08002120                TIM_GetPrescaler
+                0x08002138                TIM_UpdateDisableConfig
+                0x08002178                TIM_UpdateRequestConfig
+                0x080021b8                TIM_ARRPreloadConfig
+                0x080021f8                TIM_SelectOnePulseMode
+                0x08002230                TIM_SetClockDivision
+                0x08002268                TIM_Cmd
+                0x080022a8                TIM_OC1Init
+                0x0800239c                TIM_OC2Init
+                0x080024ac                TIM_OC3Init
+                0x080025b8                TIM_OC4Init
+                0x08002684                TIM_OCStructInit
+                0x080026c8                TIM_SelectOCxM
+                0x08002778                TIM_SetCompare1
+                0x08002794                TIM_SetCompare2
+                0x080027b0                TIM_SetCompare3
+                0x080027cc                TIM_SetCompare4
+                0x080027e8                TIM_ForcedOC1Config
+                0x08002820                TIM_ForcedOC2Config
+                0x0800285c                TIM_ForcedOC3Config
+                0x08002894                TIM_ForcedOC4Config
+                0x080028d0                TIM_OC1PreloadConfig
+                0x08002908                TIM_OC2PreloadConfig
+                0x08002944                TIM_OC3PreloadConfig
+                0x0800297c                TIM_OC4PreloadConfig
+                0x080029b8                TIM_OC1FastConfig
+                0x080029f0                TIM_OC2FastConfig
+                0x08002a2c                TIM_OC3FastConfig
+                0x08002a64                TIM_OC4FastConfig
+                0x08002aa0                TIM_ClearOC1Ref
+                0x08002ad8                TIM_ClearOC2Ref
+                0x08002b14                TIM_ClearOC3Ref
+                0x08002b4c                TIM_ClearOC4Ref
+                0x08002b88                TIM_OC1PolarityConfig
+                0x08002bc0                TIM_OC1NPolarityConfig
+                0x08002bf8                TIM_OC2PolarityConfig
+                0x08002c34                TIM_OC2NPolarityConfig
+                0x08002c70                TIM_OC3PolarityConfig
+                0x08002cac                TIM_OC3NPolarityConfig
+                0x08002ce8                TIM_OC4PolarityConfig
+                0x08002d24                TIM_CCxCmd
+                0x08002d78                TIM_CCxNCmd
+                0x08002dcc                TIM_ICInit
+                0x08002e74                TIM_ICStructInit
+                0x08002ea4                TIM_PWMIConfig
+                0x08002f5c                TIM_GetCapture1
+                0x08002f74                TIM_GetCapture2
+                0x08002f8c                TIM_GetCapture3
+                0x08002fa4                TIM_GetCapture4
+                0x08002fbc                TIM_SetIC1Prescaler
+                0x08002ff4                TIM_SetIC2Prescaler
+                0x08003030                TIM_SetIC3Prescaler
+                0x08003068                TIM_SetIC4Prescaler
+                0x080030a4                TIM_BDTRConfig
+                0x080030f4                TIM_BDTRStructInit
+                0x08003130                TIM_CtrlPWMOutputs
+                0x0800317c                TIM_SelectCOM
+                0x080031bc                TIM_CCPreloadControl
+                0x080031fc                TIM_ITConfig
+                0x08003244                TIM_GenerateEvent
+                0x08003260                TIM_GetFlagStatus
+                0x08003298                TIM_ClearFlag
+                0x080032b8                TIM_GetITStatus
+                0x0800330c                TIM_ClearITPendingBit
+                0x0800332c                TIM_DMAConfig
+                0x08003354                TIM_DMACmd
+                0x0800339c                TIM_SelectCCDMA
+                0x080033dc                TIM_InternalClockConfig
+                0x08003400                TIM_ITRxExternalClockConfig
+                0x08003430                TIM_TIxExternalClockConfig
+                0x0800348c                TIM_ETRClockMode1Config
+                0x080034ec                TIM_ETRClockMode2Config
+                0x0800352c                TIM_SelectInputTrigger
+                0x08003564                TIM_SelectOutputTrigger
+                0x0800359c                TIM_SelectSlaveMode
+                0x080035d4                TIM_SelectMasterSlaveMode
+                0x0800360c                TIM_ETRConfig
+                0x08003660                TIM_EncoderInterfaceConfig
+                0x080036f8                TIM_SelectHallSensor
+                0x08003738                TIM_RemapConfig
+ .text          0x080039a0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-exit.o)
+ .text.exit     0x080039a0       0x28 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-exit.o)
+                0x080039a0                exit
+ .text          0x080039c8        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-impure.o)
+ .text          0x080039c8        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-init.o)
  .text.__libc_init_array
-                0x08003938       0x58 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-init.o)
-                0x08003938                __libc_init_array
- .text          0x08003990        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-memset.o)
- .text.memset   0x08003990       0x94 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-memset.o)
-                0x08003990                memset
- .text          0x08003a24        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-__call_atexit.o)
+                0x080039c8       0x58 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-init.o)
+                0x080039c8                __libc_init_array
+ .text          0x08003a20        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-memset.o)
+ .text.memset   0x08003a20       0x94 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-memset.o)
+                0x08003a20                memset
+ .text          0x08003ab4        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-__call_atexit.o)
  .text.startup.register_fini
-                0x08003a24       0x1c C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-__call_atexit.o)
+                0x08003ab4       0x1c C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-__call_atexit.o)
  .text.__call_exitprocs
-                0x08003a40      0x10c C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-__call_atexit.o)
-                0x08003a40                __call_exitprocs
- .text          0x08003b4c        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-atexit.o)
- .text.atexit   0x08003b4c       0x14 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-atexit.o)
-                0x08003b4c                atexit
- .text          0x08003b60        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-fini.o)
+                0x08003ad0      0x10c C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-__call_atexit.o)
+                0x08003ad0                __call_exitprocs
+ .text          0x08003bdc        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-atexit.o)
+ .text.atexit   0x08003bdc       0x14 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-atexit.o)
+                0x08003bdc                atexit
+ .text          0x08003bf0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-fini.o)
  .text.__libc_fini_array
-                0x08003b60       0x3c C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-fini.o)
-                0x08003b60                __libc_fini_array
- .text          0x08003b9c        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-__atexit.o)
+                0x08003bf0       0x3c C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-fini.o)
+                0x08003bf0                __libc_fini_array
+ .text          0x08003c2c        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-__atexit.o)
  .text.__register_exitproc
-                0x08003b9c       0xd8 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-__atexit.o)
-                0x08003b9c                __register_exitproc
- .text          0x08003c74        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtend.o
- .text          0x08003c74        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtn.o
+                0x08003c2c       0xd8 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-__atexit.o)
+                0x08003c2c                __register_exitproc
+ .text          0x08003d04        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtend.o
+ .text          0x08003d04        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtn.o
  *(.init)
- .init          0x08003c74        0x4 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crti.o
-                0x08003c74                _init
- .init          0x08003c78        0x8 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtn.o
+ .init          0x08003d04        0x4 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crti.o
+                0x08003d04                _init
+ .init          0x08003d08        0x8 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtn.o
  *(.fini)
- .fini          0x08003c80        0x4 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crti.o
-                0x08003c80                _fini
- .fini          0x08003c84        0x8 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtn.o
+ .fini          0x08003d10        0x4 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crti.o
+                0x08003d10                _fini
+ .fini          0x08003d14        0x8 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtn.o
  *crtbegin.o(.ctors)
  *crtbegin.o(.ctors)
  *crtbegin?.o(.ctors)
@@ -423,47 +426,47 @@ END GROUP
  *(SORT(.dtors.*))
  *(.dtors)
  *(.rodata*)
- .rodata        0x08003c8c        0x0 obj/eecfg.o
-                0x08003c8c                EE_th_dispatch_prio
-                0x08003c8c                EE_hal_thread_body
-                0x08003c8c                EE_th_ready_prio
+ .rodata        0x08003d1c        0x0 obj/eecfg.o
+                0x08003d1c                EE_th_dispatch_prio
+                0x08003d1c                EE_hal_thread_body
+                0x08003d1c                EE_th_ready_prio
  .rodata._global_impure_ptr
-                0x08003c8c        0x4 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-impure.o)
-                0x08003c8c                _global_impure_ptr
+                0x08003d1c        0x4 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-impure.o)
+                0x08003d1c                _global_impure_ptr
  *(.eh_frame*)
- .eh_frame      0x08003c90        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtbegin.o
- .eh_frame      0x08003c90        0x4 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtend.o
+ .eh_frame      0x08003d20        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtbegin.o
+ .eh_frame      0x08003d20        0x4 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtend.o
 
-.glue_7         0x08003c94        0x0
- .glue_7        0x08003c94        0x0 linker stubs
+.glue_7         0x08003d24        0x0
+ .glue_7        0x08003d24        0x0 linker stubs
 
-.glue_7t        0x08003c94        0x0
- .glue_7t       0x08003c94        0x0 linker stubs
+.glue_7t        0x08003d24        0x0
+ .glue_7t       0x08003d24        0x0 linker stubs
 
-.vfp11_veneer   0x08003c94        0x0
- .vfp11_veneer  0x08003c94        0x0 linker stubs
+.vfp11_veneer   0x08003d24        0x0
+ .vfp11_veneer  0x08003d24        0x0 linker stubs
 
-.v4_bx          0x08003c94        0x0
- .v4_bx         0x08003c94        0x0 linker stubs
+.v4_bx          0x08003d24        0x0
+ .v4_bx         0x08003d24        0x0 linker stubs
 
-.iplt           0x08003c94        0x0
- .iplt          0x08003c94        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtbegin.o
+.iplt           0x08003d24        0x0
+ .iplt          0x08003d24        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtbegin.o
 
-.ARM.extab      0x08003c94        0x0
+.ARM.extab      0x08003d24        0x0
  *(.ARM.extab* .gnu.linkonce.armextab.*)
- .ARM.extab     0x08003c94        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/crt0.o
-                0x08003c94                __exidx_start = .
+ .ARM.extab     0x08003d24        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/crt0.o
+                0x08003d24                __exidx_start = .
 
-.ARM.exidx      0x08003c94        0x8
+.ARM.exidx      0x08003d24        0x8
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x08003c94        0x8 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/crt0.o
-                0x08003c9c                __exidx_end = .
-                0x08003c9c                __etext = .
+ .ARM.exidx     0x08003d24        0x8 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/crt0.o
+                0x08003d2c                __exidx_end = .
+                0x08003d2c                __etext = .
 
-.rel.dyn        0x08003c9c        0x0
- .rel.iplt      0x08003c9c        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtbegin.o
+.rel.dyn        0x08003d2c        0x0
+ .rel.iplt      0x08003d2c        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtbegin.o
 
-.data           0x20000000      0x474 load address 0x08003c9c
+.data           0x20000000      0x474 load address 0x08003d2c
                 0x20000000                __data_start__ = .
  *(vtable)
  *(.data*)
@@ -534,10 +537,10 @@ END GROUP
                 0x20000474                . = ALIGN (0x4)
                 0x20000474                __data_end__ = .
 
-.igot.plt       0x20000474        0x0 load address 0x08004110
+.igot.plt       0x20000474        0x0 load address 0x080041a0
  .igot.plt      0x20000474        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtbegin.o
 
-.bss            0x20000474       0x50 load address 0x08004110
+.bss            0x20000474       0x90 load address 0x080041a0
                 0x20000474                . = ALIGN (0x4)
                 0x20000474                __bss_start__ = .
  *(.bss*)
@@ -575,28 +578,29 @@ END GROUP
  .bss           0x2000049c        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtend.o
  .bss           0x2000049c        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtn.o
  *(COMMON)
- COMMON         0x2000049c       0x20 obj/code.o
+ COMMON         0x2000049c       0x60 obj/code.o
                 0x2000049c                TIM_TimeBaseStructure
-                0x200004a8                TIM_OCInitStructure
- COMMON         0x200004bc        0x0 obj/eecfg.o
-                0x200004bc                EE_th_nact
- COMMON         0x200004bc        0x8 libee.a(ee_hal_structs.o)
-                0x200004bc                EE_IRQ_nesting_level
-                0x200004c0                EE_std_endcycle_next_tid
-                0x200004c4                . = ALIGN (0x4)
-                0x200004c4                __bss_end__ = .
+                0x200004a8                GPIO_InitStructure_LightSensors
+                0x200004e8                TIM_OCInitStructure
+ COMMON         0x200004fc        0x0 obj/eecfg.o
+                0x200004fc                EE_th_nact
+ COMMON         0x200004fc        0x8 libee.a(ee_hal_structs.o)
+                0x200004fc                EE_IRQ_nesting_level
+                0x20000500                EE_std_endcycle_next_tid
+                0x20000504                . = ALIGN (0x4)
+                0x20000504                __bss_end__ = .
 
-.heap           0x200004c8      0x100
-                0x200004c8                __end__ = .
-                0x200004c8                end = __end__
+.heap           0x20000508      0x100
+                0x20000508                __end__ = .
+                0x20000508                end = __end__
  *(.heap*)
- .heap          0x200004c8      0x100 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
-                0x200004c8                __HeapBase
-                0x200005c8                __HeapLimit = .
+ .heap          0x20000508      0x100 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+                0x20000508                __HeapBase
+                0x20000608                __HeapLimit = .
 
-.stack_dummy    0x200004c8      0xc00
+.stack_dummy    0x20000508      0xc00
  *(.stack*)
- .stack         0x200004c8      0xc00 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+ .stack         0x20000508      0xc00 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
                 0x20020000                __StackTop = (ORIGIN (RAM) + LENGTH (RAM))
                 0x2001f400                __StackLimit = (__StackTop - SIZEOF (.stack_dummy))
                 0x20020000                PROVIDE (__stack, __StackTop)
@@ -690,41 +694,41 @@ OUTPUT(c_mX.elf elf32-littlearm)
  .comment       0x0000006e       0x6f libstm32f4xxspd.a(stm32f4xx_rcc.o)
  .comment       0x0000006e       0x6f libstm32f4xxspd.a(stm32f4xx_tim.o)
 
-.debug_info     0x00000000     0x51cb
- .debug_info    0x00000000      0xa01 obj/code.o
- .debug_info    0x00000a01      0x22d obj/eecfg.o
- .debug_info    0x00000c2e       0xd7 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
- .debug_info    0x00000d05      0x5c5 obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
- .debug_info    0x000012ca      0x15c libee.a(ee_hal_structs.o)
- .debug_info    0x00001426      0x23e libee.a(ee_utils.o)
- .debug_info    0x00001664       0xd6 libee.a(ee_gnu_change_context_isr.o)
- .debug_info    0x0000173a      0x246 libee.a(ee_irqsc.o)
- .debug_info    0x00001980      0x178 libee.a(ee_rqexchg.o)
- .debug_info    0x00001af8      0x174 libee.a(ee_context.o)
- .debug_info    0x00001c6c      0x21b libee.a(ee_context.o)
- .debug_info    0x00001e87      0x2a3 libee.a(ee_thendin.o)
- .debug_info    0x0000212a      0x1b8 libee.a(ee_rqinsert.o)
- .debug_info    0x000022e2      0x61d libstm32f4xxspd.a(stm32f4xx_gpio.o)
- .debug_info    0x000028ff      0xc63 libstm32f4xxspd.a(stm32f4xx_rcc.o)
- .debug_info    0x00003562     0x1c69 libstm32f4xxspd.a(stm32f4xx_tim.o)
+.debug_info     0x00000000     0x5279
+ .debug_info    0x00000000      0xaaf obj/code.o
+ .debug_info    0x00000aaf      0x22d obj/eecfg.o
+ .debug_info    0x00000cdc       0xd7 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+ .debug_info    0x00000db3      0x5c5 obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
+ .debug_info    0x00001378      0x15c libee.a(ee_hal_structs.o)
+ .debug_info    0x000014d4      0x23e libee.a(ee_utils.o)
+ .debug_info    0x00001712       0xd6 libee.a(ee_gnu_change_context_isr.o)
+ .debug_info    0x000017e8      0x246 libee.a(ee_irqsc.o)
+ .debug_info    0x00001a2e      0x178 libee.a(ee_rqexchg.o)
+ .debug_info    0x00001ba6      0x174 libee.a(ee_context.o)
+ .debug_info    0x00001d1a      0x21b libee.a(ee_context.o)
+ .debug_info    0x00001f35      0x2a3 libee.a(ee_thendin.o)
+ .debug_info    0x000021d8      0x1b8 libee.a(ee_rqinsert.o)
+ .debug_info    0x00002390      0x61d libstm32f4xxspd.a(stm32f4xx_gpio.o)
+ .debug_info    0x000029ad      0xc63 libstm32f4xxspd.a(stm32f4xx_rcc.o)
+ .debug_info    0x00003610     0x1c69 libstm32f4xxspd.a(stm32f4xx_tim.o)
 
-.debug_abbrev   0x00000000     0x119a
- .debug_abbrev  0x00000000      0x2ca obj/code.o
- .debug_abbrev  0x000002ca       0xb6 obj/eecfg.o
- .debug_abbrev  0x00000380       0x12 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
- .debug_abbrev  0x00000392      0x138 obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
- .debug_abbrev  0x000004ca       0x9b libee.a(ee_hal_structs.o)
- .debug_abbrev  0x00000565      0x15b libee.a(ee_utils.o)
- .debug_abbrev  0x000006c0       0x14 libee.a(ee_gnu_change_context_isr.o)
- .debug_abbrev  0x000006d4      0x121 libee.a(ee_irqsc.o)
- .debug_abbrev  0x000007f5       0xb5 libee.a(ee_rqexchg.o)
- .debug_abbrev  0x000008aa       0xb3 libee.a(ee_context.o)
- .debug_abbrev  0x0000095d      0x120 libee.a(ee_context.o)
- .debug_abbrev  0x00000a7d      0x130 libee.a(ee_thendin.o)
- .debug_abbrev  0x00000bad       0xd8 libee.a(ee_rqinsert.o)
- .debug_abbrev  0x00000c85      0x1a7 libstm32f4xxspd.a(stm32f4xx_gpio.o)
- .debug_abbrev  0x00000e2c      0x1e5 libstm32f4xxspd.a(stm32f4xx_rcc.o)
- .debug_abbrev  0x00001011      0x189 libstm32f4xxspd.a(stm32f4xx_tim.o)
+.debug_abbrev   0x00000000     0x11f3
+ .debug_abbrev  0x00000000      0x323 obj/code.o
+ .debug_abbrev  0x00000323       0xb6 obj/eecfg.o
+ .debug_abbrev  0x000003d9       0x12 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+ .debug_abbrev  0x000003eb      0x138 obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
+ .debug_abbrev  0x00000523       0x9b libee.a(ee_hal_structs.o)
+ .debug_abbrev  0x000005be      0x15b libee.a(ee_utils.o)
+ .debug_abbrev  0x00000719       0x14 libee.a(ee_gnu_change_context_isr.o)
+ .debug_abbrev  0x0000072d      0x121 libee.a(ee_irqsc.o)
+ .debug_abbrev  0x0000084e       0xb5 libee.a(ee_rqexchg.o)
+ .debug_abbrev  0x00000903       0xb3 libee.a(ee_context.o)
+ .debug_abbrev  0x000009b6      0x120 libee.a(ee_context.o)
+ .debug_abbrev  0x00000ad6      0x130 libee.a(ee_thendin.o)
+ .debug_abbrev  0x00000c06       0xd8 libee.a(ee_rqinsert.o)
+ .debug_abbrev  0x00000cde      0x1a7 libstm32f4xxspd.a(stm32f4xx_gpio.o)
+ .debug_abbrev  0x00000e85      0x1e5 libstm32f4xxspd.a(stm32f4xx_rcc.o)
+ .debug_abbrev  0x0000106a      0x189 libstm32f4xxspd.a(stm32f4xx_tim.o)
 
 .debug_aranges  0x00000000      0x210
  .debug_aranges
@@ -760,76 +764,76 @@ OUTPUT(c_mX.elf elf32-littlearm)
  .debug_aranges
                 0x000001f0       0x20 libstm32f4xxspd.a(stm32f4xx_tim.o)
 
-.debug_line     0x00000000     0x289f
- .debug_line    0x00000000      0x4a3 obj/code.o
- .debug_line    0x000004a3      0x123 obj/eecfg.o
- .debug_line    0x000005c6       0xe6 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
- .debug_line    0x000006ac      0x27f obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
- .debug_line    0x0000092b      0x1bf libee.a(ee_hal_structs.o)
- .debug_line    0x00000aea      0x201 libee.a(ee_utils.o)
- .debug_line    0x00000ceb       0xe5 libee.a(ee_gnu_change_context_isr.o)
- .debug_line    0x00000dd0      0x224 libee.a(ee_irqsc.o)
- .debug_line    0x00000ff4      0x1e9 libee.a(ee_rqexchg.o)
- .debug_line    0x000011dd      0x1f2 libee.a(ee_context.o)
- .debug_line    0x000013cf      0x213 libee.a(ee_context.o)
- .debug_line    0x000015e2      0x252 libee.a(ee_thendin.o)
- .debug_line    0x00001834      0x1f7 libee.a(ee_rqinsert.o)
- .debug_line    0x00001a2b      0x36d libstm32f4xxspd.a(stm32f4xx_gpio.o)
- .debug_line    0x00001d98      0x431 libstm32f4xxspd.a(stm32f4xx_rcc.o)
- .debug_line    0x000021c9      0x6d6 libstm32f4xxspd.a(stm32f4xx_tim.o)
+.debug_line     0x00000000     0x28b0
+ .debug_line    0x00000000      0x4b4 obj/code.o
+ .debug_line    0x000004b4      0x123 obj/eecfg.o
+ .debug_line    0x000005d7       0xe6 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+ .debug_line    0x000006bd      0x27f obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
+ .debug_line    0x0000093c      0x1bf libee.a(ee_hal_structs.o)
+ .debug_line    0x00000afb      0x201 libee.a(ee_utils.o)
+ .debug_line    0x00000cfc       0xe5 libee.a(ee_gnu_change_context_isr.o)
+ .debug_line    0x00000de1      0x224 libee.a(ee_irqsc.o)
+ .debug_line    0x00001005      0x1e9 libee.a(ee_rqexchg.o)
+ .debug_line    0x000011ee      0x1f2 libee.a(ee_context.o)
+ .debug_line    0x000013e0      0x213 libee.a(ee_context.o)
+ .debug_line    0x000015f3      0x252 libee.a(ee_thendin.o)
+ .debug_line    0x00001845      0x1f7 libee.a(ee_rqinsert.o)
+ .debug_line    0x00001a3c      0x36d libstm32f4xxspd.a(stm32f4xx_gpio.o)
+ .debug_line    0x00001da9      0x431 libstm32f4xxspd.a(stm32f4xx_rcc.o)
+ .debug_line    0x000021da      0x6d6 libstm32f4xxspd.a(stm32f4xx_tim.o)
 
-.debug_str      0x00000000     0x210c
- .debug_str     0x00000000      0x7f4 obj/code.o
-                                0x866 (size before relaxing)
- .debug_str     0x000007f4       0xc5 obj/eecfg.o
+.debug_str      0x00000000     0x2155
+ .debug_str     0x00000000      0x855 obj/code.o
+                                0x8c7 (size before relaxing)
+ .debug_str     0x00000855       0xc5 obj/eecfg.o
                                 0x268 (size before relaxing)
- .debug_str     0x000008b9      0x201 obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
+ .debug_str     0x0000091a      0x201 obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
                                 0x3d8 (size before relaxing)
- .debug_str     0x00000aba       0x65 libee.a(ee_hal_structs.o)
+ .debug_str     0x00000b1b       0x65 libee.a(ee_hal_structs.o)
                                 0x221 (size before relaxing)
- .debug_str     0x00000b1f       0xd7 libee.a(ee_utils.o)
+ .debug_str     0x00000b80       0xd7 libee.a(ee_utils.o)
                                 0x293 (size before relaxing)
- .debug_str     0x00000bf6       0xc3 libee.a(ee_irqsc.o)
+ .debug_str     0x00000c57       0xc3 libee.a(ee_irqsc.o)
                                 0x2b3 (size before relaxing)
- .debug_str     0x00000cb9       0x78 libee.a(ee_rqexchg.o)
+ .debug_str     0x00000d1a       0x78 libee.a(ee_rqexchg.o)
                                 0x234 (size before relaxing)
- .debug_str     0x00000d31       0x80 libee.a(ee_context.o)
+ .debug_str     0x00000d92       0x80 libee.a(ee_context.o)
                                 0x23c (size before relaxing)
- .debug_str     0x00000db1       0x99 libee.a(ee_context.o)
+ .debug_str     0x00000e12       0x99 libee.a(ee_context.o)
                                 0x2ae (size before relaxing)
- .debug_str     0x00000e4a       0x8f libee.a(ee_thendin.o)
+ .debug_str     0x00000eab       0x8f libee.a(ee_thendin.o)
                                 0x2db (size before relaxing)
- .debug_str     0x00000ed9       0x6e libee.a(ee_rqinsert.o)
+ .debug_str     0x00000f3a       0x6e libee.a(ee_rqinsert.o)
                                 0x240 (size before relaxing)
- .debug_str     0x00000f47      0x1da libstm32f4xxspd.a(stm32f4xx_gpio.o)
+ .debug_str     0x00000fa8      0x1c2 libstm32f4xxspd.a(stm32f4xx_gpio.o)
                                 0x4d6 (size before relaxing)
- .debug_str     0x00001121      0x5bb libstm32f4xxspd.a(stm32f4xx_rcc.o)
+ .debug_str     0x0000116a      0x5bb libstm32f4xxspd.a(stm32f4xx_rcc.o)
                                 0x883 (size before relaxing)
- .debug_str     0x000016dc      0xa30 libstm32f4xxspd.a(stm32f4xx_tim.o)
+ .debug_str     0x00001725      0xa30 libstm32f4xxspd.a(stm32f4xx_tim.o)
                                 0xe03 (size before relaxing)
 
-.debug_frame    0x00000000     0x202c
- .debug_frame   0x00000000      0x27c obj/code.o
- .debug_frame   0x0000027c       0x60 obj/eecfg.o
- .debug_frame   0x000002dc       0x7c obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
- .debug_frame   0x00000358       0x60 libee.a(ee_hal_structs.o)
- .debug_frame   0x000003b8       0x88 libee.a(ee_utils.o)
- .debug_frame   0x00000440       0x88 libee.a(ee_irqsc.o)
- .debug_frame   0x000004c8       0x88 libee.a(ee_rqexchg.o)
- .debug_frame   0x00000550       0x84 libee.a(ee_context.o)
- .debug_frame   0x000005d4       0x84 libee.a(ee_context.o)
- .debug_frame   0x00000658       0x84 libee.a(ee_thendin.o)
- .debug_frame   0x000006dc       0x88 libee.a(ee_rqinsert.o)
- .debug_frame   0x00000764      0x23c libstm32f4xxspd.a(stm32f4xx_gpio.o)
- .debug_frame   0x000009a0      0x6d4 libstm32f4xxspd.a(stm32f4xx_rcc.o)
- .debug_frame   0x00001074      0xe54 libstm32f4xxspd.a(stm32f4xx_tim.o)
- .debug_frame   0x00001ec8       0x28 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-exit.o)
- .debug_frame   0x00001ef0       0x2c C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-init.o)
- .debug_frame   0x00001f1c       0x2c C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-memset.o)
- .debug_frame   0x00001f48       0x54 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-__call_atexit.o)
- .debug_frame   0x00001f9c       0x28 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-atexit.o)
- .debug_frame   0x00001fc4       0x2c C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-fini.o)
- .debug_frame   0x00001ff0       0x3c C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-__atexit.o)
+.debug_frame    0x00000000     0x2050
+ .debug_frame   0x00000000      0x2a0 obj/code.o
+ .debug_frame   0x000002a0       0x60 obj/eecfg.o
+ .debug_frame   0x00000300       0x7c obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
+ .debug_frame   0x0000037c       0x60 libee.a(ee_hal_structs.o)
+ .debug_frame   0x000003dc       0x88 libee.a(ee_utils.o)
+ .debug_frame   0x00000464       0x88 libee.a(ee_irqsc.o)
+ .debug_frame   0x000004ec       0x88 libee.a(ee_rqexchg.o)
+ .debug_frame   0x00000574       0x84 libee.a(ee_context.o)
+ .debug_frame   0x000005f8       0x84 libee.a(ee_context.o)
+ .debug_frame   0x0000067c       0x84 libee.a(ee_thendin.o)
+ .debug_frame   0x00000700       0x88 libee.a(ee_rqinsert.o)
+ .debug_frame   0x00000788      0x23c libstm32f4xxspd.a(stm32f4xx_gpio.o)
+ .debug_frame   0x000009c4      0x6d4 libstm32f4xxspd.a(stm32f4xx_rcc.o)
+ .debug_frame   0x00001098      0xe54 libstm32f4xxspd.a(stm32f4xx_tim.o)
+ .debug_frame   0x00001eec       0x28 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-exit.o)
+ .debug_frame   0x00001f14       0x2c C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-init.o)
+ .debug_frame   0x00001f40       0x2c C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-memset.o)
+ .debug_frame   0x00001f6c       0x54 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-__call_atexit.o)
+ .debug_frame   0x00001fc0       0x28 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-atexit.o)
+ .debug_frame   0x00001fe8       0x2c C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-fini.o)
+ .debug_frame   0x00002014       0x3c C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-__atexit.o)
 
 .debug_ranges   0x00000000       0x28
  .debug_ranges  0x00000000       0x28 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o

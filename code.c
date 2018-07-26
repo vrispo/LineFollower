@@ -51,6 +51,8 @@ uint16_t CCR3_Val = 166;
 uint16_t CCR4_Val = 83;
 uint16_t PrescalerValue = 0;
 
+GPIO_InitTypeDef GPIO_InitStructure_LightSensors[8];
+
 /*
  * OUR FUNCTIONS start
  */
@@ -147,20 +149,52 @@ void InitMotors(){
 		GPIO_Init(GPIOA, &GPIO_InitStructure);
 
 		/*inizializzazione pin pb6 pb4 (lettura sensore)*/
-		GPIO_InitStructure.GPIO_Pin=GPIO_Pin_6|GPIO_Pin_4;
+		/*GPIO_InitStructure.GPIO_Pin=GPIO_Pin_6|GPIO_Pin_4;
 		GPIO_InitStructure.GPIO_Mode=GPIO_Mode_IN;
-		GPIO_Init(GPIOB, &GPIO_InitStructure);
+		GPIO_Init(GPIOB, &GPIO_InitStructure);*/
+		GPIO_InitStructure_LightSensors[0].GPIO_Pin=GPIO_Pin_6;
+		GPIO_InitStructure_LightSensors[0].GPIO_Mode=GPIO_Mode_OUT;
+		GPIO_InitStructure_LightSensors[0].GPIO_OType=GPIO_OType_PP;
+		GPIO_InitStructure_LightSensors[0].GPIO_Speed=GPIO_Speed_100MHz;
+		GPIO_InitStructure_LightSensors[0].GPIO_PuPd=GPIO_PuPd_NOPULL;
+		GPIO_Init(GPIOB, &GPIO_InitStructure_LightSensors[0]);
 
-		/*inizializzazione pin pd7 pd5 pd3 pd1 (lettura sensore)*/
+/*		inizializzazione pin pd7 pd5 pd3 pd1 (lettura sensore)
 		GPIO_InitStructure.GPIO_Pin=GPIO_Pin_7|GPIO_Pin_5|GPIO_Pin_3|GPIO_Pin_1;
 		GPIO_Init(GPIOD, &GPIO_InitStructure);
 
-		/*inizializzazione pin pc12 pc10 (lettura sensore)*/
+		inizializzazione pin pc12 pc10 (lettura sensore)
 		GPIO_InitStructure.GPIO_Pin=GPIO_Pin_12|GPIO_Pin_10;
-		GPIO_Init(GPIOC, &GPIO_InitStructure);
+		GPIO_Init(GPIOC, &GPIO_InitStructure);*/
 
 		/*accensione led sensore luminoso*/
 		GPIO_SetBits(GPIOA, GPIO_Pin_9);
+ }
+
+ uint32_t LineSensors_ReadPin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, uint8_t index){
+	 uint32_t read_val = 0;
+
+	 //set I/O output to 1
+	 GPIO_SetBits(GPIOx, GPIO_Pin);
+
+	 //mantieni per almeno 10 micros
+	 Delay(10);
+
+	 //set I/O as input pin
+	 GPIO_InitStructure_LightSensors[index].GPIO_Mode=GPIO_Mode_IN;
+	 GPIO_Init(GPIOx, &GPIO_InitStructure_LightSensors[index]);
+
+	 //read
+	 while(GPIO_ReadInputDataBit(GPIOx, GPIO_Pin) != (uint8_t)Bit_RESET){
+		 read_val++;
+		 Delay(1);
+	 }
+
+	 //set I/O as output pin
+	 GPIO_InitStructure_LightSensors[index].GPIO_Mode=GPIO_Mode_OUT;
+	 GPIO_Init(GPIOx, &GPIO_InitStructure_LightSensors[index]);
+
+	 return read_val;
  }
 
 /*
@@ -302,7 +336,10 @@ int main(void)
 	EnableMotors();
 
 	/*Start line sensor*/
-	//InitLineSensor();
+	InitLineSensor();
+
+	/**/
+	uint32_t ret = LineSensors_ReadPin(GPIOB,GPIO_Pin_6, 0);
 
 	/* Forever loop: background activities (if any) should go here */
 	for (;;);
