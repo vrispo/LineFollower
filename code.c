@@ -197,6 +197,40 @@ void InitMotors(){
 	 return read_val;
  }
 
+ void read_task_init(){
+	 //Clock for SYSCFG
+	 RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
+
+	 //Select GPIOB pin 6 as external interrupt source
+	 SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOB, EXTI_PinSource6);
+
+	 //External interrupt settings
+	 EXTI_InitTypeDef EXTI_InitStruct;
+	 EXTI_InitStruct.EXTI_Line = EXTI_Line6;	//Pin 6 have interrupt line 6
+	 EXTI_InitStruct.EXTI_LineCmd = ENABLE;
+	 EXTI_InitStruct.EXTI_Mode = EXTI_Mode_Interrupt;
+	 EXTI_InitStruct.EXTI_Trigger = EXTI_Trigger_Falling;	//Generate interrupt on falling edge //TODO: check
+	 EXTI_Init(EXTI_InitStruct);
+
+	 NVIC_InitTypeDef NVIC_InitStruct;
+	 NVIC_InitStruct.NVIC_IRQChannel = EXTI9_5IRQn;	//Pin 6 have this IRQ channel
+	 NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
+	 NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 0x00;	//Most important interrupt
+	 NVIC_InitStruct.NVIC_IRQChannelSubPriority = 0x00;
+	 NVIC_Init(NVIC_InitStruct);
+
+	 //TODO: put high all pins, add delay and switch to input mode
+ }
+
+ //Handler for the interrupts from pins 5 to 9
+ void EXTI9_5IRQHandler(void){
+	 //Checks the line where comes the interrupt
+	 if(EXTI_GetITStatus(EXTI_Line6)){
+		 //Pin6
+		 //TODO: do something when pin6 is low (set time and set flag)
+	 }
+ }
+
 /*
  * OUR FUNCTIONS end
  */
