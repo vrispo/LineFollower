@@ -201,33 +201,118 @@ void InitMotors(){
 	 //Clock for SYSCFG
 	 RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
 
-	 //Select GPIOB pin 6 as external interrupt source
+	 //For each used EXTI line tell wich pin is selected
+	 SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOD, EXTI_PinSource1);
+	 SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOD, EXTI_PinSource3);
+	 SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOB, EXTI_PinSource4);
+	 SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOD, EXTI_PinSource5);
 	 SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOB, EXTI_PinSource6);
+	 SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOD, EXTI_PinSource7);
+	 SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOC, EXTI_PinSource10);
+	 SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOC, EXTI_PinSource12);
 
 	 //External interrupt settings
 	 EXTI_InitTypeDef EXTI_InitStruct;
-	 EXTI_InitStruct.EXTI_Line = EXTI_Line6;	//Pin 6 have interrupt line 6
+	 EXTI_InitStruct.EXTI_Line = EXTI_Line1;	//Pin D1 have interrupt line 1
 	 EXTI_InitStruct.EXTI_LineCmd = ENABLE;
 	 EXTI_InitStruct.EXTI_Mode = EXTI_Mode_Interrupt;
 	 EXTI_InitStruct.EXTI_Trigger = EXTI_Trigger_Falling;	//Generate interrupt on falling edge //TODO: check
 	 EXTI_Init(EXTI_InitStruct);
 
+	 EXTI_InitStruct.EXTI_Line = EXTI_Line3;	//Pin D3 have interrupt line 3
+	 EXTI_Init(EXTI_InitStruct);
+
+	 EXTI_InitStruct.EXTI_Line = EXTI_Line4;	//Pin B4 have interrupt line 4
+	 EXTI_Init(EXTI_InitStruct);
+
+	 EXTI_InitStruct.EXTI_Line = EXTI_Line5;	//Pin D5 have interrupt line 5
+	 EXTI_Init(EXTI_InitStruct);
+
+	 EXTI_InitStruct.EXTI_Line = EXTI_Line6;	//Pin B6 have interrupt line 6
+	 EXTI_Init(EXTI_InitStruct);
+
+	 EXTI_InitStruct.EXTI_Line = EXTI_Line7;	//Pin D7 have interrupt line 7
+	 EXTI_Init(EXTI_InitStruct);
+
+	 EXTI_InitStruct.EXTI_Line = EXTI_Line10;	//Pin C10 have interrupt line 10
+	 EXTI_Init(EXTI_InitStruct);
+
+	 EXTI_InitStruct.EXTI_Line = EXTI_Line12;	//Pin C12 have interrupt line 12
+	 EXTI_Init(EXTI_InitStruct);
+
 	 NVIC_InitTypeDef NVIC_InitStruct;
-	 NVIC_InitStruct.NVIC_IRQChannel = EXTI9_5IRQn;	//Pin 6 have this IRQ channel
+	 NVIC_InitStruct.NVIC_IRQChannel = EXTI1_IRQn;	//Line 1 have this IRQ channel
 	 NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
 	 NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 0x00;	//Most important interrupt
 	 NVIC_InitStruct.NVIC_IRQChannelSubPriority = 0x00;
 	 NVIC_Init(NVIC_InitStruct);
 
+	 NVIC_InitStruct.NVIC_IRQChannel = EXTI3_IRQn;	//Line 3 have this IRQ channel
+	 NVIC_Init(NVIC_InitStruct);
+
+	 NVIC_InitStruct.NVIC_IRQChannel = EXTI4_IRQn;	//Line 4 have this IRQ channel
+	 NVIC_Init(NVIC_InitStruct);
+
+	 NVIC_InitStruct.NVIC_IRQChannel = EXTI9_5_IRQn;	//Line 5, 6 and 7 have this IRQ channel
+	 NVIC_Init(NVIC_InitStruct);
+
+	 NVIC_InitStruct.NVIC_IRQChannel = EXTI15_10_IRQn;	//Line 10 and 12 have this IRQ channel
+	 NVIC_Init(NVIC_InitStruct);
+
 	 //TODO: put high all pins, add delay and switch to input mode
  }
 
+ //HANDLERS FOR PIN INTERRUPTS
+ void EXTI1_IRQHandler(void){
+	 //Checks the line is correct
+	 if(EXTI_GetITStatus(EXTI_Line1)){
+		 //PIN 1
+		 //TODO: set time and flag for pin 1 low
+	 }
+ }
+
+ void EXTI3_IRQHandler(void){
+	 //Checks the line is correct
+	 if(EXTI_GetITStatus(EXTI_Line3)){
+		 //PIN 3
+		 //TODO: set time and flag for pin 3 low
+	 }
+ }
+
+ void EXTI4_IRQHandler(void){
+	 //Checks the line is correct
+	 if(EXTI_GetITStatus(EXTI_Line4)){
+		 //PIN 1
+		 //TODO: set time and flag for pin 4 low
+	 }
+ }
+
  //Handler for the interrupts from pins 5 to 9
- void EXTI9_5IRQHandler(void){
+ void EXTI9_5_IRQHandler(void){
 	 //Checks the line where comes the interrupt
+	 if(EXTI_GetITStatus(EXTI_Line5)){
+		 //Pin 5
+		 //TODO: set time and flag for pin 5 low
+	 }
 	 if(EXTI_GetITStatus(EXTI_Line6)){
 		 //Pin6
 		 //TODO: do something when pin6 is low (set time and set flag)
+	 }
+	 if(EXTI_GetITStatus(EXTI_Line7)){
+		 //Pin 7
+		 //TODO: set time and flag for pin 7 low
+	 }
+ }
+
+ void EXTI15_10_IRQHandler(void){
+	 //Checks the line is correct
+	 if(EXTI_GetITStatus(EXTI_Line10)){
+		 //PIN 10
+		 //TODO: set time and flag for pin 10 low
+	 }
+	 if(EXTI_GetITStatus(EXTI_Line12)){
+		 //PIN 12
+		 //TODO: set time and flag for pin 12 low
 	 }
  }
 
