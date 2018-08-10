@@ -52,7 +52,7 @@ uint16_t CCR4_Val = 83;
 uint16_t PrescalerValue = 0;
 
 double led_ms[8]={0,0,0,0,0,0,0,0};
-boolean led_flags[8]={0,0,0,0,0,0,0,0};
+uint8_t led_flags[8]={0,0,0,0,0,0,0,0};
 
 GPIO_InitTypeDef GPIO_InitStructure_LightSensors[8];
 
@@ -181,7 +181,7 @@ void InitMotors(){
 	 GPIO_SetBits(GPIOx, GPIO_Pin);
 
 	 //mantieni per almeno 10 micros
-	 Delay(10);
+	 //Delay(10);
 
 	 //set I/O as input pin
 	 GPIO_InitStructure_LightSensors[index].GPIO_Mode=GPIO_Mode_IN;
