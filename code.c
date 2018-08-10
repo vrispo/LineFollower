@@ -51,6 +51,9 @@ uint16_t CCR3_Val = 166;
 uint16_t CCR4_Val = 83;
 uint16_t PrescalerValue = 0;
 
+double led_ms[8]={0,0,0,0,0,0,0,0};
+boolean led_flags[8]={0,0,0,0,0,0,0,0};
+
 GPIO_InitTypeDef GPIO_InitStructure_LightSensors[8];
 
 /*
@@ -268,6 +271,8 @@ void InitMotors(){
 	 if(EXTI_GetITStatus(EXTI_Line1)){
 		 //PIN 1
 		 //TODO: set time and flag for pin 1 low
+		 led_ms[0]=EE_systick_get_value();
+		 led_ms[0]=1;
 	 }
  }
 

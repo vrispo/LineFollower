@@ -73,6 +73,7 @@ CPU mySystem {
 			NAME = "STM32F4XX_SPD";
 			STM32F4XX_SPD = ENABLE {
                 USETIM = TRUE;
+                USEEXTI = TRUE;
             };
 		};
 		
