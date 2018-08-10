@@ -271,8 +271,10 @@ void InitMotors(){
 	 if(EXTI_GetITStatus(EXTI_Line1)){
 		 //PIN 1
 		 //TODO: set time and flag for pin 1 low
-		 led_ms[0]=EE_systick_get_value();
-		 led_ms[0]=1;
+		 if(led_flags[0]==0){
+			 led_ms[0]=EE_systick_get_value();
+			 led_flags[0]=1;
+		 }
 	 }
  }
 
