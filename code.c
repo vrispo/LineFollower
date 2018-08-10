@@ -193,7 +193,7 @@ void InitMotors(){
 	 //read
 	 while(GPIO_ReadInputDataBit(GPIOx, GPIO_Pin) != (uint8_t)Bit_RESET){
 		 read_val++;
-		 Delay(1);
+		 //Delay(1);
 	 }
 
 	 //set I/O as output pin
