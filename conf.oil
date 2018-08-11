@@ -75,6 +75,7 @@ CPU mySystem {
                 USETIM = TRUE;
                 USEEXTI = TRUE;
                 USESYSCFG = TRUE;
+                USEMISC = TRUE;
             };
 		};
 		

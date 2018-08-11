@@ -14,6 +14,8 @@ EEOPT += __USE_STM32F4XX_SPD_SYSCFG__
 
 EEOPT += __USE_STM32F4XX_SPD_TIM__
 
+EEOPT += __USE_STM32F4XX_SPD_MISC__
+
 
 ############################################################################
 #
