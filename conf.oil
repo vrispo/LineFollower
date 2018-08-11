@@ -101,6 +101,8 @@ CPU mySystem {
 
 	};
 	
+	//TODO: add periodic task
+	
 	ISR systick_handler {
 		CATEGORY = 2;
 		ENTRY = "SYSTICK";
