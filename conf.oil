@@ -74,6 +74,7 @@ CPU mySystem {
 			STM32F4XX_SPD = ENABLE {
                 USETIM = TRUE;
                 USEEXTI = TRUE;
+                USESYSCFG = TRUE;
             };
 		};
 		

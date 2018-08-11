@@ -11,6 +11,7 @@ obj/contrib/st/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.o: \
  /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/contrib/st/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_exti.h \
  /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/contrib/st/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_gpio.h \
  /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/contrib/st/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h \
+ /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/contrib/st/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_syscfg.h \
  /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/contrib/st/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_tim.h
 
 /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/contrib/st/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_exti.h:
@@ -34,5 +35,7 @@ obj/contrib/st/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.o: \
 /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/contrib/st/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_gpio.h:
 
 /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/contrib/st/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h:
+
+/cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/contrib/st/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_syscfg.h:
 
 /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/contrib/st/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_tim.h:
