@@ -335,7 +335,7 @@ void InitMotors(){
  */
 ISR2(systick_handler)
 {
-
+	CounterTick(myCounter);	//Count the system ticks to wake up expired alarms
 }
 
 /**
@@ -430,6 +430,10 @@ void PWM_Config_and_En(void)
 
 }
 
+TASK(CheckRead){
+	//TODO: implement task code
+}
+
 /**
  * This task motor control
  */
@@ -452,7 +456,7 @@ int main(void)
 	EE_system_init();
 
 	/*Initialize systick */
-	EE_systick_set_period(MILLISECONDS_TO_TICKS(1, SystemCoreClock));
+	EE_systick_set_period(MILLISECONDS_TO_TICKS(1, SystemCoreClock));	//1 tick for each millisecond
 	EE_systick_enable_int();
 	EE_systick_start();
 
@@ -469,6 +473,9 @@ int main(void)
 
 	/**/
 	uint32_t ret = LineSensors_ReadPin(GPIOB,GPIO_Pin_6, 0);
+
+	//Program cyclic alarm to periodically activate the CheckRead task*/
+	SetRelAlarm(CheckReadAlarm, 10, 1);	//TODO: check the cycle value (1)
 
 	/* Forever loop: background activities (if any) should go here */
 	for (;;);
