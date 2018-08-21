@@ -80,7 +80,7 @@ EEBASE := $(shell cygpath `cygpath -ms '${ERIKA_FILES}'`)
 else # ERIKA_FILES
 
 ifndef EEBASE
-        EEBASE := $(shell cygpath `cygpath -ms 'C:\Users\Veronica\Desktop\eclipseErika\plugins\com.eu.evidence.ee_2.8.0.20171025_0922\ee_files'`)
+        EEBASE := $(shell cygpath `cygpath -ms 'C:\Users\4R35\Desktop\eclipse\plugins\com.eu.evidence.ee_2.8.0.20171025_0922\ee_files'`)
 else
         $(warning The usage of EEBASE is deprecated. Please use ERIKA_FILES)
 endif
@@ -99,7 +99,7 @@ $(info Using erika files in $(EEBASE))
 APPBASE := ..
 OUTBASE := Debug
 
-$(eval $(call check_and_set_cygwin_compiler_path,GNU_ARM_ROOT,C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3))
+$(eval $(call check_and_set_cygwin_compiler_path,GNU_ARM_ROOT,C:\gnu\ARM))
 
 
 ############################################################################

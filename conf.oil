@@ -101,7 +101,21 @@ CPU mySystem {
 
 	};
 	
-	//TODO: add periodic task
+	COUNTER myCounter;
+	
+	//Alarm to activate CheckRead periodic task
+	ALARM CheckReadAlarm{
+		COUNTER = myCounter;
+	};
+	
+	//Periodic task to check the results of reading from sensors
+	TASK CheckRead{
+		PRIORITY = 0x01;   /* High priority */
+		AUTOSTART = FALSE;
+		STACK = SHARED;		// TODO: check if put private
+		ACTIVATION = 1;    /* only one pending activation */
+		SCHEDULE = FULL;
+	};
 	
 	ISR systick_handler {
 		CATEGORY = 2;
