@@ -13,13 +13,15 @@
  **************************************************************************/
 
     /* TASK definition */
-    #define EE_MAX_TASK 0
+    #define EE_MAX_TASK 1
+    #define CheckRead 0
 
     /* MUTEX definition */
     #define EE_MAX_RESOURCE 0U
 
     /* ALARM definition */
-    #define EE_MAX_ALARM 0U
+    #define EE_MAX_ALARM 1U
+    #define CheckReadAlarm 0U
 
     /* SCHEDULING TABLE definition */
     #define EE_MAX_SCHEDULETABLE 0U
@@ -28,7 +30,8 @@
     #define EE_MAX_COUNTER_OBJECTS (EE_MAX_ALARM + EE_MAX_SCHEDULETABLE)
 
     /* COUNTER definition */
-    #define EE_MAX_COUNTER 0U
+    #define EE_MAX_COUNTER 1U
+    #define myCounter 0U
 
     /* APPMODE definition */
     #define EE_MAX_APPMODE 0U
@@ -66,6 +69,7 @@
 #define __GNU__
 #define __FP__
 #define __MONO__
+#define __ALARMS__
 #define __FP_NO_RESOURCE__
 
 #endif
@@ -79,6 +83,14 @@
  **************************************************************************/
 #define EE_CORTEX_MX_SYSTICK_ISR systick_handler
 #define EE_CORTEX_MX_SYSTICK_ISR_PRI EE_ISR_PRI_1
+
+
+/***************************************************************************
+ *
+ * Vector size defines
+ *
+ **************************************************************************/
+    #define EE_ALARM_ROM_SIZE 1
 
 
 #endif

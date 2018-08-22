@@ -106,6 +106,7 @@ CPU mySystem {
 	//Alarm to activate CheckRead periodic task
 	ALARM CheckReadAlarm{
 		COUNTER = myCounter;
+		ACTION = ACTIVATETASK { TASK = CheckRead; };
 	};
 	
 	//Periodic task to check the results of reading from sensors
