@@ -54,8 +54,9 @@ uint16_t CCR3_Val = 166;
 uint16_t CCR4_Val = 83;
 uint16_t PrescalerValue = 0;
 
-double led_ms[8]={0,0,0,0,0,0,0,0};
-uint8_t led_flags[8]={0,0,0,0,0,0,0,0};
+//Global variables for sensor reading
+double led_ms[8]={0,0,0,0,0,0,0,0};		//ms value of each sensor
+uint8_t led_flags[8]={0,0,0,0,0,0,0,0};	//flag to signal the successful reading of each flag
 
 GPIO_InitTypeDef GPIO_InitStructure_LightSensors[8];
 
@@ -154,30 +155,65 @@ void InitMotors(){
 		GPIO_InitStructure.GPIO_PuPd=GPIO_PuPd_NOPULL;
 		GPIO_Init(GPIOA, &GPIO_InitStructure);
 
-		/*inizializzazione pin pb6 pb4 (lettura sensore)*/
-		/*GPIO_InitStructure.GPIO_Pin=GPIO_Pin_6|GPIO_Pin_4;
-		GPIO_InitStructure.GPIO_Mode=GPIO_Mode_IN;
-		GPIO_Init(GPIOB, &GPIO_InitStructure);*/
-		GPIO_InitStructure_LightSensors[0].GPIO_Pin=GPIO_Pin_6;
+		//Inizializzazione pin sensori
+		GPIO_InitStructure_LightSensors[0].GPIO_Pin=GPIO_Pin_1;
 		GPIO_InitStructure_LightSensors[0].GPIO_Mode=GPIO_Mode_OUT;
 		GPIO_InitStructure_LightSensors[0].GPIO_OType=GPIO_OType_PP;
 		GPIO_InitStructure_LightSensors[0].GPIO_Speed=GPIO_Speed_100MHz;
 		GPIO_InitStructure_LightSensors[0].GPIO_PuPd=GPIO_PuPd_NOPULL;
-		GPIO_Init(GPIOB, &GPIO_InitStructure_LightSensors[0]);
+		GPIO_Init(GPIOD, &GPIO_InitStructure_LightSensors[0]);
 
-/*		inizializzazione pin pd7 pd5 pd3 pd1 (lettura sensore)
-		GPIO_InitStructure.GPIO_Pin=GPIO_Pin_7|GPIO_Pin_5|GPIO_Pin_3|GPIO_Pin_1;
-		GPIO_Init(GPIOD, &GPIO_InitStructure);
+		GPIO_InitStructure_LightSensors[1].GPIO_Pin=GPIO_Pin_3;
+		GPIO_InitStructure_LightSensors[1].GPIO_Mode=GPIO_Mode_OUT;
+		GPIO_InitStructure_LightSensors[1].GPIO_OType=GPIO_OType_PP;
+		GPIO_InitStructure_LightSensors[1].GPIO_Speed=GPIO_Speed_100MHz;
+		GPIO_InitStructure_LightSensors[1].GPIO_PuPd=GPIO_PuPd_NOPULL;
+		GPIO_Init(GPIOD, &GPIO_InitStructure_LightSensors[1]);
 
-		inizializzazione pin pc12 pc10 (lettura sensore)
-		GPIO_InitStructure.GPIO_Pin=GPIO_Pin_12|GPIO_Pin_10;
-		GPIO_Init(GPIOC, &GPIO_InitStructure);*/
+		GPIO_InitStructure_LightSensors[2].GPIO_Pin=GPIO_Pin_4;
+		GPIO_InitStructure_LightSensors[2].GPIO_Mode=GPIO_Mode_OUT;
+		GPIO_InitStructure_LightSensors[2].GPIO_OType=GPIO_OType_PP;
+		GPIO_InitStructure_LightSensors[2].GPIO_Speed=GPIO_Speed_100MHz;
+		GPIO_InitStructure_LightSensors[2].GPIO_PuPd=GPIO_PuPd_NOPULL;
+		GPIO_Init(GPIOB, &GPIO_InitStructure_LightSensors[2]);
 
-		/*accensione led sensore luminoso*/
-		GPIO_SetBits(GPIOA, GPIO_Pin_9);
+		GPIO_InitStructure_LightSensors[3].GPIO_Pin=GPIO_Pin_5;
+		GPIO_InitStructure_LightSensors[3].GPIO_Mode=GPIO_Mode_OUT;
+		GPIO_InitStructure_LightSensors[3].GPIO_OType=GPIO_OType_PP;
+		GPIO_InitStructure_LightSensors[3].GPIO_Speed=GPIO_Speed_100MHz;
+		GPIO_InitStructure_LightSensors[3].GPIO_PuPd=GPIO_PuPd_NOPULL;
+		GPIO_Init(GPIOD, &GPIO_InitStructure_LightSensors[3]);
+
+		GPIO_InitStructure_LightSensors[4].GPIO_Pin=GPIO_Pin_6;
+		GPIO_InitStructure_LightSensors[4].GPIO_Mode=GPIO_Mode_OUT;
+		GPIO_InitStructure_LightSensors[4].GPIO_OType=GPIO_OType_PP;
+		GPIO_InitStructure_LightSensors[4].GPIO_Speed=GPIO_Speed_100MHz;
+		GPIO_InitStructure_LightSensors[4].GPIO_PuPd=GPIO_PuPd_NOPULL;
+		GPIO_Init(GPIOB, &GPIO_InitStructure_LightSensors[4]);
+
+		GPIO_InitStructure_LightSensors[5].GPIO_Pin=GPIO_Pin_7;
+		GPIO_InitStructure_LightSensors[5].GPIO_Mode=GPIO_Mode_OUT;
+		GPIO_InitStructure_LightSensors[5].GPIO_OType=GPIO_OType_PP;
+		GPIO_InitStructure_LightSensors[5].GPIO_Speed=GPIO_Speed_100MHz;
+		GPIO_InitStructure_LightSensors[5].GPIO_PuPd=GPIO_PuPd_NOPULL;
+		GPIO_Init(GPIOD, &GPIO_InitStructure_LightSensors[5]);
+
+		GPIO_InitStructure_LightSensors[6].GPIO_Pin=GPIO_Pin_10;
+		GPIO_InitStructure_LightSensors[6].GPIO_Mode=GPIO_Mode_OUT;
+		GPIO_InitStructure_LightSensors[6].GPIO_OType=GPIO_OType_PP;
+		GPIO_InitStructure_LightSensors[6].GPIO_Speed=GPIO_Speed_100MHz;
+		GPIO_InitStructure_LightSensors[6].GPIO_PuPd=GPIO_PuPd_NOPULL;
+		GPIO_Init(GPIOC, &GPIO_InitStructure_LightSensors[6]);
+
+		GPIO_InitStructure_LightSensors[6].GPIO_Pin=GPIO_Pin_12;
+		GPIO_InitStructure_LightSensors[6].GPIO_Mode=GPIO_Mode_OUT;
+		GPIO_InitStructure_LightSensors[6].GPIO_OType=GPIO_OType_PP;
+		GPIO_InitStructure_LightSensors[6].GPIO_Speed=GPIO_Speed_100MHz;
+		GPIO_InitStructure_LightSensors[6].GPIO_PuPd=GPIO_PuPd_NOPULL;
+		GPIO_Init(GPIOC, &GPIO_InitStructure_LightSensors[6]);
  }
 
- uint32_t LineSensors_ReadPin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, uint8_t index){
+ /*uint32_t LineSensors_ReadPin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, uint8_t index){
 	 uint32_t read_val = 0;
 
 	 //set I/O output to 1
@@ -201,9 +237,11 @@ void InitMotors(){
 	 GPIO_Init(GPIOx, &GPIO_InitStructure_LightSensors[index]);
 
 	 return read_val;
- }
+ }*/
 
  void read_task_init(){
+	 int i;	//counter
+
 	 //Clock for SYSCFG
 	 RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
 
@@ -264,8 +302,6 @@ void InitMotors(){
 
 	 NVIC_InitStruct.NVIC_IRQChannel = EXTI15_10_IRQn;	//Line 10 and 12 have this IRQ channel
 	 NVIC_Init(&NVIC_InitStruct);
-
-	 //TODO: put high all pins, add delay and switch to input mode
  }
 
  //HANDLERS FOR PIN INTERRUPTS
@@ -273,7 +309,7 @@ void InitMotors(){
 	 //Checks the line is correct
 	 if(EXTI_GetITStatus(EXTI_Line1)){
 		 //PIN 1
-		 //TODO: set time and flag for pin 1 low
+		 //set time and flag for pin 1 low
 		 if(led_flags[0]==0){
 			 led_ms[0]=EE_systick_get_value();
 			 led_flags[0]=1;
@@ -285,7 +321,11 @@ void InitMotors(){
 	 //Checks the line is correct
 	 if(EXTI_GetITStatus(EXTI_Line3)){
 		 //PIN 3
-		 //TODO: set time and flag for pin 3 low
+		 //set time and flag for pin 3 low
+		 if(led_flags[1]==0){
+			 led_ms[1]=EE_systick_get_value();
+			 led_flags[1]=1;
+		 }
 	 }
  }
 
@@ -293,7 +333,11 @@ void InitMotors(){
 	 //Checks the line is correct
 	 if(EXTI_GetITStatus(EXTI_Line4)){
 		 //PIN 1
-		 //TODO: set time and flag for pin 4 low
+		 //set time and flag for pin 4 low
+		 if(led_flags[2]==0){
+			 led_ms[2]=EE_systick_get_value();
+			 led_flags[2]=1;
+		 }
 	 }
  }
 
@@ -302,15 +346,27 @@ void InitMotors(){
 	 //Checks the line where comes the interrupt
 	 if(EXTI_GetITStatus(EXTI_Line5)){
 		 //Pin 5
-		 //TODO: set time and flag for pin 5 low
+		 //set time and flag for pin 5 low
+		 if(led_flags[3]==0){
+			 led_ms[3]=EE_systick_get_value();
+			 led_flags[3]=1;
+		 }
 	 }
 	 if(EXTI_GetITStatus(EXTI_Line6)){
 		 //Pin6
-		 //TODO: do something when pin6 is low (set time and set flag)
+		 //do something when pin6 is low (set time and set flag)
+		 if(led_flags[4]==0){
+			 led_ms[4]=EE_systick_get_value();
+			 led_flags[4]=1;
+		 }
 	 }
 	 if(EXTI_GetITStatus(EXTI_Line7)){
 		 //Pin 7
-		 //TODO: set time and flag for pin 7 low
+		 //set time and flag for pin 7 low
+		 if(led_flags[5]==0){
+			 led_ms[5]=EE_systick_get_value();
+			 led_flags[5]=1;
+		 }
 	 }
  }
 
@@ -318,11 +374,19 @@ void InitMotors(){
 	 //Checks the line is correct
 	 if(EXTI_GetITStatus(EXTI_Line10)){
 		 //PIN 10
-		 //TODO: set time and flag for pin 10 low
+		 //set time and flag for pin 10 low
+		 if(led_flags[6]==0){
+			 led_ms[6]=EE_systick_get_value();
+			 led_flags[6]=1;
+		 }
 	 }
 	 if(EXTI_GetITStatus(EXTI_Line12)){
 		 //PIN 12
-		 //TODO: set time and flag for pin 12 low
+		 //set time and flag for pin 12 low
+		 if(led_flags[7]==0){
+			 led_ms[7]=EE_systick_get_value();
+			 led_flags[7]=1;
+		 }
 	 }
  }
 
@@ -430,15 +494,107 @@ void PWM_Config_and_En(void)
 
 }
 
+#define SENSOR_START 0
+#define SENSOR_INIT 1
+#define SENSOR_WAIT 2
+#define SENSOR_READ 3
+
+#define DELTA_WAIT 10	//time to wait
+
+uint8_t sensor_mode = 0;
+double sensor_up_time;	//Time at which sensors pin have been setted to HIGH (used to hold up at least 10ms)
+double reference_time;	//Time at which sensors read starts (used to extimate correctly the delta value)
+
+double delta_sensor[8];
+
 TASK(CheckRead){
-	//TODO: implement task code
+	int i;
+	double delta;
+	int end;	//end flag
+
+	if(sensor_mode == SENSOR_START){
+		//INITIAL SENSOR SETUP
+		InitLineSensor();	//Setup pins
+		read_task_init();	//Setup interrupt handlers
+		sensor_mode = SENSOR_INIT;
+	}else if(sensor_mode == SENSOR_INIT){
+		//Put high all sensor pins
+		GPIO_SetBits(GPIOD, GPIO_Pin_1);
+		GPIO_SetBits(GPIOD, GPIO_Pin_3);
+		GPIO_SetBits(GPIOB, GPIO_Pin_4);
+		GPIO_SetBits(GPIOD, GPIO_Pin_5);
+		GPIO_SetBits(GPIOB, GPIO_Pin_6);
+		GPIO_SetBits(GPIOD, GPIO_Pin_7);
+		GPIO_SetBits(GPIOC, GPIO_Pin_10);
+		GPIO_SetBits(GPIOC, GPIO_Pin_12);
+
+		sensor_up_time = EE_systick_get_value();	//Save system time
+
+		//Init pin readings and flags
+		 for(i = 0; i < 8; i++){
+			 led_ms[i] = 0;
+			 led_flags[i] = 0;
+		 }
+
+		 sensor_mode = SENSOR_WAIT;	//Put task in wait mode
+	}else if(sensor_mode == SENSOR_WAIT){
+		delta = EE_systick_get_value() - sensor_up_time;	//Compute elapsed time from sensor pins up
+
+		if(delta >= DELTA_WAIT){
+			reference_time = EE_systick_get_value();	//Save system time
+
+			//Set all pins as input
+			GPIO_InitStructure_LightSensors[0].GPIO_Mode=GPIO_Mode_IN;
+			GPIO_Init(GPIOD, &GPIO_InitStructure_LightSensors[0]);
+
+			GPIO_InitStructure_LightSensors[1].GPIO_Mode=GPIO_Mode_IN;
+			GPIO_Init(GPIOD, &GPIO_InitStructure_LightSensors[1]);
+
+			GPIO_InitStructure_LightSensors[2].GPIO_Mode=GPIO_Mode_IN;
+			GPIO_Init(GPIOB, &GPIO_InitStructure_LightSensors[2]);
+
+			GPIO_InitStructure_LightSensors[3].GPIO_Mode=GPIO_Mode_IN;
+			GPIO_Init(GPIOD, &GPIO_InitStructure_LightSensors[3]);
+
+			GPIO_InitStructure_LightSensors[4].GPIO_Mode=GPIO_Mode_IN;
+			GPIO_Init(GPIOB, &GPIO_InitStructure_LightSensors[4]);
+
+			GPIO_InitStructure_LightSensors[5].GPIO_Mode=GPIO_Mode_IN;
+			GPIO_Init(GPIOD, &GPIO_InitStructure_LightSensors[5]);
+
+			GPIO_InitStructure_LightSensors[6].GPIO_Mode=GPIO_Mode_IN;
+			GPIO_Init(GPIOC, &GPIO_InitStructure_LightSensors[6]);
+
+			GPIO_InitStructure_LightSensors[7].GPIO_Mode=GPIO_Mode_IN;
+			GPIO_Init(GPIOC, &GPIO_InitStructure_LightSensors[7]);
+
+			sensor_mode = SENSOR_READ;
+		}
+	}else if(sensor_mode == SENSOR_READ){
+		end = 1;
+		for(i = 0; i < 8; i++){
+			if(led_flags[i] == 0){
+				end = 0;
+				break;
+			}
+		}
+		if(end == 1){
+			//All sensors have returned value
+			//TODO: add mutex to protect delta_sensor
+			for(i = 0; i < 8; i++){
+				delta_sensor[i] = led_ms[i] - reference_time;
+			}
+
+			sensor_mode = SENSOR_INIT;
+		}
+	}
 }
 
 /**
  * This task motor control
  */
 TASK(TaskMotorControl){
-
+	//TODO: write controller task
 }
 
 int main(void)
