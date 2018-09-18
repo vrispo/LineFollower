@@ -506,6 +506,7 @@ double sensor_up_time;	//Time at which sensors pin have been setted to HIGH (use
 double reference_time;	//Time at which sensors read starts (used to extimate correctly the delta value)
 
 double delta_sensor[8];
+SemType delta_sensor_sem = STATICSEM(1);	//Semaphore to protect delta_sensor
 
 TASK(CheckRead){
 	int i;
@@ -580,21 +581,67 @@ TASK(CheckRead){
 		}
 		if(end == 1){
 			//All sensors have returned value
-			//TODO: add mutex to protect delta_sensor
+			WaitSem(delta_sensor_sem);
 			for(i = 0; i < 8; i++){
 				delta_sensor[i] = led_ms[i] - reference_time;
 			}
+			PostSem(delta_sensor_sem);
 
 			sensor_mode = SENSOR_INIT;
 		}
 	}
 }
 
+#define LIGHT_THRESHOLD 2	//(ms) threshold to separe white and black sensor readings
+
 /**
  * This task motor control
  */
 TASK(TaskMotorControl){
-	//TODO: write controller task
+	double sensor_time[8];	//Local copy of decay time of light sensors
+	int i;	//counter
+	int left, right;	//counters of left and right sensor that detects black
+
+	left = right = 0;	//Initialize left and right black sensors counters
+
+	//protect copy of delta_sensor to local sensor_time
+	WaitSem(delta_sensor_sem);
+	sensor_time = delta_sensor;
+	PostSem(delta_sensor_sem);
+
+	for(i = 0; i < 8; i++){
+		if(sensor_time[i] > LIGHT_THRESHOLD){
+			//Sensor detects black
+			if(i < 4){
+				//Left sensor
+				left++;
+			}else{
+				right++;
+			}
+		}
+	}
+
+	if(left + right == 8){
+		//All sensors detects black --> STOP (end of lap)
+		breakleft();
+		breakright();
+	}else if(left > right){
+		//Turn left
+		forwardright();
+		folleleft();
+	}else if(right > left){
+		//Turn right
+		folleright();
+		forwardleft();
+	}else if(left == right){
+		//Go straight forward
+		forwardleft();
+		forwardright();
+	}else{
+		//No info on the line --> STOP
+		breakleft();
+		breakright();
+	}
 }
 
 int main(void)
@@ -630,8 +677,9 @@ int main(void)
 	/**/
 	uint32_t ret = LineSensors_ReadPin(GPIOB,GPIO_Pin_6, 0);
 
-	//Program cyclic alarm to periodically activate the CheckRead task*/
+	//Program cyclic alarm to periodically activate tasks*/
 	SetRelAlarm(CheckReadAlarm, 10, 1);	//TODO: check the cycle value (1)
+	SetRelAlarm(MotorControlAlarm, 10, 1);	//TODO: check the cycle value (1)
 
 	/* Forever loop: background activities (if any) should go here */
 	for (;;);
