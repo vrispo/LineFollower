@@ -109,9 +109,11 @@ CPU mySystem {
 		ACTION = ACTIVATETASK { TASK = CheckRead; };
 	};
 	
+	COUNTER motorControlCounter;
+	
 	ALARM MotorControlAlarm{
 		COUNTER = motorControlCounter;
-		ACTION = ACTIVATETASK {TASK = TaskMotorControl};
+		ACTION = ACTIVATETASK {TASK = TaskMotorControl;};
 	};
 	
 	//Periodic task to check the results of reading from sensors
