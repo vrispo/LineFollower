@@ -45,6 +45,11 @@
 #include "stm32f4xx_exti.h"
 #include "stm32f4xx_syscfg.h"
 #include "misc.h"
+#include "kernel/sem/inc/ee_sem.h"
+#include "kernel/sem/inc/ee_api.h"
+#include "ee_api.h"
+
+
 
 TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
 TIM_OCInitTypeDef  TIM_OCInitStructure;
@@ -581,11 +586,11 @@ TASK(CheckRead){
 		}
 		if(end == 1){
 			//All sensors have returned value
-			WaitSem(delta_sensor_sem);
+			WaitSem(&delta_sensor_sem);
 			for(i = 0; i < 8; i++){
 				delta_sensor[i] = led_ms[i] - reference_time;
 			}
-			PostSem(delta_sensor_sem);
+			PostSem(&delta_sensor_sem);
 
 			sensor_mode = SENSOR_INIT;
 		}
@@ -605,9 +610,10 @@ TASK(TaskMotorControl){
 	left = right = 0;	//Initialize left and right black sensors counters
 
 	//protect copy of delta_sensor to local sensor_time
-	WaitSem(delta_sensor_sem);
-	sensor_time = delta_sensor;
-	PostSem(delta_sensor_sem);
+	WaitSem(&delta_sensor_sem);
+	for(int i=0; i < 8; i++)
+		sensor_time[i] = delta_sensor[i];
+	PostSem(&delta_sensor_sem);
 
 	for(i = 0; i < 8; i++){
 		if(sensor_time[i] > LIGHT_THRESHOLD){
@@ -673,9 +679,6 @@ int main(void)
 
 	/*Start line sensor*/
 	InitLineSensor();
-
-	/**/
-	uint32_t ret = LineSensors_ReadPin(GPIOB,GPIO_Pin_6, 0);
 
 	//Program cyclic alarm to periodically activate tasks*/
 	SetRelAlarm(CheckReadAlarm, 10, 1);	//TODO: check the cycle value (1)

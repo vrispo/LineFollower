@@ -18,7 +18,9 @@ obj/pkg/cpu/cortex_mx/src/ee_context.o: \
  /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/fp/inc/ee_internal.h \
  /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/fp/inc/ee_common.h \
  /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/fp/inc/ee_irq.h \
- /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/fp/inc/ee_kernel.h
+ /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/fp/inc/ee_kernel.h \
+ /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/sem/inc/ee_sem.h \
+ /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/alarms/inc/ee_alarms.h
 
 /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/ee_internal.h:
 
@@ -57,3 +59,7 @@ eecfg.h:
 /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/fp/inc/ee_irq.h:
 
 /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/fp/inc/ee_kernel.h:
+
+/cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/sem/inc/ee_sem.h:
+
+/cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/alarms/inc/ee_alarms.h:

@@ -12,8 +12,12 @@ obj/eecfg.o: eecfg.c \
  /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/mcu/st_stm32_stm32f4xx/inc/ee_mcuirqs.h \
  /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/fp/inc/ee_kernel.h \
  /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/fp/inc/ee_common.h \
+ /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/sem/inc/ee_sem.h \
+ /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/alarms/inc/ee_alarms.h \
  /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/ee_api.h \
  /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/fp/inc/ee_api.h \
+ /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/sem/inc/ee_api.h \
+ /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/alarms/inc/ee_api.h \
  /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/ee_irq.h \
  /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/fp/inc/ee_irq.h \
  /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/cpu/cortex_mx/inc/ee_irq.h \
@@ -49,9 +53,17 @@ eecfg.h:
 
 /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/fp/inc/ee_common.h:
 
+/cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/sem/inc/ee_sem.h:
+
+/cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/alarms/inc/ee_alarms.h:
+
 /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/ee_api.h:
 
 /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/fp/inc/ee_api.h:
+
+/cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/sem/inc/ee_api.h:
+
+/cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/alarms/inc/ee_api.h:
 
 /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/ee_irq.h:
 

@@ -1,5 +1,5 @@
-obj/pkg/kernel/fp/src/ee_irqsc.o: \
- /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/fp/src/ee_irqsc.c \
+obj/pkg/kernel/sem/src/ee_sgetvalue.o: \
+ /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/sem/src/ee_sgetvalue.c \
  /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/ee_internal.h \
  eecfg.h \
  /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/ee_rtdruid_versions.h \

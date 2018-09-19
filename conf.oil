@@ -51,13 +51,15 @@ CPU mySystem {
 		//EE_OPT = "__KEIL_4_54_OLDER__";
 		//EE_OPT = "__KEIL_USE_AXF_EXT__";
 		//LDFLAGS =" --specs=rdimon.specs -lrdimon";
+		EE_OPT = "__SEM__";
 		
 		CPU_DATA = CORTEX_MX {
 			MODEL = M4;
 			APP_SRC = "code.c";
 			//COMPILER_TYPE = KEIL; 
 			COMPILER_TYPE = GNU;
-			MULTI_STACK = FALSE;
+			MULTI_STACK = TRUE{IRQ_STACK = FALSE;};
+			//ICD2=TRUE;
 		};
 		EE_OPT = "__USE_SYSTICK__";
 
