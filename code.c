@@ -315,9 +315,9 @@ void InitMotors(){
 	 if(EXTI_GetITStatus(EXTI_Line1)){
 		 //PIN 1
 		 //set time and flag for pin 1 low
-		 if(led_flags[0]==0){
-			 led_ms[0]=EE_systick_get_value();
-			 led_flags[0]=1;
+		 if(led_flags[5]==0){
+			 led_ms[5]=EE_systick_get_value();
+			 led_flags[5]=1;
 		 }
 	 }
  }
@@ -327,9 +327,9 @@ void InitMotors(){
 	 if(EXTI_GetITStatus(EXTI_Line3)){
 		 //PIN 3
 		 //set time and flag for pin 3 low
-		 if(led_flags[1]==0){
-			 led_ms[1]=EE_systick_get_value();
-			 led_flags[1]=1;
+		 if(led_flags[4]==0){
+			 led_ms[4]=EE_systick_get_value();
+			 led_flags[4]=1;
 		 }
 	 }
  }
@@ -339,9 +339,9 @@ void InitMotors(){
 	 if(EXTI_GetITStatus(EXTI_Line4)){
 		 //PIN 1
 		 //set time and flag for pin 4 low
-		 if(led_flags[2]==0){
-			 led_ms[2]=EE_systick_get_value();
-			 led_flags[2]=1;
+		 if(led_flags[1]==0){
+			 led_ms[1]=EE_systick_get_value();
+			 led_flags[1]=1;
 		 }
 	 }
  }
@@ -360,17 +360,17 @@ void InitMotors(){
 	 if(EXTI_GetITStatus(EXTI_Line6)){
 		 //Pin6
 		 //do something when pin6 is low (set time and set flag)
-		 if(led_flags[4]==0){
-			 led_ms[4]=EE_systick_get_value();
-			 led_flags[4]=1;
+		 if(led_flags[0]==0){
+			 led_ms[0]=EE_systick_get_value();
+			 led_flags[0]=1;
 		 }
 	 }
 	 if(EXTI_GetITStatus(EXTI_Line7)){
 		 //Pin 7
 		 //set time and flag for pin 7 low
-		 if(led_flags[5]==0){
-			 led_ms[5]=EE_systick_get_value();
-			 led_flags[5]=1;
+		 if(led_flags[2]==0){
+			 led_ms[2]=EE_systick_get_value();
+			 led_flags[2]=1;
 		 }
 	 }
  }
@@ -380,17 +380,17 @@ void InitMotors(){
 	 if(EXTI_GetITStatus(EXTI_Line10)){
 		 //PIN 10
 		 //set time and flag for pin 10 low
-		 if(led_flags[6]==0){
-			 led_ms[6]=EE_systick_get_value();
-			 led_flags[6]=1;
+		 if(led_flags[7]==0){
+			 led_ms[7]=EE_systick_get_value();
+			 led_flags[7]=1;
 		 }
 	 }
 	 if(EXTI_GetITStatus(EXTI_Line12)){
 		 //PIN 12
 		 //set time and flag for pin 12 low
-		 if(led_flags[7]==0){
-			 led_ms[7]=EE_systick_get_value();
-			 led_flags[7]=1;
+		 if(led_flags[6]==0){
+			 led_ms[6]=EE_systick_get_value();
+			 led_flags[6]=1;
 		 }
 	 }
  }
@@ -405,6 +405,7 @@ void InitMotors(){
 ISR2(systick_handler)
 {
 	CounterTick(myCounter);	//Count the system ticks to wake up expired alarms
+	CounterTick(motorControlCounter);
 }
 
 /**
