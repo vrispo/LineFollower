@@ -677,6 +677,10 @@ int main(void)
 	//Enable motors
 	EnableMotors();
 
+	//At the beginning motors are stopped
+	breakright();
+	breakleft();
+
 	/*Start line sensor*/
 	InitLineSensor();
 
