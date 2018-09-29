@@ -514,6 +514,13 @@ double reference_time;	//Time at which sensors read starts (used to extimate cor
 double delta_sensor[8];
 SemType delta_sensor_sem = STATICSEM(1);	//Semaphore to protect delta_sensor
 
+void InitDataStruct(){
+	int i;
+	for(i = 0; i < 8; i++){
+		delta_sensor[i] = 0;
+	}
+}
+
 TASK(CheckRead){
 	int i;
 	double delta;
@@ -684,6 +691,8 @@ int main(void)
 
 	/*Start line sensor*/
 	InitLineSensor();
+
+	InitDataStruct();
 
 	//Program cyclic alarm to periodically activate tasks*/
 	SetRelAlarm(CheckReadAlarm, 10, 1);	//TODO: check the cycle value (1)
