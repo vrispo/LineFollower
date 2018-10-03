@@ -78,6 +78,7 @@ CPU mySystem {
                 USEEXTI = TRUE;
                 USESYSCFG = TRUE;
                 USEMISC = TRUE;
+                USEUSART = TRUE;	//SERIAL DEBUG
             };
 		};
 		
@@ -85,6 +86,7 @@ CPU mySystem {
 			NAME = "STM32F4_DISCOVERY";
 			STM32F4_DISCOVERY = ENABLE {
                 USELEDS = TRUE;
+                USECOM = TRUE;	//SERIAL DEBUG
 			};			
 		};
 		//EE_OPT = "__USE_STM32F4_DISCOVERY_LEDS__";
@@ -111,10 +113,8 @@ CPU mySystem {
 		ACTION = ACTIVATETASK { TASK = CheckRead; };
 	};
 	
-	COUNTER motorControlCounter;
-	
 	ALARM MotorControlAlarm{
-		COUNTER = motorControlCounter;
+		COUNTER = myCounter;
 		ACTION = ACTIVATETASK {TASK = TaskMotorControl;};
 	};
 	

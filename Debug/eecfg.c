@@ -82,8 +82,7 @@
  *
  **************************************************************************/
     EE_counter_RAM_type       EE_counter_RAM[EE_MAX_COUNTER] = {
-        {0, -1},        /* myCounter */
-        {0, -1}         /* motorControlCounter */
+        {0, -1}         /* myCounter */
     };
 
 
@@ -95,7 +94,7 @@
  **************************************************************************/
     const EE_alarm_ROM_type   EE_alarm_ROM[EE_ALARM_ROM_SIZE] = {
         {0, EE_ALARM_ACTION_TASK    , CheckRead, NULL},
-        {1, EE_ALARM_ACTION_TASK    , TaskMotorControl, NULL}
+        {0, EE_ALARM_ACTION_TASK    , TaskMotorControl, NULL}
     };
 
     EE_alarm_RAM_type         EE_alarm_RAM[EE_MAX_ALARM];

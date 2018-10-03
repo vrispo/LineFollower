@@ -49,6 +49,22 @@
 #include "kernel/sem/inc/ee_api.h"
 #include "ee_api.h"
 
+#include <stdio.h>	//Serial port debug only
+
+USART_InitTypeDef USART_InitStructure;
+
+//DEBUGGING SERIAL FUNCTION
+console_out(char* str)
+{
+	EE_UINT8 i = 0;
+
+	while (str[i] != '\0') {
+		USART_SendData(EVAL_COM1, (uint8_t) str[i++]);
+		/* Loop until the end of transmission */
+		while (USART_GetFlagStatus(EVAL_COM1, USART_FLAG_TC) == RESET);
+	}
+}
+
 
 
 TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
@@ -311,6 +327,7 @@ void InitMotors(){
 
  //HANDLERS FOR PIN INTERRUPTS
  void EXTI1_IRQHandler(void){
+	 console_out("H1\r\n");
 	 //Checks the line is correct
 	 if(EXTI_GetITStatus(EXTI_Line1)){
 		 //PIN 1
@@ -323,8 +340,10 @@ void InitMotors(){
  }
 
  void EXTI3_IRQHandler(void){
+	 console_out("H3\r\n");
 	 //Checks the line is correct
 	 if(EXTI_GetITStatus(EXTI_Line3)){
+		 console_out("H3\r\n");
 		 //PIN 3
 		 //set time and flag for pin 3 low
 		 if(led_flags[4]==0){
@@ -337,6 +356,7 @@ void InitMotors(){
  void EXTI4_IRQHandler(void){
 	 //Checks the line is correct
 	 if(EXTI_GetITStatus(EXTI_Line4)){
+		 console_out("H4\r\n");
 		 //PIN 1
 		 //set time and flag for pin 4 low
 		 if(led_flags[1]==0){
@@ -350,6 +370,7 @@ void InitMotors(){
  void EXTI9_5_IRQHandler(void){
 	 //Checks the line where comes the interrupt
 	 if(EXTI_GetITStatus(EXTI_Line5)){
+		 console_out("H5\r\n");
 		 //Pin 5
 		 //set time and flag for pin 5 low
 		 if(led_flags[3]==0){
@@ -358,6 +379,7 @@ void InitMotors(){
 		 }
 	 }
 	 if(EXTI_GetITStatus(EXTI_Line6)){
+		 console_out("H6\r\n");
 		 //Pin6
 		 //do something when pin6 is low (set time and set flag)
 		 if(led_flags[0]==0){
@@ -366,6 +388,7 @@ void InitMotors(){
 		 }
 	 }
 	 if(EXTI_GetITStatus(EXTI_Line7)){
+		 console_out("H7\r\n");
 		 //Pin 7
 		 //set time and flag for pin 7 low
 		 if(led_flags[2]==0){
@@ -378,6 +401,7 @@ void InitMotors(){
  void EXTI15_10_IRQHandler(void){
 	 //Checks the line is correct
 	 if(EXTI_GetITStatus(EXTI_Line10)){
+		 console_out("H10\r\n");
 		 //PIN 10
 		 //set time and flag for pin 10 low
 		 if(led_flags[7]==0){
@@ -386,6 +410,7 @@ void InitMotors(){
 		 }
 	 }
 	 if(EXTI_GetITStatus(EXTI_Line12)){
+		 console_out("H12\r\n");
 		 //PIN 12
 		 //set time and flag for pin 12 low
 		 if(led_flags[6]==0){
@@ -405,7 +430,6 @@ void InitMotors(){
 ISR2(systick_handler)
 {
 	CounterTick(myCounter);	//Count the system ticks to wake up expired alarms
-	CounterTick(motorControlCounter);
 }
 
 /**
@@ -505,7 +529,7 @@ void PWM_Config_and_En(void)
 #define SENSOR_WAIT 2
 #define SENSOR_READ 3
 
-#define DELTA_WAIT 10	//time to wait
+#define DELTA_WAIT 1	//time to wait
 
 uint8_t sensor_mode = 0;
 double sensor_up_time;	//Time at which sensors pin have been setted to HIGH (used to hold up at least 10ms)
@@ -525,14 +549,17 @@ TASK(CheckRead){
 	int i;
 	double delta;
 	int end;	//end flag
+	console_out("***READ_TASK***\r\n");
 
 	if(sensor_mode == SENSOR_START){
 		//INITIAL SENSOR SETUP
+		console_out("SEN_S\r\n");
 		InitLineSensor();	//Setup pins
 		read_task_init();	//Setup interrupt handlers
 		sensor_mode = SENSOR_INIT;
 	}else if(sensor_mode == SENSOR_INIT){
 		//Put high all sensor pins
+		console_out("SEN_I\r\n");
 		GPIO_SetBits(GPIOD, GPIO_Pin_1);
 		GPIO_SetBits(GPIOD, GPIO_Pin_3);
 		GPIO_SetBits(GPIOB, GPIO_Pin_4);
@@ -552,6 +579,7 @@ TASK(CheckRead){
 
 		 sensor_mode = SENSOR_WAIT;	//Put task in wait mode
 	}else if(sensor_mode == SENSOR_WAIT){
+		console_out("SEN_W\r\n");
 		delta = EE_systick_get_value() - sensor_up_time;	//Compute elapsed time from sensor pins up
 
 		if(delta >= DELTA_WAIT){
@@ -585,6 +613,7 @@ TASK(CheckRead){
 			sensor_mode = SENSOR_READ;
 		}
 	}else if(sensor_mode == SENSOR_READ){
+		console_out("SEN_R\r\n");
 		end = 1;
 		for(i = 0; i < 8; i++){
 			if(led_flags[i] == 0){
@@ -617,6 +646,8 @@ TASK(TaskMotorControl){
 
 	left = right = 0;	//Initialize left and right black sensors counters
 
+	console_out("***MOTOR_TASK***\r\n");
+
 	//protect copy of delta_sensor to local sensor_time
 	WaitSem(&delta_sensor_sem);
 	for(int i=0; i < 8; i++)
@@ -647,14 +678,14 @@ TASK(TaskMotorControl){
 		//Turn right
 		folleright();
 		forwardleft();
-	}else if(left == right){
-		//Go straight forward
-		forwardleft();
-		forwardright();
-	}else{
+	}else if(left == 0 && right == 0){
 		//No info on the line --> STOP
 		breakleft();
 		breakright();
+	}else{
+		//Go straight forward
+		forwardleft();
+		forwardright();
 	}
 }
 
@@ -677,26 +708,53 @@ int main(void)
 	EE_systick_enable_int();
 	EE_systick_start();
 
+	//----------------------------------------
+	/* USARTx configured as follow:
+			- BaudRate = 115200 baud
+			- Word Length = 8 Bits
+			- One Stop Bit
+			- No parity
+			- Hardware flow control disabled (RTS and CTS signals)
+			- Receive and transmit enabled
+		*/
+		USART_InitStructure.USART_BaudRate = 115200;
+		USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+		USART_InitStructure.USART_StopBits = USART_StopBits_1;
+		USART_InitStructure.USART_Parity = USART_Parity_No;
+		USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+		USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+
+		STM_EVAL_COMInit(COM1, &USART_InitStructure);
+
+	//------------------------------
+		console_out("***");
+	console_out("System init***\r\n");
 	/*Setup motors */
 	InitMotors();
-
-	PWM_Config_and_En();
-
+	console_out("****0\r\n");
+	//PWM_Config_and_En();
+	console_out("****1\r\n");
 	//Enable motors
-	EnableMotors();
+	//EnableMotors();
 
+	console_out("****2\r\n");
 	//At the beginning motors are stopped
-	breakright();
-	breakleft();
-
+	////breakright();
+	console_out("****3\r\n");
+	//breakleft();
+	console_out("****4\r\n");
 	/*Start line sensor*/
 	InitLineSensor();
-
+	console_out("****5\r\n");
 	InitDataStruct();
 
+	console_out("STRUCT_END\r\n");
+
 	//Program cyclic alarm to periodically activate tasks*/
-	SetRelAlarm(CheckReadAlarm, 10, 1);	//TODO: check the cycle value (1)
-	SetRelAlarm(MotorControlAlarm, 10, 1);	//TODO: check the cycle value (1)
+	SetRelAlarm(CheckReadAlarm, 10, 10);	//TODO: check the cycle value (1)
+	//SetRelAlarm(MotorControlAlarm, 10, 10);	//TODO: check the cycle value (1)
+
+	console_out("***INIT END***\r\n");
 
 	/* Forever loop: background activities (if any) should go here */
 	for (;;);

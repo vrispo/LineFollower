@@ -32,9 +32,8 @@
     #define EE_MAX_COUNTER_OBJECTS (EE_MAX_ALARM + EE_MAX_SCHEDULETABLE)
 
     /* COUNTER definition */
-    #define EE_MAX_COUNTER 2U
+    #define EE_MAX_COUNTER 1U
     #define myCounter 0U
-    #define motorControlCounter 1U
 
     /* APPMODE definition */
     #define EE_MAX_APPMODE 0U
