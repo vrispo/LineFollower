@@ -169,12 +169,14 @@ void InitMotors(){
 		GPIO_InitTypeDef GPIO_InitStructure;
 
 		/*inizializzazione pin PA9 on/off led sensore luminoso*/
+/*
 		GPIO_InitStructure.GPIO_Pin=GPIO_Pin_9;
 		GPIO_InitStructure.GPIO_Mode=GPIO_Mode_OUT;
 		GPIO_InitStructure.GPIO_OType=GPIO_OType_PP;
 		GPIO_InitStructure.GPIO_Speed=GPIO_Speed_100MHz;
 		GPIO_InitStructure.GPIO_PuPd=GPIO_PuPd_NOPULL;
 		GPIO_Init(GPIOA, &GPIO_InitStructure);
+*/
 
 		//Inizializzazione pin sensori
 		GPIO_InitStructure_LightSensors[0].GPIO_Pin=GPIO_Pin_1;
