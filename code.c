@@ -585,6 +585,8 @@ TASK(CheckRead){
 		delta = EE_systick_get_value() - sensor_up_time;	//Compute elapsed time from sensor pins up
 
 		if(delta >= DELTA_WAIT){
+			console_out("***SET_SENSOR_INPUT***");
+			
 			reference_time = EE_systick_get_value();	//Save system time
 
 			//Set all pins as input
@@ -613,6 +615,8 @@ TASK(CheckRead){
 			GPIO_Init(GPIOC, &GPIO_InitStructure_LightSensors[7]);
 
 			sensor_mode = SENSOR_READ;
+		}else{
+			console_out("***SENSOR_HAVE_TO_HOLD***");
 		}
 	}else if(sensor_mode == SENSOR_READ){
 		console_out("SEN_R\r\n");
