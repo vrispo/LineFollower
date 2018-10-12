@@ -557,7 +557,7 @@ TASK(CheckRead){
 
 	if(sensor_mode == SENSOR_START){
 		//INITIAL SENSOR SETUP
-		sprintf(str, "%3.2f SEN_S\r\n", EE_systick_get_value());
+		sprintf(str, "%f SEN_S\r\n", EE_systick_get_value());
 		console_out(str);
 		//console_out("SEN_S\r\n");
 		InitLineSensor();	//Setup pins
@@ -565,7 +565,7 @@ TASK(CheckRead){
 		sensor_mode = SENSOR_INIT;
 	}else if(sensor_mode == SENSOR_INIT){
 		//Put high all sensor pins
-		sprintf(str, "%3.2f SEN_I\r\n", EE_systick_get_value());
+		sprintf(str, "%f SEN_I\r\n", EE_systick_get_value());
 		console_out(str);
 		//console_out("SEN_I\r\n");
 		GPIO_SetBits(GPIOD, GPIO_Pin_1);
@@ -587,13 +587,13 @@ TASK(CheckRead){
 
 		 sensor_mode = SENSOR_WAIT;	//Put task in wait mode
 	}else if(sensor_mode == SENSOR_WAIT){
-		sprintf(str, "%3.2f SEN_W\r\n", EE_systick_get_value());
+		sprintf(str, "%f SEN_W\r\n", EE_systick_get_value());
 		console_out(str);
 		//console_out("SEN_W\r\n");
 		delta = EE_systick_get_value() - sensor_up_time;	//Compute elapsed time from sensor pins up
 
 		if(delta >= DELTA_WAIT){
-			sprintf(str, "%3.2f SET_SENSOR_INPUT\r\n", EE_systick_get_value());
+			sprintf(str, "%f SET_SENSOR_INPUT\r\n", EE_systick_get_value());
 			console_out(str);
 			//console_out("***SET_SENSOR_INPUT***");
 			
@@ -626,7 +626,7 @@ TASK(CheckRead){
 
 			sensor_mode = SENSOR_READ;
 		}else{
-			sprintf(str, "%3.2f SENSOR_HAVE_TO_HOLD\r\n", EE_systick_get_value());
+			sprintf(str, "%f SENSOR_HAVE_TO_HOLD\r\n", EE_systick_get_value());
 			console_out(str);
 			//console_out("***SENSOR_HAVE_TO_HOLD***");
 		}
