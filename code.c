@@ -577,6 +577,7 @@ TASK(CheckRead){
 		GPIO_SetBits(GPIOC, GPIO_Pin_10);
 		GPIO_SetBits(GPIOC, GPIO_Pin_12);
 
+		console_out("***SEN_I gpio_set\r\n");
 		sensor_up_time = EE_systick_get_value();	//Save system time
 
 		//Init pin readings and flags
@@ -586,6 +587,8 @@ TASK(CheckRead){
 		 }
 
 		 sensor_mode = SENSOR_WAIT;	//Put task in wait mode
+		 sprintf(str, "%f SEN_I 2\r\n", sensor_up_time);
+		 console_out(str);
 	}else if(sensor_mode == SENSOR_WAIT){
 		sprintf(str, "%f SEN_W\r\n", EE_systick_get_value());
 		console_out(str);
