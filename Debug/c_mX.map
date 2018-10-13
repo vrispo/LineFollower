@@ -164,7 +164,7 @@ LOAD C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libm.a
 LOAD C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libnosys.a
 END GROUP
 
-.text           0x08000000     0xc4fc
+.text           0x08000000     0xc4ec
  *(.isr_vector)
  .isr_vector    0x08000000      0x188 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
                 0x08000000                __isr_vector
@@ -813,105 +813,105 @@ END GROUP
  *(SORT(.dtors.*))
  *(.dtors)
  *(.rodata*)
- .rodata        0x0800bd8c      0x141 obj/code.o
- *fill*         0x0800becd        0x3 
- .rodata        0x0800bed0       0x44 obj/eecfg.o
-                0x0800bed0                EE_std_thread_tos
-                0x0800bedc                EE_hal_thread_body
-                0x0800bee4                EE_th_ready_prio
-                0x0800beec                EE_th_dispatch_prio
-                0x0800bef4                EE_alarm_ROM
- .rodata        0x0800bf14       0x48 libstm32f4discovery.a(stm32f4_discovery.o)
-                0x0800bf14                GPIO_PIN
-                0x0800bf1c                GPIO_CLK
-                0x0800bf2c                COM_USART_CLK
-                0x0800bf34                COM_TX_PORT_CLK
-                0x0800bf3c                COM_RX_PORT_CLK
-                0x0800bf44                COM_TX_PIN
-                0x0800bf48                COM_RX_PIN
-                0x0800bf4c                COM_TX_PIN_SOURCE
-                0x0800bf50                COM_RX_PIN_SOURCE
-                0x0800bf54                COM_TX_AF
-                0x0800bf58                COM_RX_AF
+ .rodata        0x0800bd8c      0x131 obj/code.o
+ *fill*         0x0800bebd        0x3 
+ .rodata        0x0800bec0       0x44 obj/eecfg.o
+                0x0800bec0                EE_std_thread_tos
+                0x0800becc                EE_hal_thread_body
+                0x0800bed4                EE_th_ready_prio
+                0x0800bedc                EE_th_dispatch_prio
+                0x0800bee4                EE_alarm_ROM
+ .rodata        0x0800bf04       0x48 libstm32f4discovery.a(stm32f4_discovery.o)
+                0x0800bf04                GPIO_PIN
+                0x0800bf0c                GPIO_CLK
+                0x0800bf1c                COM_USART_CLK
+                0x0800bf24                COM_TX_PORT_CLK
+                0x0800bf2c                COM_RX_PORT_CLK
+                0x0800bf34                COM_TX_PIN
+                0x0800bf38                COM_RX_PIN
+                0x0800bf3c                COM_TX_PIN_SOURCE
+                0x0800bf40                COM_RX_PIN_SOURCE
+                0x0800bf44                COM_TX_AF
+                0x0800bf48                COM_RX_AF
  .rodata._global_impure_ptr
-                0x0800bf5c        0x4 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-impure.o)
-                0x0800bf5c                _global_impure_ptr
+                0x0800bf4c        0x4 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-impure.o)
+                0x0800bf4c                _global_impure_ptr
  .rodata._svfprintf_r
-                0x0800bf60      0x164 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-svfprintf.o)
+                0x0800bf50      0x164 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-svfprintf.o)
  .rodata.zeroes.7256
-                0x0800c0c4       0x10 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-svfprintf.o)
+                0x0800c0b4       0x10 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-svfprintf.o)
  .rodata.str1.4
-                0x0800c0d4       0x42 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-svfprintf.o)
- *fill*         0x0800c116        0x2 
+                0x0800c0c4       0x42 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-svfprintf.o)
+ *fill*         0x0800c106        0x2 
  .rodata.blanks.7255
-                0x0800c118       0x10 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-svfprintf.o)
+                0x0800c108       0x10 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-svfprintf.o)
  .rodata.str1.4
-                0x0800c128       0x10 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-dtoa.o)
+                0x0800c118       0x10 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-dtoa.o)
                                  0x12 (size before relaxing)
  .rodata.__mprec_tens
-                0x0800c138       0xc8 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-mprec.o)
-                0x0800c138                __mprec_tens
+                0x0800c128       0xc8 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-mprec.o)
+                0x0800c128                __mprec_tens
  .rodata.p05.6085
-                0x0800c200        0xc C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-mprec.o)
- *fill*         0x0800c20c        0x4 
+                0x0800c1f0        0xc C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-mprec.o)
+ *fill*         0x0800c1fc        0x4 
  .rodata.__mprec_bigtens
-                0x0800c210       0x28 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-mprec.o)
-                0x0800c210                __mprec_bigtens
+                0x0800c200       0x28 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-mprec.o)
+                0x0800c200                __mprec_bigtens
  .rodata.__mprec_tinytens
-                0x0800c238       0x28 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-mprec.o)
-                0x0800c238                __mprec_tinytens
+                0x0800c228       0x28 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-mprec.o)
+                0x0800c228                __mprec_tinytens
  .rodata._svfiprintf_r
-                0x0800c260      0x164 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-svfiprintf.o)
+                0x0800c250      0x164 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-svfiprintf.o)
  .rodata.blanks.7235
+                0x0800c3b4       0x10 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-svfiprintf.o)
+ .rodata.str1.4
+                0x0800c3c4       0x2f C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-svfiprintf.o)
+ .rodata.zeroes.7236
                 0x0800c3c4       0x10 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-svfiprintf.o)
  .rodata.str1.4
-                0x0800c3d4       0x2f C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-svfiprintf.o)
- .rodata.zeroes.7236
-                0x0800c3d4       0x10 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-svfiprintf.o)
- .rodata.str1.4
-                0x0800c3e4       0x10 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-locale.o)
+                0x0800c3d4       0x10 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-locale.o)
                                  0x12 (size before relaxing)
  .rodata._ctype_
-                0x0800c3f4      0x101 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-ctype_.o)
-                0x0800c3f4                _ctype_
+                0x0800c3e4      0x101 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-ctype_.o)
+                0x0800c3e4                _ctype_
  *(.eh_frame*)
- *fill*         0x0800c4f5        0x3 
- .eh_frame      0x0800c4f8        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtbegin.o
- .eh_frame      0x0800c4f8        0x4 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtend.o
+ *fill*         0x0800c4e5        0x3 
+ .eh_frame      0x0800c4e8        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtbegin.o
+ .eh_frame      0x0800c4e8        0x4 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtend.o
 
-.glue_7         0x0800c4fc        0x0
- .glue_7        0x0800c4fc        0x0 linker stubs
+.glue_7         0x0800c4ec        0x0
+ .glue_7        0x0800c4ec        0x0 linker stubs
 
-.glue_7t        0x0800c4fc        0x0
- .glue_7t       0x0800c4fc        0x0 linker stubs
+.glue_7t        0x0800c4ec        0x0
+ .glue_7t       0x0800c4ec        0x0 linker stubs
 
-.vfp11_veneer   0x0800c4fc        0x0
- .vfp11_veneer  0x0800c4fc        0x0 linker stubs
+.vfp11_veneer   0x0800c4ec        0x0
+ .vfp11_veneer  0x0800c4ec        0x0 linker stubs
 
-.v4_bx          0x0800c4fc        0x0
- .v4_bx         0x0800c4fc        0x0 linker stubs
+.v4_bx          0x0800c4ec        0x0
+ .v4_bx         0x0800c4ec        0x0 linker stubs
 
-.iplt           0x0800c4fc        0x0
- .iplt          0x0800c4fc        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtbegin.o
+.iplt           0x0800c4ec        0x0
+ .iplt          0x0800c4ec        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtbegin.o
 
-.ARM.extab      0x0800c4fc        0x0
+.ARM.extab      0x0800c4ec        0x0
  *(.ARM.extab* .gnu.linkonce.armextab.*)
- .ARM.extab     0x0800c4fc        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/crt0.o
- .ARM.extab     0x0800c4fc        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m\libgcc.a(_udivmoddi4.o)
-                0x0800c4fc                __exidx_start = .
+ .ARM.extab     0x0800c4ec        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/crt0.o
+ .ARM.extab     0x0800c4ec        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m\libgcc.a(_udivmoddi4.o)
+                0x0800c4ec                __exidx_start = .
 
-.ARM.exidx      0x0800c4fc        0x8
+.ARM.exidx      0x0800c4ec        0x8
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x0800c4fc        0x8 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/crt0.o
- .ARM.exidx     0x0800c504        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m\libgcc.a(_udivmoddi4.o)
+ .ARM.exidx     0x0800c4ec        0x8 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/crt0.o
+ .ARM.exidx     0x0800c4f4        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m\libgcc.a(_udivmoddi4.o)
                                   0x8 (size before relaxing)
-                0x0800c504                __exidx_end = .
-                0x0800c504                __etext = .
+                0x0800c4f4                __exidx_end = .
+                0x0800c4f4                __etext = .
 
-.rel.dyn        0x0800c504        0x0
- .rel.iplt      0x0800c504        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtbegin.o
+.rel.dyn        0x0800c4f4        0x0
+ .rel.iplt      0x0800c4f4        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtbegin.o
 
-.data           0x20000000      0xa40 load address 0x0800c504
+.data           0x20000000      0xa40 load address 0x0800c4f4
                 0x20000000                __data_start__ = .
  *(vtable)
  *(.data*)
@@ -1046,10 +1046,10 @@ END GROUP
                 0x20000a40                . = ALIGN (0x4)
                 0x20000a40                __data_end__ = .
 
-.igot.plt       0x20000a40        0x0 load address 0x0800cf44
+.igot.plt       0x20000a40        0x0 load address 0x0800cf34
  .igot.plt      0x20000a40        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtbegin.o
 
-.bss            0x20000a40      0x1b4 load address 0x0800cf48
+.bss            0x20000a40      0x1b4 load address 0x0800cf38
                 0x20000a40                . = ALIGN (0x4)
                 0x20000a40                __bss_start__ = .
  *(.bss*)
