@@ -557,17 +557,17 @@ TASK(CheckRead){
 
 	if(sensor_mode == SENSOR_START){
 		//INITIAL SENSOR SETUP
-		sprintf(str, "%f SEN_S\r\n", EE_systick_get_value());
-		console_out(str);
-		//console_out("SEN_S\r\n");
+		//sprintf(str, "%f SEN_S\r\n", EE_systick_get_value());
+		//console_out(str);
+		console_out("SEN_S\r\n");
 		InitLineSensor();	//Setup pins
 		read_task_init();	//Setup interrupt handlers
 		sensor_mode = SENSOR_INIT;
 	}else if(sensor_mode == SENSOR_INIT){
 		//Put high all sensor pins
-		sprintf(str, "%f SEN_I\r\n", EE_systick_get_value());
-		console_out(str);
-		//console_out("SEN_I\r\n");
+		//sprintf(str, "%f SEN_I\r\n", EE_systick_get_value());
+		//console_out(str);
+		console_out("SEN_I\r\n");
 		GPIO_SetBits(GPIOD, GPIO_Pin_1);
 		GPIO_SetBits(GPIOD, GPIO_Pin_3);
 		GPIO_SetBits(GPIOB, GPIO_Pin_4);
