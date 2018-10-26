@@ -228,12 +228,12 @@ void InitMotors(){
 		GPIO_InitStructure_LightSensors[6].GPIO_PuPd=GPIO_PuPd_NOPULL;
 		GPIO_Init(GPIOC, &GPIO_InitStructure_LightSensors[6]);
 
-		GPIO_InitStructure_LightSensors[6].GPIO_Pin=GPIO_Pin_12;
-		GPIO_InitStructure_LightSensors[6].GPIO_Mode=GPIO_Mode_OUT;
-		GPIO_InitStructure_LightSensors[6].GPIO_OType=GPIO_OType_PP;
-		GPIO_InitStructure_LightSensors[6].GPIO_Speed=GPIO_Speed_100MHz;
-		GPIO_InitStructure_LightSensors[6].GPIO_PuPd=GPIO_PuPd_NOPULL;
-		GPIO_Init(GPIOC, &GPIO_InitStructure_LightSensors[6]);
+		GPIO_InitStructure_LightSensors[7].GPIO_Pin=GPIO_Pin_12;
+		GPIO_InitStructure_LightSensors[7].GPIO_Mode=GPIO_Mode_OUT;
+		GPIO_InitStructure_LightSensors[7].GPIO_OType=GPIO_OType_PP;
+		GPIO_InitStructure_LightSensors[7].GPIO_Speed=GPIO_Speed_100MHz;
+		GPIO_InitStructure_LightSensors[7].GPIO_PuPd=GPIO_PuPd_NOPULL;
+		GPIO_Init(GPIOC, &GPIO_InitStructure_LightSensors[7]);
  }
 
  /*uint32_t LineSensors_ReadPin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, uint8_t index){
