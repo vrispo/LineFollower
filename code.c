@@ -593,7 +593,8 @@ TASK(CheckRead){
 		sprintf(str, "%f SEN_W\r\n", EE_systick_get_value());
 		console_out(str);
 		//console_out("SEN_W\r\n");
-		delta = EE_systick_get_value() - sensor_up_time;	//Compute elapsed time from sensor pins up
+		double actual_systick = EE_systick_get_value();
+		delta = actual_systick - sensor_up_time;	//Compute elapsed time from sensor pins up
 
 		if(delta >= DELTA_WAIT){
 			sprintf(str, "%f SET_SENSOR_INPUT\r\n", EE_systick_get_value());
