@@ -46,7 +46,8 @@ obj/code.o: /cygdrive/c/Users/Veronica/workspaceEclipseErika/LineFollower/code.c
  /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/contrib/st/STM32F4xx_StdPeriph_Driver/inc/misc.h \
  /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/sem/inc/ee_sem.h \
  /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/sem/inc/ee_api.h \
- /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/ee_api.h
+ /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/ee_api.h \
+ /cygdrive/c/Users/Veronica/workspaceEclipseErika/LineFollower/motor_functions.h
 
 /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/ee.h:
 
@@ -143,3 +144,5 @@ eecfg.h:
 /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/kernel/sem/inc/ee_api.h:
 
 /cygdrive/c/Users/Veronica/Desktop/ECLIPS~1/plugins/COD4BB~1.201/ee_files/pkg/ee_api.h:
+
+/cygdrive/c/Users/Veronica/workspaceEclipseErika/LineFollower/motor_functions.h:
