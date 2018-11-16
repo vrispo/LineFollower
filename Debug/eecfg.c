@@ -92,7 +92,11 @@
  * Alarms
  *
  **************************************************************************/
+    /* Functions */
+    void my_system_time(void);
+
     const EE_alarm_ROM_type   EE_alarm_ROM[EE_ALARM_ROM_SIZE] = {
+        {0, EE_ALARM_ACTION_CALLBACK, 0, my_system_time},
         {0, EE_ALARM_ACTION_TASK    , CheckRead, NULL},
         {0, EE_ALARM_ACTION_TASK    , TaskMotorControl, NULL}
     };

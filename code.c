@@ -80,6 +80,7 @@ double led_ms[8]={0,0,0,0,0,0,0,0};		//ms value of each sensor
 uint8_t led_flags[8]={0,0,0,0,0,0,0,0};	//flag to signal the successful reading of each flag
 
 GPIO_InitTypeDef GPIO_InitStructure_LightSensors[8];
+double system_time;	//System time in ms
 
 /*
  * OUR FUNCTIONS start
@@ -262,6 +263,10 @@ void InitMotors(){
 	 return read_val;
  }*/
 
+ double my_get_systime(){
+ 	return system_time;
+ }
+
  void read_task_init(){
 	 int i;	//counter
 
@@ -335,7 +340,8 @@ void InitMotors(){
 		 //PIN 1
 		 //set time and flag for pin 1 low
 		 if(led_flags[5]==0){
-			 led_ms[5]=EE_systick_get_value();
+			 //led_ms[5]=EE_systick_get_value();
+			 led_ms[5] = my_get_systime();
 			 led_flags[5]=1;
 		 }
 	 }
@@ -349,7 +355,8 @@ void InitMotors(){
 		 //PIN 3
 		 //set time and flag for pin 3 low
 		 if(led_flags[4]==0){
-			 led_ms[4]=EE_systick_get_value();
+			 //led_ms[4]=EE_systick_get_value();
+			 led_ms[4] = my_get_systime();
 			 led_flags[4]=1;
 		 }
 	 }
@@ -362,7 +369,8 @@ void InitMotors(){
 		 //PIN 1
 		 //set time and flag for pin 4 low
 		 if(led_flags[1]==0){
-			 led_ms[1]=EE_systick_get_value();
+			 //led_ms[1]=EE_systick_get_value();
+			 led_ms[1] = my_get_systime();
 			 led_flags[1]=1;
 		 }
 	 }
@@ -376,7 +384,8 @@ void InitMotors(){
 		 //Pin 5
 		 //set time and flag for pin 5 low
 		 if(led_flags[3]==0){
-			 led_ms[3]=EE_systick_get_value();
+			 //led_ms[3]=EE_systick_get_value();
+			 led_ms[0] = my_get_systime();
 			 led_flags[3]=1;
 		 }
 	 }
@@ -385,7 +394,8 @@ void InitMotors(){
 		 //Pin6
 		 //do something when pin6 is low (set time and set flag)
 		 if(led_flags[0]==0){
-			 led_ms[0]=EE_systick_get_value();
+			 //led_ms[0]=EE_systick_get_value();
+			 led_ms[0] = my_get_systime();
 			 led_flags[0]=1;
 		 }
 	 }
@@ -394,7 +404,8 @@ void InitMotors(){
 		 //Pin 7
 		 //set time and flag for pin 7 low
 		 if(led_flags[2]==0){
-			 led_ms[2]=EE_systick_get_value();
+			 //led_ms[2]=EE_systick_get_value();
+			 led_ms[2] = my_get_systime();
 			 led_flags[2]=1;
 		 }
 	 }
@@ -407,7 +418,8 @@ void InitMotors(){
 		 //PIN 10
 		 //set time and flag for pin 10 low
 		 if(led_flags[7]==0){
-			 led_ms[7]=EE_systick_get_value();
+			 //led_ms[7]=EE_systick_get_value();
+			 led_ms[7] = my_get_systime();
 			 led_flags[7]=1;
 		 }
 	 }
@@ -416,7 +428,8 @@ void InitMotors(){
 		 //PIN 12
 		 //set time and flag for pin 12 low
 		 if(led_flags[6]==0){
-			 led_ms[6]=EE_systick_get_value();
+			 //led_ms[6]=EE_systick_get_value();
+			 led_ms[6] = my_get_systime();
 			 led_flags[6]=1;
 		 }
 	 }
@@ -434,6 +447,9 @@ ISR2(systick_handler)
 	CounterTick(myCounter);	//Count the system ticks to wake up expired alarms
 }
 
+void my_system_time(){
+	system_time++;
+}
 /**
   * @brief  Configure and enable the PWM Ouput Channels.
   * @param  None
@@ -578,7 +594,8 @@ TASK(CheckRead){
 		GPIO_SetBits(GPIOC, GPIO_Pin_12);
 
 		console_out("***SEN_I gpio_set\r\n");
-		sensor_up_time = EE_systick_get_value();	//Save system time
+		//sensor_up_time = EE_systick_get_value();	//Save system time
+		sensor_up_time = my_get_systime();
 
 		//Init pin readings and flags
 		 for(i = 0; i < 8; i++){
@@ -590,18 +607,20 @@ TASK(CheckRead){
 		 sprintf(str, "%f SEN_I 2\r\n", sensor_up_time);
 		 console_out(str);
 	}else if(sensor_mode == SENSOR_WAIT){
-		sprintf(str, "%f SEN_W\r\n", EE_systick_get_value());
+		sprintf(str, "%f SEN_W\r\n", my_get_systime());
 		console_out(str);
 		//console_out("SEN_W\r\n");
-		double actual_systick = EE_systick_get_value();
+		//double actual_systick = EE_systick_get_value();
+		double actual_systick = my_get_systime();
 		delta = actual_systick - sensor_up_time;	//Compute elapsed time from sensor pins up
 
 		if(delta >= DELTA_WAIT){
-			sprintf(str, "%f SET_SENSOR_INPUT\r\n", EE_systick_get_value());
+			sprintf(str, "%f SET_SENSOR_INPUT\r\n", my_get_systime());
 			console_out(str);
 			//console_out("***SET_SENSOR_INPUT***");
 			
-			reference_time = EE_systick_get_value();	//Save system time
+			//reference_time = EE_systick_get_value();	//Save system time
+			reference_time = my_get_systime();
 
 			//Set all pins as input
 			GPIO_InitStructure_LightSensors[0].GPIO_Mode=GPIO_Mode_IN;
@@ -630,7 +649,7 @@ TASK(CheckRead){
 
 			sensor_mode = SENSOR_READ;
 		}else{
-			sprintf(str, "%f SENSOR_HAVE_TO_HOLD\r\n", EE_systick_get_value());
+			sprintf(str, "%f SENSOR_HAVE_TO_HOLD\r\n", my_get_systime());
 			console_out(str);
 			//console_out("***SENSOR_HAVE_TO_HOLD***");
 		}
@@ -643,6 +662,7 @@ TASK(CheckRead){
 				break;
 			}
 		}
+		/*TODO: if reference-actual>timeout restart the procedure and reset the time counter variable*/
 		if(end == 1){
 			//All sensors have returned value
 			WaitSem(&delta_sensor_sem);
@@ -725,6 +745,8 @@ int main(void)
 	/*Initialize Erika related stuffs*/
 	EE_system_init();
 
+	system_time = 0.0;
+
 	/*Initialize systick */
 	EE_systick_set_period(MILLISECONDS_TO_TICKS(1, SystemCoreClock));	//1 tick for each millisecond
 	EE_systick_enable_int();
@@ -773,7 +795,8 @@ int main(void)
 	console_out("STRUCT_END\r\n");
 
 	//Program cyclic alarm to periodically activate tasks*/
-	SetRelAlarm(CheckReadAlarm, 10, 10);	//TODO: check the cycle value (1)
+	SetRelAlarm(CheckReadAlarm, 10, 10);
+	SetRelAlarm(IncrementTimeAlarm, 1, 1);//TODO: check the cycle value (1)
 	//SetRelAlarm(MotorControlAlarm, 10, 10);	//TODO: check the cycle value (1)
 
 	console_out("***INIT END***\r\n");

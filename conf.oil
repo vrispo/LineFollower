@@ -107,6 +107,12 @@ CPU mySystem {
 	
 	COUNTER myCounter;
 	
+	ALARM IncrementTimeAlarm {
+		COUNTER = myCounter;
+		ACTION = ALARMCALLBACK { ALARMCALLBACKNAME = "my_system_time";
+		};
+	};
+	
 	//Alarm to activate CheckRead periodic task
 	ALARM CheckReadAlarm{
 		COUNTER = myCounter;
