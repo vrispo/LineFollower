@@ -334,7 +334,7 @@ void InitMotors(){
 
  //HANDLERS FOR PIN INTERRUPTS
  void EXTI1_IRQHandler(void){
-	 console_out("H1\r\n");
+	 console_out("+++H1+++\r\n");
 	 //Checks the line is correct
 	 if(EXTI_GetITStatus(EXTI_Line1)){
 		 //PIN 1
@@ -348,14 +348,12 @@ void InitMotors(){
  }
 
  void EXTI3_IRQHandler(void){
-	 console_out("H3\r\n");
 	 //Checks the line is correct
 	 if(EXTI_GetITStatus(EXTI_Line3)){
-		 console_out("H3\r\n");
+		 console_out("+++H3+++\r");
 		 //PIN 3
 		 //set time and flag for pin 3 low
 		 if(led_flags[4]==0){
-			 //led_ms[4]=EE_systick_get_value();
 			 led_ms[4] = my_get_systime();
 			 led_flags[4]=1;
 		 }
@@ -365,11 +363,10 @@ void InitMotors(){
  void EXTI4_IRQHandler(void){
 	 //Checks the line is correct
 	 if(EXTI_GetITStatus(EXTI_Line4)){
-		 console_out("H4\r\n");
+		 console_out("+++H4+++\r");
 		 //PIN 1
 		 //set time and flag for pin 4 low
 		 if(led_flags[1]==0){
-			 //led_ms[1]=EE_systick_get_value();
 			 led_ms[1] = my_get_systime();
 			 led_flags[1]=1;
 		 }
@@ -380,31 +377,28 @@ void InitMotors(){
  void EXTI9_5_IRQHandler(void){
 	 //Checks the line where comes the interrupt
 	 if(EXTI_GetITStatus(EXTI_Line5)){
-		 console_out("H5\r\n");
+		 console_out("+++H5+++\r");
 		 //Pin 5
 		 //set time and flag for pin 5 low
 		 if(led_flags[3]==0){
-			 //led_ms[3]=EE_systick_get_value();
 			 led_ms[0] = my_get_systime();
 			 led_flags[3]=1;
 		 }
 	 }
 	 if(EXTI_GetITStatus(EXTI_Line6)){
-		 console_out("H6\r\n");
+		 console_out("+++H6+++\r");
 		 //Pin6
 		 //do something when pin6 is low (set time and set flag)
 		 if(led_flags[0]==0){
-			 //led_ms[0]=EE_systick_get_value();
 			 led_ms[0] = my_get_systime();
 			 led_flags[0]=1;
 		 }
 	 }
 	 if(EXTI_GetITStatus(EXTI_Line7)){
-		 console_out("H7\r\n");
+		 console_out("+++H7+++\r");
 		 //Pin 7
 		 //set time and flag for pin 7 low
 		 if(led_flags[2]==0){
-			 //led_ms[2]=EE_systick_get_value();
 			 led_ms[2] = my_get_systime();
 			 led_flags[2]=1;
 		 }
@@ -414,17 +408,16 @@ void InitMotors(){
  void EXTI15_10_IRQHandler(void){
 	 //Checks the line is correct
 	 if(EXTI_GetITStatus(EXTI_Line10)){
-		 console_out("H10\r\n");
+		 console_out("+++H10+++\r");
 		 //PIN 10
 		 //set time and flag for pin 10 low
 		 if(led_flags[7]==0){
-			 //led_ms[7]=EE_systick_get_value();
 			 led_ms[7] = my_get_systime();
 			 led_flags[7]=1;
 		 }
 	 }
 	 if(EXTI_GetITStatus(EXTI_Line12)){
-		 console_out("H12\r\n");
+		 console_out("+++H12+++\r");
 		 //PIN 12
 		 //set time and flag for pin 12 low
 		 if(led_flags[6]==0){
@@ -569,21 +562,18 @@ TASK(CheckRead){
 	int end;	//end flag
 	
 	char str[64];
-	console_out("***READ_TASK***\r\n");
+	console_out("***READ_TASK***\r");
 
 	if(sensor_mode == SENSOR_START){
 		//INITIAL SENSOR SETUP
-		//sprintf(str, "%f SEN_S\r\n", EE_systick_get_value());
-		//console_out(str);
-		console_out("SEN_S\r\n");
+		console_out("SEN_S\r");
 		InitLineSensor();	//Setup pins
 		read_task_init();	//Setup interrupt handlers
 		sensor_mode = SENSOR_INIT;
 	}else if(sensor_mode == SENSOR_INIT){
+		console_out("SEN_I\r");
+
 		//Put high all sensor pins
-		//sprintf(str, "%f SEN_I\r\n", EE_systick_get_value());
-		//console_out(str);
-		console_out("SEN_I\r\n");
 		GPIO_SetBits(GPIOD, GPIO_Pin_1);
 		GPIO_SetBits(GPIOD, GPIO_Pin_3);
 		GPIO_SetBits(GPIOB, GPIO_Pin_4);
@@ -593,8 +583,9 @@ TASK(CheckRead){
 		GPIO_SetBits(GPIOC, GPIO_Pin_10);
 		GPIO_SetBits(GPIOC, GPIO_Pin_12);
 
-		console_out("***SEN_I gpio_set\r\n");
-		//sensor_up_time = EE_systick_get_value();	//Save system time
+		console_out("SEN_I gpio_set\r");
+
+		//Save system time
 		sensor_up_time = my_get_systime();
 
 		//Init pin readings and flags
@@ -604,22 +595,19 @@ TASK(CheckRead){
 		 }
 
 		 sensor_mode = SENSOR_WAIT;	//Put task in wait mode
-		 sprintf(str, "%f SEN_I 2\r\n", sensor_up_time);
+		 sprintf(str, "---%f SEN_I 2\r", sensor_up_time);
 		 console_out(str);
 	}else if(sensor_mode == SENSOR_WAIT){
-		sprintf(str, "%f SEN_W\r\n", my_get_systime());
+		sprintf(str, "---%f SEN_W\r", my_get_systime());
 		console_out(str);
-		//console_out("SEN_W\r\n");
-		//double actual_systick = EE_systick_get_value();
+
 		double actual_systick = my_get_systime();
 		delta = actual_systick - sensor_up_time;	//Compute elapsed time from sensor pins up
 
 		if(delta >= DELTA_WAIT){
-			sprintf(str, "%f SET_SENSOR_INPUT\r\n", my_get_systime());
+			sprintf(str, "---%f SET_SENSOR_INPUT\r", my_get_systime());
 			console_out(str);
-			//console_out("***SET_SENSOR_INPUT***");
-			
-			//reference_time = EE_systick_get_value();	//Save system time
+
 			reference_time = my_get_systime();
 
 			//Set all pins as input
@@ -649,12 +637,11 @@ TASK(CheckRead){
 
 			sensor_mode = SENSOR_READ;
 		}else{
-			sprintf(str, "%f SENSOR_HAVE_TO_HOLD\r\n", my_get_systime());
+			sprintf(str, "-%f SENSOR_HAVE_TO_HOLD\r", my_get_systime());
 			console_out(str);
-			//console_out("***SENSOR_HAVE_TO_HOLD***");
 		}
 	}else if(sensor_mode == SENSOR_READ){
-		console_out("SEN_R\r\n");
+		console_out("SEN_R\r");
 		end = 1;
 		for(i = 0; i < 8; i++){
 			if(led_flags[i] == 0){
@@ -688,7 +675,7 @@ TASK(TaskMotorControl){
 
 	left = right = 0;	//Initialize left and right black sensors counters
 
-	console_out("***MOTOR_TASK***\r\n");
+	console_out("***MOTOR_TASK***\r");
 
 	//protect copy of delta_sensor to local sensor_time
 	WaitSem(&delta_sensor_sem);
@@ -772,34 +759,34 @@ int main(void)
 
 	//------------------------------
 		console_out("***");
-	console_out("System init***\r\n");
+	console_out("System init***");
 	/*Setup motors */
 	InitMotors();
-	console_out("****0\r\n");
-	//PWM_Config_and_En();
-	console_out("****1\r\n");
+	console_out("****0");
+	PWM_Config_and_En();
+	console_out("****1");
 	//Enable motors
-	//EnableMotors();
+	EnableMotors();
 
-	console_out("****2\r\n");
+	console_out("****2");
 	//At the beginning motors are stopped
-	////breakright();
-	console_out("****3\r\n");
-	//breakleft();
-	console_out("****4\r\n");
+	breakright();
+	console_out("****3");
+	breakleft();
+	console_out("****4");
 	/*Start line sensor*/
 	InitLineSensor();
-	console_out("****5\r\n");
+	console_out("****5\r");
 	InitDataStruct();
 
-	console_out("STRUCT_END\r\n");
+	console_out("STRUCT_END\r");
 
 	//Program cyclic alarm to periodically activate tasks*/
 	SetRelAlarm(CheckReadAlarm, 10, 10);
 	SetRelAlarm(IncrementTimeAlarm, 1, 1);//TODO: check the cycle value (1)
-	//SetRelAlarm(MotorControlAlarm, 10, 10);	//TODO: check the cycle value (1)
+	SetRelAlarm(MotorControlAlarm, 10, 10);	//TODO: check the cycle value (1)
 
-	console_out("***INIT END***\r\n");
+	console_out("***INIT END***\r");
 
 	/* Forever loop: background activities (if any) should go here */
 	for (;;);
