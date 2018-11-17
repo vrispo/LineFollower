@@ -55,7 +55,7 @@ CPU mySystem {
 		
 		CPU_DATA = CORTEX_MX {
 			MODEL = M4;
-			APP_SRC = "code.c";
+			//APP_SRC = "code.c";
 			//COMPILER_TYPE = KEIL; 
 			COMPILER_TYPE = GNU;
 			MULTI_STACK = TRUE{IRQ_STACK = FALSE;};
@@ -103,6 +103,12 @@ CPU mySystem {
 
 		KERNEL_TYPE = FP;
 
+	};
+	
+	APPDATA myApp{
+		//Here we have to put all c files to compile
+		APP_SRC = "code.c";
+		APP_SRC = "motor_functions.c";
 	};
 	
 	COUNTER myCounter;
