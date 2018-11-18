@@ -23,11 +23,11 @@ libstm32f4xxspd.a(stm32f4xx_exti.o)
 libstm32f4xxspd.a(stm32f4xx_gpio.o)
                               obj/code.o (GPIO_Init)
 libstm32f4xxspd.a(stm32f4xx_rcc.o)
-                              obj/code.o (RCC_AHB1PeriphClockCmd)
+                              obj/motor_functions.o (RCC_AHB1PeriphClockCmd)
 libstm32f4xxspd.a(stm32f4xx_syscfg.o)
                               obj/code.o (SYSCFG_EXTILineConfig)
 libstm32f4xxspd.a(stm32f4xx_tim.o)
-                              obj/code.o (TIM_TimeBaseInit)
+                              obj/motor_functions.o (TIM_TimeBaseInit)
 libstm32f4xxspd.a(stm32f4xx_usart.o)
                               libstm32f4discovery.a(stm32f4_discovery.o) (USART_Init)
 libstm32f4xxspd.a(misc.o)     obj/code.o (NVIC_Init)
@@ -118,7 +118,7 @@ Allocating common symbols
 Common symbol       size              file
 
 TIM_TimeBaseStructure
-                    0xc               obj/code.o
+                    0xc               obj/motor_functions.o
 errno               0x4               C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-reent.o)
 reference_time      0x8               obj/code.o
 GPIO_InitStructure_LightSensors
@@ -129,7 +129,7 @@ EE_IRQ_nesting_level
 EE_alarm_RAM        0x24              obj/eecfg.o
 system_time         0x8               obj/code.o
 TIM_OCInitStructure
-                    0x14              obj/code.o
+                    0x14              obj/motor_functions.o
 USART_InitStructure
                     0x10              obj/code.o
 EE_std_endcycle_next_tid
@@ -176,37 +176,37 @@ END GROUP
  .text          0x080001e4       0x74 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/crt0.o
                 0x080001e4                _start
                 0x080001e4                _mainCRTStartup
- .text          0x08000258      0xd04 obj/code.o
+ .text          0x08000258      0xbb4 obj/code.o
                 0x0800028c                console_out
-                0x080002dc                InitMotors
-                0x08000324                InitLineSensor
-                0x080004b4                my_get_systime
-                0x080004cc                read_task_init
-                0x080005ec                EXTI1_IRQHandler
-                0x08000630                EXTI3_IRQHandler
-                0x08000674                EXTI4_IRQHandler
-                0x080006b8                EXTI9_5_IRQHandler
-                0x08000760                EXTI15_10_IRQHandler
-                0x080007d8                systick_handler
-                0x08000894                ISR2_systick_handler
-                0x080008a4                my_system_time
-                0x080008d0                PWM_Config_and_En
-                0x080009d8                InitDataStruct
-                0x08000a14                FuncCheckRead
-                0x08000d1c                FuncTaskMotorControl
-                0x08000e1c                main
- .text          0x08000f5c       0x34 obj/eecfg.o
- .text          0x08000f90      0x144 obj/motor_functions.o
-                0x08000fc4                breakleft
-                0x08000fdc                folleleft
-                0x08000ff4                forwardleft
-                0x08001014                backwardleft
-                0x08001034                breakright
-                0x0800104c                folleright
-                0x08001064                forwardright
-                0x08001084                backwardright
-                0x080010a4                EnableMotors
-                0x080010bc                DisableMotors
+                0x080002dc                InitLineSensor
+                0x0800046c                my_get_systime
+                0x08000484                read_task_init
+                0x080005a4                EXTI1_IRQHandler
+                0x080005e8                EXTI3_IRQHandler
+                0x0800062c                EXTI4_IRQHandler
+                0x08000670                EXTI9_5_IRQHandler
+                0x08000718                EXTI15_10_IRQHandler
+                0x08000790                systick_handler
+                0x0800084c                ISR2_systick_handler
+                0x0800085c                my_system_time
+                0x08000888                InitDataStruct
+                0x080008c4                FuncCheckRead
+                0x08000bcc                FuncTaskMotorControl
+                0x08000ccc                main
+ .text          0x08000e0c       0x34 obj/eecfg.o
+ .text          0x08000e40      0x294 obj/motor_functions.o
+                0x08000e74                breakleft
+                0x08000e8c                folleleft
+                0x08000ea4                forwardleft
+                0x08000ec4                backwardleft
+                0x08000ee4                breakright
+                0x08000efc                folleright
+                0x08000f14                forwardright
+                0x08000f34                backwardright
+                0x08000f54                EnableMotors
+                0x08000f6c                DisableMotors
+                0x08000f84                InitMotors
+                0x08000fcc                PWM_Config_and_En
  .text          0x080010d4        0x0 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
  .text.EE_cortex_mx_default_reset_ISR
                 0x080010d4       0x40 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
@@ -924,19 +924,19 @@ END GROUP
  .data          0x20000000        0x4 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtbegin.o
                 0x20000000                __dso_handle
  .data          0x20000004        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/crt0.o
- .data          0x20000004       0x14 obj/code.o
-                0x20000004                CCR1_Val
-                0x20000006                CCR2_Val
-                0x20000008                CCR3_Val
-                0x2000000a                CCR4_Val
-                0x2000000c                delta_sensor_sem
- .data          0x20000018       0x20 obj/eecfg.o
-                0x20000018                EE_th_status
-                0x20000020                EE_th_next
-                0x20000028                EE_stkfirst
-                0x2000002c                EE_rqfirst
-                0x20000030                EE_counter_RAM
- .data          0x20000038        0x0 obj/motor_functions.o
+ .data          0x20000004        0xc obj/code.o
+                0x20000004                delta_sensor_sem
+ .data          0x20000010       0x20 obj/eecfg.o
+                0x20000010                EE_th_status
+                0x20000018                EE_th_next
+                0x20000020                EE_stkfirst
+                0x20000024                EE_rqfirst
+                0x20000028                EE_counter_RAM
+ .data          0x20000030        0x8 obj/motor_functions.o
+                0x20000030                CCR1_Val
+                0x20000032                CCR2_Val
+                0x20000034                CCR3_Val
+                0x20000036                CCR4_Val
  .data          0x20000038        0x0 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
  .data          0x20000038       0x14 obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
                 0x20000038                SystemCoreClock
@@ -1055,7 +1055,7 @@ END GROUP
 .igot.plt       0x20000a40        0x0 load address 0x0800cff4
  .igot.plt      0x20000a40        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtbegin.o
 
-.bss            0x20000a40      0x1c8 load address 0x0800cff8
+.bss            0x20000a40      0x1b8 load address 0x0800cff8
                 0x20000a40                . = ALIGN (0x4)
                 0x20000a40                __bss_start__ = .
  *(.bss*)
@@ -1063,134 +1063,135 @@ END GROUP
  .bss           0x20000a40       0x1c c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtbegin.o
  .bss           0x20000a5c        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/crt0.o
  *fill*         0x20000a5c        0x4 
- .bss           0x20000a60       0x51 obj/code.o
-                0x20000a60                PrescalerValue
-                0x20000a68                led_ms
-                0x20000aa8                led_flags
-                0x20000ab0                sensor_mode
- *fill*         0x20000ab1        0x3 
- .bss           0x20000ab4        0xc obj/eecfg.o
-                0x20000ab4                EE_cortex_mx_system_tos
-                0x20000ab8                EE_cortex_mx_active_tos
-                0x20000abc                EE_sys_ceiling
- .bss           0x20000ac0        0x0 obj/motor_functions.o
- .bss           0x20000ac0        0x0 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
- .bss           0x20000ac0        0x0 obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
- .bss           0x20000ac0        0x0 libee.a(ee_hal_structs.o)
- .bss           0x20000ac0        0x0 libee.a(ee_utils.o)
- .bss           0x20000ac0        0x0 libee.a(ee_gnu_change_context_isr.o)
- .bss           0x20000ac0        0x0 libee.a(ee_gnu_multi_context.o)
- .bss           0x20000ac0        0x0 libee.a(ee_altick.o)
- .bss           0x20000ac0        0x0 libee.a(ee_alsetrel.o)
- .bss           0x20000ac0        0x0 libee.a(ee_irqsc.o)
- .bss           0x20000ac0        0x0 libee.a(ee_rqexchg.o)
- .bss           0x20000ac0        0x0 libee.a(ee_rqinsert.o)
- .bss           0x20000ac0        0x0 libee.a(ee_swait.o)
- .bss           0x20000ac0        0x0 libee.a(ee_spost.o)
- .bss           0x20000ac0        0x0 libee.a(ee_context.o)
- .bss           0x20000ac0        0x0 libee.a(ee_context.o)
- .bss           0x20000ac0        0x0 libee.a(ee_thendin.o)
- .bss           0x20000ac0        0x0 libstm32f4discovery.a(stm32f4_discovery.o)
- .bss           0x20000ac0        0x0 libstm32f4xxspd.a(stm32f4xx_exti.o)
- .bss           0x20000ac0        0x0 libstm32f4xxspd.a(stm32f4xx_gpio.o)
- .bss           0x20000ac0        0x0 libstm32f4xxspd.a(stm32f4xx_rcc.o)
- .bss           0x20000ac0        0x0 libstm32f4xxspd.a(stm32f4xx_syscfg.o)
- .bss           0x20000ac0        0x0 libstm32f4xxspd.a(stm32f4xx_tim.o)
- .bss           0x20000ac0        0x0 libstm32f4xxspd.a(stm32f4xx_usart.o)
- .bss           0x20000ac0        0x0 libstm32f4xxspd.a(misc.o)
- .bss           0x20000ac0        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m\libgcc.a(_arm_addsubdf3.o)
- .bss           0x20000ac0        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m\libgcc.a(_arm_cmpdf2.o)
- .bss           0x20000ac0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-exit.o)
- .bss           0x20000ac0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-impure.o)
- .bss           0x20000ac0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-init.o)
- .bss           0x20000ac0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-memset.o)
- .bss           0x20000ac0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-sprintf.o)
- .bss           0x20000ac0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-svfprintf.o)
- .bss           0x20000ac0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-__call_atexit.o)
- .bss           0x20000ac0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-atexit.o)
- .bss           0x20000ac0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-dtoa.o)
- .bss           0x20000ac0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-fini.o)
- .bss           0x20000ac0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-localeconv.o)
- .bss           0x20000ac0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-mallocr.o)
+ .bss           0x20000a60       0x49 obj/code.o
+                0x20000a60                led_ms
+                0x20000aa0                led_flags
+                0x20000aa8                sensor_mode
+ *fill*         0x20000aa9        0x3 
+ .bss           0x20000aac        0xc obj/eecfg.o
+                0x20000aac                EE_cortex_mx_system_tos
+                0x20000ab0                EE_cortex_mx_active_tos
+                0x20000ab4                EE_sys_ceiling
+ .bss           0x20000ab8        0x2 obj/motor_functions.o
+                0x20000ab8                PrescalerValue
+ .bss           0x20000aba        0x0 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+ .bss           0x20000aba        0x0 obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
+ .bss           0x20000aba        0x0 libee.a(ee_hal_structs.o)
+ .bss           0x20000aba        0x0 libee.a(ee_utils.o)
+ .bss           0x20000aba        0x0 libee.a(ee_gnu_change_context_isr.o)
+ .bss           0x20000aba        0x0 libee.a(ee_gnu_multi_context.o)
+ .bss           0x20000aba        0x0 libee.a(ee_altick.o)
+ .bss           0x20000aba        0x0 libee.a(ee_alsetrel.o)
+ .bss           0x20000aba        0x0 libee.a(ee_irqsc.o)
+ .bss           0x20000aba        0x0 libee.a(ee_rqexchg.o)
+ .bss           0x20000aba        0x0 libee.a(ee_rqinsert.o)
+ .bss           0x20000aba        0x0 libee.a(ee_swait.o)
+ .bss           0x20000aba        0x0 libee.a(ee_spost.o)
+ .bss           0x20000aba        0x0 libee.a(ee_context.o)
+ .bss           0x20000aba        0x0 libee.a(ee_context.o)
+ .bss           0x20000aba        0x0 libee.a(ee_thendin.o)
+ .bss           0x20000aba        0x0 libstm32f4discovery.a(stm32f4_discovery.o)
+ .bss           0x20000aba        0x0 libstm32f4xxspd.a(stm32f4xx_exti.o)
+ .bss           0x20000aba        0x0 libstm32f4xxspd.a(stm32f4xx_gpio.o)
+ .bss           0x20000aba        0x0 libstm32f4xxspd.a(stm32f4xx_rcc.o)
+ .bss           0x20000aba        0x0 libstm32f4xxspd.a(stm32f4xx_syscfg.o)
+ .bss           0x20000aba        0x0 libstm32f4xxspd.a(stm32f4xx_tim.o)
+ .bss           0x20000aba        0x0 libstm32f4xxspd.a(stm32f4xx_usart.o)
+ .bss           0x20000aba        0x0 libstm32f4xxspd.a(misc.o)
+ .bss           0x20000aba        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m\libgcc.a(_arm_addsubdf3.o)
+ .bss           0x20000aba        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m\libgcc.a(_arm_cmpdf2.o)
+ .bss           0x20000aba        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-exit.o)
+ .bss           0x20000aba        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-impure.o)
+ .bss           0x20000aba        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-init.o)
+ .bss           0x20000aba        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-memset.o)
+ .bss           0x20000aba        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-sprintf.o)
+ .bss           0x20000aba        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-svfprintf.o)
+ .bss           0x20000aba        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-__call_atexit.o)
+ .bss           0x20000aba        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-atexit.o)
+ .bss           0x20000aba        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-dtoa.o)
+ .bss           0x20000aba        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-fini.o)
+ .bss           0x20000aba        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-localeconv.o)
+ .bss           0x20000aba        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-mallocr.o)
+ *fill*         0x20000aba        0x2 
  .bss.__malloc_max_total_mem
-                0x20000ac0        0x4 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-mallocr.o)
-                0x20000ac0                __malloc_max_total_mem
+                0x20000abc        0x4 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-mallocr.o)
+                0x20000abc                __malloc_max_total_mem
  .bss.__malloc_max_sbrked_mem
-                0x20000ac4        0x4 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-mallocr.o)
-                0x20000ac4                __malloc_max_sbrked_mem
+                0x20000ac0        0x4 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-mallocr.o)
+                0x20000ac0                __malloc_max_sbrked_mem
  .bss.__malloc_top_pad
-                0x20000ac8        0x4 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-mallocr.o)
-                0x20000ac8                __malloc_top_pad
+                0x20000ac4        0x4 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-mallocr.o)
+                0x20000ac4                __malloc_top_pad
  .bss.__malloc_current_mallinfo
-                0x20000acc       0x28 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-mallocr.o)
-                0x20000acc                __malloc_current_mallinfo
- .bss           0x20000af4        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-memchr-stub.o)
- .bss           0x20000af4        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-memcpy-stub.o)
- .bss           0x20000af4        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-mlock.o)
- .bss           0x20000af4        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-mprec.o)
- .bss           0x20000af4        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-sbrkr.o)
- .bss           0x20000af4        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-strlen-stub.o)
- .bss           0x20000af4        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-svfiprintf.o)
- .bss           0x20000af4        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-__atexit.o)
- .bss           0x20000af4        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-callocr.o)
- .bss           0x20000af4        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-freer.o)
- .bss           0x20000af4        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-locale.o)
+                0x20000ac8       0x28 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-mallocr.o)
+                0x20000ac8                __malloc_current_mallinfo
+ .bss           0x20000af0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-memchr-stub.o)
+ .bss           0x20000af0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-memcpy-stub.o)
+ .bss           0x20000af0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-mlock.o)
+ .bss           0x20000af0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-mprec.o)
+ .bss           0x20000af0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-sbrkr.o)
+ .bss           0x20000af0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-strlen-stub.o)
+ .bss           0x20000af0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-svfiprintf.o)
+ .bss           0x20000af0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-__atexit.o)
+ .bss           0x20000af0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-callocr.o)
+ .bss           0x20000af0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-freer.o)
+ .bss           0x20000af0        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-locale.o)
  .bss._PathLocale
-                0x20000af4        0x4 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-locale.o)
-                0x20000af4                _PathLocale
- .bss           0x20000af8        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-mbtowc_r.o)
- .bss           0x20000af8        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-memmove.o)
- .bss           0x20000af8        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-reallocr.o)
- .bss           0x20000af8        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-reent.o)
- .bss           0x20000af8        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-strcmp.o)
- .bss           0x20000af8        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-wctomb_r.o)
- .bss           0x20000af8        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-ctype_.o)
- .bss           0x20000af8        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libnosys.a(sbrk.o)
+                0x20000af0        0x4 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-locale.o)
+                0x20000af0                _PathLocale
+ .bss           0x20000af4        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-mbtowc_r.o)
+ .bss           0x20000af4        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-memmove.o)
+ .bss           0x20000af4        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-reallocr.o)
+ .bss           0x20000af4        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-reent.o)
+ .bss           0x20000af4        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-strcmp.o)
+ .bss           0x20000af4        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-wctomb_r.o)
+ .bss           0x20000af4        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-ctype_.o)
+ .bss           0x20000af4        0x0 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libnosys.a(sbrk.o)
  .bss.heap_end.4167
-                0x20000af8        0x4 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libnosys.a(sbrk.o)
- .bss           0x20000afc        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m\libgcc.a(_udivsi3.o)
- .bss           0x20000afc        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m\libgcc.a(_divsi3.o)
- .bss           0x20000afc        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m\libgcc.a(_dvmd_tls.o)
- .bss           0x20000afc        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m\libgcc.a(_arm_muldivdf3.o)
- .bss           0x20000afc        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m\libgcc.a(_arm_unorddf2.o)
- .bss           0x20000afc        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m\libgcc.a(_arm_fixdfsi.o)
- .bss           0x20000afc        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m\libgcc.a(_aeabi_uldivmod.o)
- .bss           0x20000afc        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m\libgcc.a(_udivmoddi4.o)
- .bss           0x20000afc        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtend.o
- .bss           0x20000afc        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtn.o
+                0x20000af4        0x4 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libnosys.a(sbrk.o)
+ .bss           0x20000af8        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m\libgcc.a(_udivsi3.o)
+ .bss           0x20000af8        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m\libgcc.a(_divsi3.o)
+ .bss           0x20000af8        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m\libgcc.a(_dvmd_tls.o)
+ .bss           0x20000af8        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m\libgcc.a(_arm_muldivdf3.o)
+ .bss           0x20000af8        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m\libgcc.a(_arm_unorddf2.o)
+ .bss           0x20000af8        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m\libgcc.a(_arm_fixdfsi.o)
+ .bss           0x20000af8        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m\libgcc.a(_aeabi_uldivmod.o)
+ .bss           0x20000af8        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m\libgcc.a(_udivmoddi4.o)
+ .bss           0x20000af8        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtend.o
+ .bss           0x20000af8        0x0 c:/progra~2/gnutoo~1/50a5a~1.420/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/crtn.o
  *(COMMON)
- *fill*         0x20000afc        0x4 
- COMMON         0x20000b00       0xd0 obj/code.o
-                0x20000b00                TIM_TimeBaseStructure
-                0x20000b10                reference_time
-                0x20000b18                GPIO_InitStructure_LightSensors
-                0x20000b58                sensor_up_time
-                0x20000b60                system_time
-                0x20000b68                TIM_OCInitStructure
-                0x20000b7c                USART_InitStructure
-                0x20000b90                delta_sensor
- COMMON         0x20000bd0       0x2c obj/eecfg.o
-                0x20000bd0                EE_alarm_RAM
-                0x20000bf4                EE_th_nact
- COMMON         0x20000bfc        0x8 libee.a(ee_hal_structs.o)
-                0x20000bfc                EE_IRQ_nesting_level
-                0x20000c00                EE_std_endcycle_next_tid
- COMMON         0x20000c04        0x4 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-reent.o)
-                0x20000c04                errno
-                0x20000c08                . = ALIGN (0x4)
-                0x20000c08                __bss_end__ = .
+ COMMON         0x20000af8       0xa8 obj/code.o
+                0x20000af8                reference_time
+                0x20000b00                GPIO_InitStructure_LightSensors
+                0x20000b40                sensor_up_time
+                0x20000b48                system_time
+                0x20000b50                USART_InitStructure
+                0x20000b60                delta_sensor
+ COMMON         0x20000ba0       0x2c obj/eecfg.o
+                0x20000ba0                EE_alarm_RAM
+                0x20000bc4                EE_th_nact
+ COMMON         0x20000bcc       0x20 obj/motor_functions.o
+                0x20000bcc                TIM_TimeBaseStructure
+                0x20000bd8                TIM_OCInitStructure
+ COMMON         0x20000bec        0x8 libee.a(ee_hal_structs.o)
+                0x20000bec                EE_IRQ_nesting_level
+                0x20000bf0                EE_std_endcycle_next_tid
+ COMMON         0x20000bf4        0x4 C:\PROGRA~2\GNUTOO~1\50A5A~1.420\arm-none-eabi\lib\thumb\libc.a(lib_a-reent.o)
+                0x20000bf4                errno
+                0x20000bf8                . = ALIGN (0x4)
+                0x20000bf8                __bss_end__ = .
 
-.heap           0x20000c08      0x100
-                0x20000c08                __end__ = .
-                0x20000c08                end = __end__
+.heap           0x20000bf8      0x100
+                0x20000bf8                __end__ = .
+                0x20000bf8                end = __end__
  *(.heap*)
- .heap          0x20000c08      0x100 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
-                0x20000c08                __HeapBase
-                0x20000d08                __HeapLimit = .
+ .heap          0x20000bf8      0x100 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+                0x20000bf8                __HeapBase
+                0x20000cf8                __HeapLimit = .
 
-.stack_dummy    0x20000c08      0xc00
+.stack_dummy    0x20000bf8      0xc00
  *(.stack*)
- .stack         0x20000c08      0xc00 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+ .stack         0x20000bf8      0xc00 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
                 0x20020000                __StackTop = (ORIGIN (RAM) + LENGTH (RAM))
                 0x2001f400                __StackLimit = (__StackTop - SIZEOF (.stack_dummy))
                 0x20020000                PROVIDE (__stack, __StackTop)
@@ -1382,63 +1383,63 @@ OUTPUT(c_mX.elf elf32-littlearm)
  .comment       0x0000006e       0x6f libstm32f4xxspd.a(stm32f4xx_usart.o)
  .comment       0x0000006e       0x6f libstm32f4xxspd.a(misc.o)
 
-.debug_info     0x00000000     0x8922
- .debug_info    0x00000000     0x10f8 obj/code.o
- .debug_info    0x000010f8      0x3d8 obj/eecfg.o
- .debug_info    0x000014d0      0x2df obj/motor_functions.o
- .debug_info    0x000017af       0xd7 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
- .debug_info    0x00001886      0x5c5 obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
- .debug_info    0x00001e4b      0x15c libee.a(ee_hal_structs.o)
- .debug_info    0x00001fa7      0x23e libee.a(ee_utils.o)
- .debug_info    0x000021e5       0xd6 libee.a(ee_gnu_change_context_isr.o)
- .debug_info    0x000022bb       0xd1 libee.a(ee_gnu_multi_context.o)
- .debug_info    0x0000238c      0x3f7 libee.a(ee_altick.o)
- .debug_info    0x00002783      0x2d1 libee.a(ee_alsetrel.o)
- .debug_info    0x00002a54      0x28b libee.a(ee_irqsc.o)
- .debug_info    0x00002cdf      0x178 libee.a(ee_rqexchg.o)
- .debug_info    0x00002e57      0x1b8 libee.a(ee_rqinsert.o)
- .debug_info    0x0000300f      0x41f libee.a(ee_swait.o)
- .debug_info    0x0000342e      0x356 libee.a(ee_spost.o)
- .debug_info    0x00003784      0x21c libee.a(ee_context.o)
- .debug_info    0x000039a0      0x1d6 libee.a(ee_context.o)
- .debug_info    0x00003b76      0x2fb libee.a(ee_thendin.o)
- .debug_info    0x00003e71      0x6dd libstm32f4discovery.a(stm32f4_discovery.o)
- .debug_info    0x0000454e      0x357 libstm32f4xxspd.a(stm32f4xx_exti.o)
- .debug_info    0x000048a5      0x61d libstm32f4xxspd.a(stm32f4xx_gpio.o)
- .debug_info    0x00004ec2      0xc63 libstm32f4xxspd.a(stm32f4xx_rcc.o)
- .debug_info    0x00005b25      0x274 libstm32f4xxspd.a(stm32f4xx_syscfg.o)
- .debug_info    0x00005d99     0x1c69 libstm32f4xxspd.a(stm32f4xx_tim.o)
- .debug_info    0x00007a02      0x9ca libstm32f4xxspd.a(stm32f4xx_usart.o)
- .debug_info    0x000083cc      0x556 libstm32f4xxspd.a(misc.o)
+.debug_info     0x00000000     0x8a53
+ .debug_info    0x00000000      0xd85 obj/code.o
+ .debug_info    0x00000d85      0x3d8 obj/eecfg.o
+ .debug_info    0x0000115d      0x783 obj/motor_functions.o
+ .debug_info    0x000018e0       0xd7 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+ .debug_info    0x000019b7      0x5c5 obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
+ .debug_info    0x00001f7c      0x15c libee.a(ee_hal_structs.o)
+ .debug_info    0x000020d8      0x23e libee.a(ee_utils.o)
+ .debug_info    0x00002316       0xd6 libee.a(ee_gnu_change_context_isr.o)
+ .debug_info    0x000023ec       0xd1 libee.a(ee_gnu_multi_context.o)
+ .debug_info    0x000024bd      0x3f7 libee.a(ee_altick.o)
+ .debug_info    0x000028b4      0x2d1 libee.a(ee_alsetrel.o)
+ .debug_info    0x00002b85      0x28b libee.a(ee_irqsc.o)
+ .debug_info    0x00002e10      0x178 libee.a(ee_rqexchg.o)
+ .debug_info    0x00002f88      0x1b8 libee.a(ee_rqinsert.o)
+ .debug_info    0x00003140      0x41f libee.a(ee_swait.o)
+ .debug_info    0x0000355f      0x356 libee.a(ee_spost.o)
+ .debug_info    0x000038b5      0x21c libee.a(ee_context.o)
+ .debug_info    0x00003ad1      0x1d6 libee.a(ee_context.o)
+ .debug_info    0x00003ca7      0x2fb libee.a(ee_thendin.o)
+ .debug_info    0x00003fa2      0x6dd libstm32f4discovery.a(stm32f4_discovery.o)
+ .debug_info    0x0000467f      0x357 libstm32f4xxspd.a(stm32f4xx_exti.o)
+ .debug_info    0x000049d6      0x61d libstm32f4xxspd.a(stm32f4xx_gpio.o)
+ .debug_info    0x00004ff3      0xc63 libstm32f4xxspd.a(stm32f4xx_rcc.o)
+ .debug_info    0x00005c56      0x274 libstm32f4xxspd.a(stm32f4xx_syscfg.o)
+ .debug_info    0x00005eca     0x1c69 libstm32f4xxspd.a(stm32f4xx_tim.o)
+ .debug_info    0x00007b33      0x9ca libstm32f4xxspd.a(stm32f4xx_usart.o)
+ .debug_info    0x000084fd      0x556 libstm32f4xxspd.a(misc.o)
 
-.debug_abbrev   0x00000000     0x2121
- .debug_abbrev  0x00000000      0x35e obj/code.o
- .debug_abbrev  0x0000035e       0xf9 obj/eecfg.o
- .debug_abbrev  0x00000457       0xf6 obj/motor_functions.o
- .debug_abbrev  0x0000054d       0x12 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
- .debug_abbrev  0x0000055f      0x138 obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
- .debug_abbrev  0x00000697       0x9b libee.a(ee_hal_structs.o)
- .debug_abbrev  0x00000732      0x15b libee.a(ee_utils.o)
- .debug_abbrev  0x0000088d       0x14 libee.a(ee_gnu_change_context_isr.o)
- .debug_abbrev  0x000008a1       0x14 libee.a(ee_gnu_multi_context.o)
- .debug_abbrev  0x000008b5      0x1c6 libee.a(ee_altick.o)
- .debug_abbrev  0x00000a7b      0x168 libee.a(ee_alsetrel.o)
- .debug_abbrev  0x00000be3      0x139 libee.a(ee_irqsc.o)
- .debug_abbrev  0x00000d1c       0xb5 libee.a(ee_rqexchg.o)
- .debug_abbrev  0x00000dd1       0xd8 libee.a(ee_rqinsert.o)
- .debug_abbrev  0x00000ea9      0x1a1 libee.a(ee_swait.o)
- .debug_abbrev  0x0000104a      0x187 libee.a(ee_spost.o)
- .debug_abbrev  0x000011d1      0x122 libee.a(ee_context.o)
- .debug_abbrev  0x000012f3       0xd4 libee.a(ee_context.o)
- .debug_abbrev  0x000013c7      0x137 libee.a(ee_thendin.o)
- .debug_abbrev  0x000014fe      0x194 libstm32f4discovery.a(stm32f4_discovery.o)
- .debug_abbrev  0x00001692      0x1a9 libstm32f4xxspd.a(stm32f4xx_exti.o)
- .debug_abbrev  0x0000183b      0x1a7 libstm32f4xxspd.a(stm32f4xx_gpio.o)
- .debug_abbrev  0x000019e2      0x1e5 libstm32f4xxspd.a(stm32f4xx_rcc.o)
- .debug_abbrev  0x00001bc7      0x133 libstm32f4xxspd.a(stm32f4xx_syscfg.o)
- .debug_abbrev  0x00001cfa      0x189 libstm32f4xxspd.a(stm32f4xx_tim.o)
- .debug_abbrev  0x00001e83      0x157 libstm32f4xxspd.a(stm32f4xx_usart.o)
- .debug_abbrev  0x00001fda      0x147 libstm32f4xxspd.a(misc.o)
+.debug_abbrev   0x00000000     0x218d
+ .debug_abbrev  0x00000000      0x34d obj/code.o
+ .debug_abbrev  0x0000034d       0xf9 obj/eecfg.o
+ .debug_abbrev  0x00000446      0x173 obj/motor_functions.o
+ .debug_abbrev  0x000005b9       0x12 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+ .debug_abbrev  0x000005cb      0x138 obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
+ .debug_abbrev  0x00000703       0x9b libee.a(ee_hal_structs.o)
+ .debug_abbrev  0x0000079e      0x15b libee.a(ee_utils.o)
+ .debug_abbrev  0x000008f9       0x14 libee.a(ee_gnu_change_context_isr.o)
+ .debug_abbrev  0x0000090d       0x14 libee.a(ee_gnu_multi_context.o)
+ .debug_abbrev  0x00000921      0x1c6 libee.a(ee_altick.o)
+ .debug_abbrev  0x00000ae7      0x168 libee.a(ee_alsetrel.o)
+ .debug_abbrev  0x00000c4f      0x139 libee.a(ee_irqsc.o)
+ .debug_abbrev  0x00000d88       0xb5 libee.a(ee_rqexchg.o)
+ .debug_abbrev  0x00000e3d       0xd8 libee.a(ee_rqinsert.o)
+ .debug_abbrev  0x00000f15      0x1a1 libee.a(ee_swait.o)
+ .debug_abbrev  0x000010b6      0x187 libee.a(ee_spost.o)
+ .debug_abbrev  0x0000123d      0x122 libee.a(ee_context.o)
+ .debug_abbrev  0x0000135f       0xd4 libee.a(ee_context.o)
+ .debug_abbrev  0x00001433      0x137 libee.a(ee_thendin.o)
+ .debug_abbrev  0x0000156a      0x194 libstm32f4discovery.a(stm32f4_discovery.o)
+ .debug_abbrev  0x000016fe      0x1a9 libstm32f4xxspd.a(stm32f4xx_exti.o)
+ .debug_abbrev  0x000018a7      0x1a7 libstm32f4xxspd.a(stm32f4xx_gpio.o)
+ .debug_abbrev  0x00001a4e      0x1e5 libstm32f4xxspd.a(stm32f4xx_rcc.o)
+ .debug_abbrev  0x00001c33      0x133 libstm32f4xxspd.a(stm32f4xx_syscfg.o)
+ .debug_abbrev  0x00001d66      0x189 libstm32f4xxspd.a(stm32f4xx_tim.o)
+ .debug_abbrev  0x00001eef      0x157 libstm32f4xxspd.a(stm32f4xx_usart.o)
+ .debug_abbrev  0x00002046      0x147 libstm32f4xxspd.a(misc.o)
 
 .debug_aranges  0x00000000      0x370
  .debug_aranges
@@ -1502,42 +1503,42 @@ OUTPUT(c_mX.elf elf32-littlearm)
  .debug_ranges  0x00000040       0x18 libee.a(ee_irqsc.o)
  .debug_ranges  0x00000058       0x18 libee.a(ee_thendin.o)
 
-.debug_line     0x00000000     0x4a26
- .debug_line    0x00000000      0x734 obj/code.o
- .debug_line    0x00000734      0x19d obj/eecfg.o
- .debug_line    0x000008d1      0x309 obj/motor_functions.o
- .debug_line    0x00000bda       0xe6 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
- .debug_line    0x00000cc0      0x27f obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
- .debug_line    0x00000f3f      0x1bf libee.a(ee_hal_structs.o)
- .debug_line    0x000010fe      0x201 libee.a(ee_utils.o)
- .debug_line    0x000012ff       0xe4 libee.a(ee_gnu_change_context_isr.o)
- .debug_line    0x000013e3       0xd3 libee.a(ee_gnu_multi_context.o)
- .debug_line    0x000014b6      0x2c5 libee.a(ee_altick.o)
- .debug_line    0x0000177b      0x27b libee.a(ee_alsetrel.o)
- .debug_line    0x000019f6      0x235 libee.a(ee_irqsc.o)
- .debug_line    0x00001c2b      0x1e9 libee.a(ee_rqexchg.o)
- .debug_line    0x00001e14      0x1f7 libee.a(ee_rqinsert.o)
- .debug_line    0x0000200b      0x2f5 libee.a(ee_swait.o)
- .debug_line    0x00002300      0x2b3 libee.a(ee_spost.o)
- .debug_line    0x000025b3      0x213 libee.a(ee_context.o)
- .debug_line    0x000027c6      0x201 libee.a(ee_context.o)
- .debug_line    0x000029c7      0x26d libee.a(ee_thendin.o)
- .debug_line    0x00002c34      0x35e libstm32f4discovery.a(stm32f4_discovery.o)
- .debug_line    0x00002f92      0x300 libstm32f4xxspd.a(stm32f4xx_exti.o)
- .debug_line    0x00003292      0x36d libstm32f4xxspd.a(stm32f4xx_gpio.o)
- .debug_line    0x000035ff      0x431 libstm32f4xxspd.a(stm32f4xx_rcc.o)
- .debug_line    0x00003a30      0x251 libstm32f4xxspd.a(stm32f4xx_syscfg.o)
- .debug_line    0x00003c81      0x6d6 libstm32f4xxspd.a(stm32f4xx_tim.o)
- .debug_line    0x00004357      0x40b libstm32f4xxspd.a(stm32f4xx_usart.o)
- .debug_line    0x00004762      0x2c4 libstm32f4xxspd.a(misc.o)
+.debug_line     0x00000000     0x4ab4
+ .debug_line    0x00000000      0x6ec obj/code.o
+ .debug_line    0x000006ec      0x19d obj/eecfg.o
+ .debug_line    0x00000889      0x3df obj/motor_functions.o
+ .debug_line    0x00000c68       0xe6 obj/pkg/mcu/st_stm32_stm32f4xx/src/startup_stm32f4xx_gnu.o
+ .debug_line    0x00000d4e      0x27f obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
+ .debug_line    0x00000fcd      0x1bf libee.a(ee_hal_structs.o)
+ .debug_line    0x0000118c      0x201 libee.a(ee_utils.o)
+ .debug_line    0x0000138d       0xe4 libee.a(ee_gnu_change_context_isr.o)
+ .debug_line    0x00001471       0xd3 libee.a(ee_gnu_multi_context.o)
+ .debug_line    0x00001544      0x2c5 libee.a(ee_altick.o)
+ .debug_line    0x00001809      0x27b libee.a(ee_alsetrel.o)
+ .debug_line    0x00001a84      0x235 libee.a(ee_irqsc.o)
+ .debug_line    0x00001cb9      0x1e9 libee.a(ee_rqexchg.o)
+ .debug_line    0x00001ea2      0x1f7 libee.a(ee_rqinsert.o)
+ .debug_line    0x00002099      0x2f5 libee.a(ee_swait.o)
+ .debug_line    0x0000238e      0x2b3 libee.a(ee_spost.o)
+ .debug_line    0x00002641      0x213 libee.a(ee_context.o)
+ .debug_line    0x00002854      0x201 libee.a(ee_context.o)
+ .debug_line    0x00002a55      0x26d libee.a(ee_thendin.o)
+ .debug_line    0x00002cc2      0x35e libstm32f4discovery.a(stm32f4_discovery.o)
+ .debug_line    0x00003020      0x300 libstm32f4xxspd.a(stm32f4xx_exti.o)
+ .debug_line    0x00003320      0x36d libstm32f4xxspd.a(stm32f4xx_gpio.o)
+ .debug_line    0x0000368d      0x431 libstm32f4xxspd.a(stm32f4xx_rcc.o)
+ .debug_line    0x00003abe      0x251 libstm32f4xxspd.a(stm32f4xx_syscfg.o)
+ .debug_line    0x00003d0f      0x6d6 libstm32f4xxspd.a(stm32f4xx_tim.o)
+ .debug_line    0x000043e5      0x40b libstm32f4xxspd.a(stm32f4xx_usart.o)
+ .debug_line    0x000047f0      0x2c4 libstm32f4xxspd.a(misc.o)
 
 .debug_str      0x00000000     0x3750
- .debug_str     0x00000000     0x1037 obj/code.o
-                               0x10dd (size before relaxing)
- .debug_str     0x00001037      0x184 obj/eecfg.o
+ .debug_str     0x00000000      0xe32 obj/code.o
+                                0xed8 (size before relaxing)
+ .debug_str     0x00000e32      0x184 obj/eecfg.o
                                 0x373 (size before relaxing)
- .debug_str     0x000011bb       0xc0 obj/motor_functions.o
-                                0x2e3 (size before relaxing)
+ .debug_str     0x00000fb6      0x2c5 obj/motor_functions.o
+                                0x6be (size before relaxing)
  .debug_str     0x0000127b      0x201 obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
                                 0x3d8 (size before relaxing)
  .debug_str     0x0000147c       0x65 libee.a(ee_hal_structs.o)
@@ -1582,9 +1583,9 @@ OUTPUT(c_mX.elf elf32-littlearm)
                                 0x401 (size before relaxing)
 
 .debug_frame    0x00000000     0x3514
- .debug_frame   0x00000000      0x2e4 obj/code.o
- .debug_frame   0x000002e4       0x60 obj/eecfg.o
- .debug_frame   0x00000344      0x178 obj/motor_functions.o
+ .debug_frame   0x00000000      0x29c obj/code.o
+ .debug_frame   0x0000029c       0x60 obj/eecfg.o
+ .debug_frame   0x000002fc      0x1c0 obj/motor_functions.o
  .debug_frame   0x000004bc       0x7c obj/pkg/mcu/st_stm32_stm32f4xx/src/system_stm32f4xx.o
  .debug_frame   0x00000538       0x60 libee.a(ee_hal_structs.o)
  .debug_frame   0x00000598       0x88 libee.a(ee_utils.o)

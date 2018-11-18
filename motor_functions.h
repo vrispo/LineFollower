@@ -20,6 +20,8 @@
 #include "ee_api.h"
 
 /*public functions-------------------*/
+
+/*lead left motor*/
 void breakleft(void);
 void folleleft(void);
 void forwardleft(void);
@@ -31,7 +33,11 @@ void folleright(void);
 void forwardright(void);
 void backwardright(void);
 
+/*utils*/
 void EnableMotors(void);
 void DisableMotors(void);
+
+void InitMotors(void);
+void PWM_Config_and_En(void);
 
 #endif /* MOTOR_FUNCTIONS_H_ */
