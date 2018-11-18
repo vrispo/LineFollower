@@ -15,7 +15,6 @@
 #include "kernel/sem/inc/ee_api.h"
 #include "ee_api.h"
 
-#include <stdio.h>	//Serial port debug only
 #include "motor_functions.h"
 
 void breakleft(){
