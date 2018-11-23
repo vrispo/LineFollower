@@ -270,7 +270,7 @@ console_out(char* str)
 
  //HANDLERS FOR PIN INTERRUPTS
  void EXTI1_IRQHandler(void){
-	 console_out("+++H1+++\r\n");
+	 console_out("+H1+");
 	 //Checks the line is correct
 	 if(EXTI_GetITStatus(EXTI_Line1)){
 		 //PIN 1
@@ -286,7 +286,7 @@ console_out(char* str)
  void EXTI3_IRQHandler(void){
 	 //Checks the line is correct
 	 if(EXTI_GetITStatus(EXTI_Line3)){
-		 console_out("+++H3+++\r");
+		 console_out("+H3+");
 		 //PIN 3
 		 //set time and flag for pin 3 low
 		 if(led_flags[4]==0){
@@ -299,7 +299,7 @@ console_out(char* str)
  void EXTI4_IRQHandler(void){
 	 //Checks the line is correct
 	 if(EXTI_GetITStatus(EXTI_Line4)){
-		 console_out("+++H4+++\r");
+		 console_out("+H4+");
 		 //PIN 1
 		 //set time and flag for pin 4 low
 		 if(led_flags[1]==0){
@@ -313,7 +313,7 @@ console_out(char* str)
  void EXTI9_5_IRQHandler(void){
 	 //Checks the line where comes the interrupt
 	 if(EXTI_GetITStatus(EXTI_Line5)){
-		 console_out("+++H5+++\r");
+		 console_out("+H5+");
 		 //Pin 5
 		 //set time and flag for pin 5 low
 		 if(led_flags[3]==0){
@@ -322,7 +322,7 @@ console_out(char* str)
 		 }
 	 }
 	 if(EXTI_GetITStatus(EXTI_Line6)){
-		 console_out("+++H6+++\r");
+		 console_out("+H6+");
 		 //Pin6
 		 //do something when pin6 is low (set time and set flag)
 		 if(led_flags[0]==0){
@@ -331,7 +331,7 @@ console_out(char* str)
 		 }
 	 }
 	 if(EXTI_GetITStatus(EXTI_Line7)){
-		 console_out("+++H7+++\r");
+		 console_out("+H7+");
 		 //Pin 7
 		 //set time and flag for pin 7 low
 		 if(led_flags[2]==0){
@@ -344,7 +344,7 @@ console_out(char* str)
  void EXTI15_10_IRQHandler(void){
 	 //Checks the line is correct
 	 if(EXTI_GetITStatus(EXTI_Line10)){
-		 console_out("+++H10+++\r");
+		 console_out("+H10+");
 		 //PIN 10
 		 //set time and flag for pin 10 low
 		 if(led_flags[7]==0){
@@ -353,7 +353,7 @@ console_out(char* str)
 		 }
 	 }
 	 if(EXTI_GetITStatus(EXTI_Line12)){
-		 console_out("+++H12+++\r");
+		 console_out("+H12+");
 		 //PIN 12
 		 //set time and flag for pin 12 low
 		 if(led_flags[6]==0){
@@ -390,16 +390,16 @@ TASK(CheckRead){
 	int end;	//end flag
 	
 	char str[64];
-	console_out("***READ_TASK***\r");
+	console_out("*READ_TASK*");
 
 	if(sensor_mode == SENSOR_START){
 		//INITIAL SENSOR SETUP
-		console_out("SEN_S\r");
+		console_out("SEN_S--");
 		InitLineSensor();	//Setup pins
 		read_task_init();	//Setup interrupt handlers
 		sensor_mode = SENSOR_INIT;
 	}else if(sensor_mode == SENSOR_INIT){
-		console_out("SEN_I\r");
+		console_out("SEN_I--");
 
 		//Put high all sensor pins
 		GPIO_SetBits(GPIOD, GPIO_Pin_1);
@@ -411,7 +411,7 @@ TASK(CheckRead){
 		GPIO_SetBits(GPIOC, GPIO_Pin_10);
 		GPIO_SetBits(GPIOC, GPIO_Pin_12);
 
-		console_out("SEN_I gpio_set\r");
+		console_out("SEN_I gpio_set");
 
 		//Save system time
 		sensor_up_time = my_get_systime();
@@ -423,17 +423,17 @@ TASK(CheckRead){
 		 }
 
 		 sensor_mode = SENSOR_WAIT;	//Put task in wait mode
-		 sprintf(str, "---%f SEN_I 2\r", sensor_up_time);
+		 sprintf(str, "--%f SEN_I 2", sensor_up_time);
 		 console_out(str);
 	}else if(sensor_mode == SENSOR_WAIT){
-		sprintf(str, "---%f SEN_W\r", my_get_systime());
+		sprintf(str, "---%f SEN_W", my_get_systime());
 		console_out(str);
 
 		double actual_systick = my_get_systime();
 		delta = actual_systick - sensor_up_time;	//Compute elapsed time from sensor pins up
 
 		if(delta >= DELTA_WAIT){
-			sprintf(str, "---%f SET_SENSOR_INPUT\r", my_get_systime());
+			sprintf(str, "--%f SET_SENSOR_INPUT", my_get_systime());
 			console_out(str);
 
 			reference_time = my_get_systime();
@@ -465,11 +465,11 @@ TASK(CheckRead){
 
 			sensor_mode = SENSOR_READ;
 		}else{
-			sprintf(str, "-%f SENSOR_HAVE_TO_HOLD\r", my_get_systime());
+			sprintf(str, "-%f SENSOR_HAVE_TO_HOLD", my_get_systime());
 			console_out(str);
 		}
 	}else if(sensor_mode == SENSOR_READ){
-		console_out("SEN_R\r");
+		console_out("--SEN_R");
 		end = 1;
 		for(i = 0; i < 8; i++){
 			if(led_flags[i] == 0){
@@ -501,7 +501,7 @@ TASK(TaskMotorControl){
 
 	left = right = 0;	//Initialize left and right black sensors counters
 
-	console_out("***MOTOR_TASK***\r");
+	console_out("*MOTOR_TASK*");
 
 	//protect copy of delta_sensor to local sensor_time
 	WaitSem(&delta_sensor_sem);
@@ -584,35 +584,34 @@ int main(void)
 		STM_EVAL_COMInit(COM1, &USART_InitStructure);
 
 	//------------------------------
-	console_out("***");
-	console_out("System init***");
+	console_out("*System init*");
 	/*Setup motors */
 	InitMotors();
-	console_out("****0");
+	console_out("*0");
 	PWM_Config_and_En();
-	console_out("****1");
+	console_out("*1");
 	//Enable motors
 	EnableMotors();
 
-	console_out("****2");
+	console_out("*2");
 	//At the beginning motors are stopped
 	breakright();
-	console_out("****3");
+	console_out("*3");
 	breakleft();
-	console_out("****4");
+	console_out("*4");
 	/*Start line sensor*/
 	InitLineSensor();
-	console_out("****5\r");
+	console_out("*5");
 	InitDataStruct();
 
-	console_out("STRUCT_END\r");
+	console_out("*STRUCT_END");
 
 	//Program cyclic alarm to periodically activate tasks*/
 	SetRelAlarm(CheckReadAlarm, 10, 10);
 	SetRelAlarm(IncrementTimeAlarm, 1, 1);//TODO: check the cycle value (1)
 	SetRelAlarm(MotorControlAlarm, 10, 10);	//TODO: check the cycle value (1)
 
-	console_out("***INIT END***\r");
+	console_out("**INIT END**");
 
 	/* Forever loop: background activities (if any) should go here */
 	for (;;);
