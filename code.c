@@ -376,11 +376,19 @@ ISR2(systick_handler)
 	CounterTick(myCounter);	//Count the system ticks to wake up expired alarms
 }
 
+int time_reset_callback = 0;
+
 //alarm callback to manage the time in ms
 void my_system_time(){
 	system_time++;
+	if(system_time == 200){
+		system_time = 0;
+		time_reset_callback = 1;
+	}
 }
 
+
+int timeout_read = 0;
 /**
  * This task manage the light sensors
  */
@@ -398,6 +406,7 @@ TASK(CheckRead){
 		InitLineSensor();	//Setup pins
 		read_task_init();	//Setup interrupt handlers
 		sensor_mode = SENSOR_INIT;
+		system_time = 0;
 	}else if(sensor_mode == SENSOR_INIT){
 		console_out("SEN_I--");
 
@@ -414,6 +423,7 @@ TASK(CheckRead){
 		console_out("SEN_I gpio_set");
 
 		//Save system time
+		system_time = 0;
 		sensor_up_time = my_get_systime();
 
 		//Init pin readings and flags
@@ -430,6 +440,11 @@ TASK(CheckRead){
 		console_out(str);
 
 		double actual_systick = my_get_systime();
+		if(actual_systick >= 60){
+			system_time = 0;
+			timeout_read = 1;
+			console_out("****TIMEOUT WAIT****");
+		}
 		delta = actual_systick - sensor_up_time;	//Compute elapsed time from sensor pins up
 
 		if(delta >= DELTA_WAIT){
@@ -477,6 +492,13 @@ TASK(CheckRead){
 				break;
 			}
 		}
+		
+		if(system_time >= 60){
+			system_time = 0;
+			timeout_read = 0;
+			console_out("****TIMEOUT READ****");
+		}
+		
 		/*TODO: if reference-actual>timeout restart the procedure and reset the time counter variable*/
 		if(end == 1){
 			//All sensors have returned value
