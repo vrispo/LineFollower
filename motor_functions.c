@@ -107,8 +107,8 @@ void InitMotors(){
 
 	DisableMotors();
 
-	forwardleft();
-	forwardright();
+	//forwardleft();
+	//forwardright();
 }
 
 void PWM_Config_and_En()

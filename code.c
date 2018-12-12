@@ -110,26 +110,26 @@ console_out(char* str)
 */
 
 		//Inizializzazione pin sensori
-		GPIO_InitStructure_LightSensors[0].GPIO_Pin=GPIO_Pin_1;
+		GPIO_InitStructure_LightSensors[0].GPIO_Pin=GPIO_Pin_6;
 		GPIO_InitStructure_LightSensors[0].GPIO_Mode=GPIO_Mode_OUT;
 		GPIO_InitStructure_LightSensors[0].GPIO_OType=GPIO_OType_PP;
 		GPIO_InitStructure_LightSensors[0].GPIO_Speed=GPIO_Speed_100MHz;
 		GPIO_InitStructure_LightSensors[0].GPIO_PuPd=GPIO_PuPd_NOPULL;
-		GPIO_Init(GPIOD, &GPIO_InitStructure_LightSensors[0]);
+		GPIO_Init(GPIOB, &GPIO_InitStructure_LightSensors[0]);
 
-		GPIO_InitStructure_LightSensors[1].GPIO_Pin=GPIO_Pin_3;
+		GPIO_InitStructure_LightSensors[1].GPIO_Pin=GPIO_Pin_4;
 		GPIO_InitStructure_LightSensors[1].GPIO_Mode=GPIO_Mode_OUT;
 		GPIO_InitStructure_LightSensors[1].GPIO_OType=GPIO_OType_PP;
 		GPIO_InitStructure_LightSensors[1].GPIO_Speed=GPIO_Speed_100MHz;
 		GPIO_InitStructure_LightSensors[1].GPIO_PuPd=GPIO_PuPd_NOPULL;
-		GPIO_Init(GPIOD, &GPIO_InitStructure_LightSensors[1]);
+		GPIO_Init(GPIOB, &GPIO_InitStructure_LightSensors[1]);
 
-		GPIO_InitStructure_LightSensors[2].GPIO_Pin=GPIO_Pin_4;
+		GPIO_InitStructure_LightSensors[2].GPIO_Pin=GPIO_Pin_7;
 		GPIO_InitStructure_LightSensors[2].GPIO_Mode=GPIO_Mode_OUT;
 		GPIO_InitStructure_LightSensors[2].GPIO_OType=GPIO_OType_PP;
 		GPIO_InitStructure_LightSensors[2].GPIO_Speed=GPIO_Speed_100MHz;
 		GPIO_InitStructure_LightSensors[2].GPIO_PuPd=GPIO_PuPd_NOPULL;
-		GPIO_Init(GPIOB, &GPIO_InitStructure_LightSensors[2]);
+		GPIO_Init(GPIOD, &GPIO_InitStructure_LightSensors[2]);
 
 		GPIO_InitStructure_LightSensors[3].GPIO_Pin=GPIO_Pin_5;
 		GPIO_InitStructure_LightSensors[3].GPIO_Mode=GPIO_Mode_OUT;
@@ -138,28 +138,28 @@ console_out(char* str)
 		GPIO_InitStructure_LightSensors[3].GPIO_PuPd=GPIO_PuPd_NOPULL;
 		GPIO_Init(GPIOD, &GPIO_InitStructure_LightSensors[3]);
 
-		GPIO_InitStructure_LightSensors[4].GPIO_Pin=GPIO_Pin_6;
+		GPIO_InitStructure_LightSensors[4].GPIO_Pin=GPIO_Pin_3;
 		GPIO_InitStructure_LightSensors[4].GPIO_Mode=GPIO_Mode_OUT;
 		GPIO_InitStructure_LightSensors[4].GPIO_OType=GPIO_OType_PP;
 		GPIO_InitStructure_LightSensors[4].GPIO_Speed=GPIO_Speed_100MHz;
 		GPIO_InitStructure_LightSensors[4].GPIO_PuPd=GPIO_PuPd_NOPULL;
-		GPIO_Init(GPIOB, &GPIO_InitStructure_LightSensors[4]);
+		GPIO_Init(GPIOD, &GPIO_InitStructure_LightSensors[4]);
 
-		GPIO_InitStructure_LightSensors[5].GPIO_Pin=GPIO_Pin_7;
+		GPIO_InitStructure_LightSensors[5].GPIO_Pin=GPIO_Pin_1;
 		GPIO_InitStructure_LightSensors[5].GPIO_Mode=GPIO_Mode_OUT;
 		GPIO_InitStructure_LightSensors[5].GPIO_OType=GPIO_OType_PP;
 		GPIO_InitStructure_LightSensors[5].GPIO_Speed=GPIO_Speed_100MHz;
 		GPIO_InitStructure_LightSensors[5].GPIO_PuPd=GPIO_PuPd_NOPULL;
 		GPIO_Init(GPIOD, &GPIO_InitStructure_LightSensors[5]);
 
-		GPIO_InitStructure_LightSensors[6].GPIO_Pin=GPIO_Pin_10;
+		GPIO_InitStructure_LightSensors[6].GPIO_Pin=GPIO_Pin_12;
 		GPIO_InitStructure_LightSensors[6].GPIO_Mode=GPIO_Mode_OUT;
 		GPIO_InitStructure_LightSensors[6].GPIO_OType=GPIO_OType_PP;
 		GPIO_InitStructure_LightSensors[6].GPIO_Speed=GPIO_Speed_100MHz;
 		GPIO_InitStructure_LightSensors[6].GPIO_PuPd=GPIO_PuPd_NOPULL;
 		GPIO_Init(GPIOC, &GPIO_InitStructure_LightSensors[6]);
 
-		GPIO_InitStructure_LightSensors[7].GPIO_Pin=GPIO_Pin_12;
+		GPIO_InitStructure_LightSensors[7].GPIO_Pin=GPIO_Pin_10;
 		GPIO_InitStructure_LightSensors[7].GPIO_Mode=GPIO_Mode_OUT;
 		GPIO_InitStructure_LightSensors[7].GPIO_OType=GPIO_OType_PP;
 		GPIO_InitStructure_LightSensors[7].GPIO_Speed=GPIO_Speed_100MHz;
@@ -270,7 +270,6 @@ console_out(char* str)
 
  //HANDLERS FOR PIN INTERRUPTS
  void EXTI1_IRQHandler(void){
-	 console_out("+H1+");
 	 //Checks the line is correct
 	 if(EXTI_GetITStatus(EXTI_Line1)){
 		 //PIN 1
@@ -280,32 +279,36 @@ console_out(char* str)
 			 led_ms[5] = my_get_systime();
 			 led_flags[5]=1;
 		 }
+		 /* Clear interrupt flag */
+		 EXTI_ClearITPendingBit(EXTI_Line1);
 	 }
  }
 
  void EXTI3_IRQHandler(void){
 	 //Checks the line is correct
 	 if(EXTI_GetITStatus(EXTI_Line3)){
-		 console_out("+H3+");
 		 //PIN 3
 		 //set time and flag for pin 3 low
 		 if(led_flags[4]==0){
 			 led_ms[4] = my_get_systime();
 			 led_flags[4]=1;
 		 }
+		 /* Clear interrupt flag */
+		 EXTI_ClearITPendingBit(EXTI_Line3);
 	 }
  }
 
  void EXTI4_IRQHandler(void){
 	 //Checks the line is correct
 	 if(EXTI_GetITStatus(EXTI_Line4)){
-		 console_out("+H4+");
 		 //PIN 1
 		 //set time and flag for pin 4 low
 		 if(led_flags[1]==0){
 			 led_ms[1] = my_get_systime();
 			 led_flags[1]=1;
 		 }
+		 /* Clear interrupt flag */
+		 EXTI_ClearITPendingBit(EXTI_Line4);
 	 }
  }
 
@@ -313,47 +316,50 @@ console_out(char* str)
  void EXTI9_5_IRQHandler(void){
 	 //Checks the line where comes the interrupt
 	 if(EXTI_GetITStatus(EXTI_Line5)){
-		 console_out("+H5+");
 		 //Pin 5
 		 //set time and flag for pin 5 low
 		 if(led_flags[3]==0){
 			 led_ms[0] = my_get_systime();
 			 led_flags[3]=1;
 		 }
+		 /* Clear interrupt flag */
+		 EXTI_ClearITPendingBit(EXTI_Line5);
 	 }
 	 if(EXTI_GetITStatus(EXTI_Line6)){
-		 console_out("+H6+");
 		 //Pin6
 		 //do something when pin6 is low (set time and set flag)
 		 if(led_flags[0]==0){
 			 led_ms[0] = my_get_systime();
 			 led_flags[0]=1;
 		 }
+		 /* Clear interrupt flag */
+		 EXTI_ClearITPendingBit(EXTI_Line6);
 	 }
 	 if(EXTI_GetITStatus(EXTI_Line7)){
-		 console_out("+H7+");
 		 //Pin 7
 		 //set time and flag for pin 7 low
 		 if(led_flags[2]==0){
 			 led_ms[2] = my_get_systime();
 			 led_flags[2]=1;
 		 }
+		 /* Clear interrupt flag */
+		 EXTI_ClearITPendingBit(EXTI_Line7);
 	 }
  }
 
  void EXTI15_10_IRQHandler(void){
 	 //Checks the line is correct
 	 if(EXTI_GetITStatus(EXTI_Line10)){
-		 console_out("+H10+");
 		 //PIN 10
 		 //set time and flag for pin 10 low
 		 if(led_flags[7]==0){
 			 led_ms[7] = my_get_systime();
 			 led_flags[7]=1;
 		 }
+		 /* Clear interrupt flag */
+		 EXTI_ClearITPendingBit(EXTI_Line10);
 	 }
 	 if(EXTI_GetITStatus(EXTI_Line12)){
-		 console_out("+H12+");
 		 //PIN 12
 		 //set time and flag for pin 12 low
 		 if(led_flags[6]==0){
@@ -361,6 +367,8 @@ console_out(char* str)
 			 led_ms[6] = my_get_systime();
 			 led_flags[6]=1;
 		 }
+		 /* Clear interrupt flag */
+		 EXTI_ClearITPendingBit(EXTI_Line12);
 	 }
  }
 
@@ -403,11 +411,12 @@ TASK(CheckRead){
 	if(sensor_mode == SENSOR_START){
 		//INITIAL SENSOR SETUP
 		console_out("SEN_S--");
-		InitLineSensor();	//Setup pins
+		//InitLineSensor();	//Setup pins
 		read_task_init();	//Setup interrupt handlers
 		sensor_mode = SENSOR_INIT;
 		system_time = 0;
 	}else if(sensor_mode == SENSOR_INIT){
+		InitLineSensor();	//Setup pins
 		console_out("SEN_I--");
 
 		//Put high all sensor pins
@@ -455,19 +464,19 @@ TASK(CheckRead){
 
 			//Set all pins as input
 			GPIO_InitStructure_LightSensors[0].GPIO_Mode=GPIO_Mode_IN;
-			GPIO_Init(GPIOD, &GPIO_InitStructure_LightSensors[0]);
+			GPIO_Init(GPIOB, &GPIO_InitStructure_LightSensors[0]);
 
 			GPIO_InitStructure_LightSensors[1].GPIO_Mode=GPIO_Mode_IN;
-			GPIO_Init(GPIOD, &GPIO_InitStructure_LightSensors[1]);
+			GPIO_Init(GPIOB, &GPIO_InitStructure_LightSensors[1]);
 
 			GPIO_InitStructure_LightSensors[2].GPIO_Mode=GPIO_Mode_IN;
-			GPIO_Init(GPIOB, &GPIO_InitStructure_LightSensors[2]);
+			GPIO_Init(GPIOD, &GPIO_InitStructure_LightSensors[2]);
 
 			GPIO_InitStructure_LightSensors[3].GPIO_Mode=GPIO_Mode_IN;
 			GPIO_Init(GPIOD, &GPIO_InitStructure_LightSensors[3]);
 
 			GPIO_InitStructure_LightSensors[4].GPIO_Mode=GPIO_Mode_IN;
-			GPIO_Init(GPIOB, &GPIO_InitStructure_LightSensors[4]);
+			GPIO_Init(GPIOD, &GPIO_InitStructure_LightSensors[4]);
 
 			GPIO_InitStructure_LightSensors[5].GPIO_Mode=GPIO_Mode_IN;
 			GPIO_Init(GPIOD, &GPIO_InitStructure_LightSensors[5]);
@@ -497,6 +506,7 @@ TASK(CheckRead){
 			system_time = 0;
 			timeout_read = 0;
 			console_out("****TIMEOUT READ****");
+			sensor_mode=SENSOR_INIT;
 		}
 		
 		/*TODO: if reference-actual>timeout restart the procedure and reset the time counter variable*/
@@ -627,6 +637,8 @@ int main(void)
 	InitDataStruct();
 
 	console_out("*STRUCT_END");
+
+	system_time = 0;
 
 	//Program cyclic alarm to periodically activate tasks*/
 	SetRelAlarm(CheckReadAlarm, 10, 10);

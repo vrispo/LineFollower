@@ -149,4 +149,33 @@ CPU mySystem {
 		PRIORITY = 1;
 	};
 
+	ISR EXTI1_IRQHandler {
+		CATEGORY = 2;
+		ENTRY = "EXTI1";
+		PRIORITY = 2;
+	};	
+	
+	ISR EXTI3_IRQHandler {
+		CATEGORY = 2;
+		ENTRY = "EXTI3";
+		PRIORITY = 2;
+	};
+
+	ISR EXTI4_IRQHandler {
+		CATEGORY = 2;
+		ENTRY = "EXTI4";
+		PRIORITY = 2;
+	};	
+	
+	ISR EXTI9_5_IRQHandler {
+		CATEGORY = 2;
+		ENTRY = "EXTI9_5";
+		PRIORITY = 2;
+	};
+	
+	ISR EXTI15_10_IRQHandler {
+		CATEGORY = 2;
+		ENTRY = "EXTI15_10";
+		PRIORITY = 2;
+	};			
 };

@@ -44,8 +44,8 @@
     #define EE_CURRENTCPU 0
 
     /* Number of isr 2 */
-    #define EE_MAX_ISR2   1
-    #define EE_MAX_ISR_ID 1
+    #define EE_MAX_ISR2   6
+    #define EE_MAX_ISR_ID 6
 
 #ifndef __DISABLE_EEOPT_DEFINES__
 
@@ -87,6 +87,16 @@
  **************************************************************************/
 #define EE_CORTEX_MX_SYSTICK_ISR systick_handler
 #define EE_CORTEX_MX_SYSTICK_ISR_PRI EE_ISR_PRI_1
+#define EE_CORTEX_MX_EXTI1_ISR EXTI1_IRQHandler
+#define EE_CORTEX_MX_EXTI1_ISR_PRI EE_ISR_PRI_2
+#define EE_CORTEX_MX_EXTI3_ISR EXTI3_IRQHandler
+#define EE_CORTEX_MX_EXTI3_ISR_PRI EE_ISR_PRI_2
+#define EE_CORTEX_MX_EXTI4_ISR EXTI4_IRQHandler
+#define EE_CORTEX_MX_EXTI4_ISR_PRI EE_ISR_PRI_2
+#define EE_CORTEX_MX_EXTI9_5_ISR EXTI9_5_IRQHandler
+#define EE_CORTEX_MX_EXTI9_5_ISR_PRI EE_ISR_PRI_2
+#define EE_CORTEX_MX_EXTI15_10_ISR EXTI15_10_IRQHandler
+#define EE_CORTEX_MX_EXTI15_10_ISR_PRI EE_ISR_PRI_2
 
 
 /***************************************************************************
