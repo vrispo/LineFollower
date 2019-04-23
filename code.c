@@ -59,7 +59,7 @@
 #define SENSOR_READ 3
 
 #define DELTA_WAIT 1	//time to wait
-#define LIGHT_THRESHOLD 2	//(ms) threshold to separe white and black sensor readings
+#define LIGHT_THRESHOLD 0	//(ms) threshold to separe white and black sensor readings
 
  /*Global Variables-------------------------------------------------------------------------------------------------*/
 USART_InitTypeDef USART_InitStructure;
@@ -80,17 +80,17 @@ SemType delta_sensor_sem = STATICSEM(1);	//Semaphore to protect delta_sensor
 /*-------------------------------------------------------------------------------------------------------------------*/
 
 //DEBUGGING SERIAL FUNCTION
-console_out(char* str)
+/*console_out(char* str)
 {
 	EE_UINT8 i = 0;
 
 	while (str[i] != '\0') {
 		USART_SendData(EVAL_COM1, (uint8_t) str[i++]);
-		/* Loop until the end of transmission */
+		// Loop until the end of transmission
 		while (USART_GetFlagStatus(EVAL_COM1, USART_FLAG_TC) == RESET);
 	}
 }
-
+*/
 /*
  * OUR FUNCTIONS start
  */
@@ -115,14 +115,14 @@ console_out(char* str)
 		GPIO_InitStructure_LightSensors[0].GPIO_OType=GPIO_OType_PP;
 		GPIO_InitStructure_LightSensors[0].GPIO_Speed=GPIO_Speed_100MHz;
 		GPIO_InitStructure_LightSensors[0].GPIO_PuPd=GPIO_PuPd_NOPULL;
-		GPIO_Init(GPIOB, &GPIO_InitStructure_LightSensors[0]);
+		GPIO_Init(GPIOE, &GPIO_InitStructure_LightSensors[0]);
 
 		GPIO_InitStructure_LightSensors[1].GPIO_Pin=GPIO_Pin_4;
 		GPIO_InitStructure_LightSensors[1].GPIO_Mode=GPIO_Mode_OUT;
 		GPIO_InitStructure_LightSensors[1].GPIO_OType=GPIO_OType_PP;
 		GPIO_InitStructure_LightSensors[1].GPIO_Speed=GPIO_Speed_100MHz;
 		GPIO_InitStructure_LightSensors[1].GPIO_PuPd=GPIO_PuPd_NOPULL;
-		GPIO_Init(GPIOB, &GPIO_InitStructure_LightSensors[1]);
+		GPIO_Init(GPIOE, &GPIO_InitStructure_LightSensors[1]);
 
 		GPIO_InitStructure_LightSensors[2].GPIO_Pin=GPIO_Pin_7;
 		GPIO_InitStructure_LightSensors[2].GPIO_Mode=GPIO_Mode_OUT;
@@ -212,9 +212,9 @@ console_out(char* str)
 	 //For each used EXTI line tell wich pin is selected
 	 SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOD, EXTI_PinSource1);
 	 SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOD, EXTI_PinSource3);
-	 SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOB, EXTI_PinSource4);
+	 SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource4);
 	 SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOD, EXTI_PinSource5);
-	 SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOB, EXTI_PinSource6);
+	 SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE, EXTI_PinSource6);
 	 SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOD, EXTI_PinSource7);
 	 SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOC, EXTI_PinSource10);
 	 SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOC, EXTI_PinSource12);
@@ -406,30 +406,30 @@ TASK(CheckRead){
 	int end;	//end flag
 	
 	char str[64];
-	console_out("*READ_TASK*");
+	//console_out("*READ_TASK*");
 
 	if(sensor_mode == SENSOR_START){
 		//INITIAL SENSOR SETUP
-		console_out("SEN_S--");
+		//console_out("SEN_S--");
 		//InitLineSensor();	//Setup pins
 		read_task_init();	//Setup interrupt handlers
 		sensor_mode = SENSOR_INIT;
 		system_time = 0;
 	}else if(sensor_mode == SENSOR_INIT){
 		InitLineSensor();	//Setup pins
-		console_out("SEN_I--");
+		//console_out("SEN_I--");
 
 		//Put high all sensor pins
 		GPIO_SetBits(GPIOD, GPIO_Pin_1);
 		GPIO_SetBits(GPIOD, GPIO_Pin_3);
-		GPIO_SetBits(GPIOB, GPIO_Pin_4);
+		GPIO_SetBits(GPIOE, GPIO_Pin_4);
 		GPIO_SetBits(GPIOD, GPIO_Pin_5);
-		GPIO_SetBits(GPIOB, GPIO_Pin_6);
+		GPIO_SetBits(GPIOE, GPIO_Pin_6);
 		GPIO_SetBits(GPIOD, GPIO_Pin_7);
 		GPIO_SetBits(GPIOC, GPIO_Pin_10);
 		GPIO_SetBits(GPIOC, GPIO_Pin_12);
 
-		console_out("SEN_I gpio_set");
+		//console_out("SEN_I gpio_set");
 
 		//Save system time
 		system_time = 0;
@@ -443,31 +443,31 @@ TASK(CheckRead){
 
 		 sensor_mode = SENSOR_WAIT;	//Put task in wait mode
 		 sprintf(str, "--%f SEN_I 2", sensor_up_time);
-		 console_out(str);
+		 //console_out(str);
 	}else if(sensor_mode == SENSOR_WAIT){
 		sprintf(str, "---%f SEN_W", my_get_systime());
-		console_out(str);
+		//console_out(str);
 
 		double actual_systick = my_get_systime();
 		if(actual_systick >= 60){
 			system_time = 0;
 			timeout_read = 1;
-			console_out("****TIMEOUT WAIT****");
+			//console_out("****TIMEOUT WAIT****");
 		}
 		delta = actual_systick - sensor_up_time;	//Compute elapsed time from sensor pins up
 
 		if(delta >= DELTA_WAIT){
 			sprintf(str, "--%f SET_SENSOR_INPUT", my_get_systime());
-			console_out(str);
+			//console_out(str);
 
 			reference_time = my_get_systime();
 
 			//Set all pins as input
 			GPIO_InitStructure_LightSensors[0].GPIO_Mode=GPIO_Mode_IN;
-			GPIO_Init(GPIOB, &GPIO_InitStructure_LightSensors[0]);
+			GPIO_Init(GPIOE, &GPIO_InitStructure_LightSensors[0]);
 
 			GPIO_InitStructure_LightSensors[1].GPIO_Mode=GPIO_Mode_IN;
-			GPIO_Init(GPIOB, &GPIO_InitStructure_LightSensors[1]);
+			GPIO_Init(GPIOE, &GPIO_InitStructure_LightSensors[1]);
 
 			GPIO_InitStructure_LightSensors[2].GPIO_Mode=GPIO_Mode_IN;
 			GPIO_Init(GPIOD, &GPIO_InitStructure_LightSensors[2]);
@@ -490,10 +490,10 @@ TASK(CheckRead){
 			sensor_mode = SENSOR_READ;
 		}else{
 			sprintf(str, "-%f SENSOR_HAVE_TO_HOLD", my_get_systime());
-			console_out(str);
+			//console_out(str);
 		}
 	}else if(sensor_mode == SENSOR_READ){
-		console_out("--SEN_R");
+		//console_out("--SEN_R");
 		end = 1;
 		for(i = 0; i < 8; i++){
 			if(led_flags[i] == 0){
@@ -505,8 +505,15 @@ TASK(CheckRead){
 		if(system_time >= 60){
 			system_time = 0;
 			timeout_read = 0;
-			console_out("****TIMEOUT READ****");
-			sensor_mode=SENSOR_INIT;
+			for(i = 0; i < 8; i++){
+				if(led_flags[i] == 0){
+					led_flags[i] = 1;
+					led_ms[i] = reference_time;	//set time to have this sensor appear read white
+				}
+			}
+			end = 1;
+			//console_out("****TIMEOUT READ****");
+			//sensor_mode=SENSOR_INIT;
 		}
 		
 		/*TODO: if reference-actual>timeout restart the procedure and reset the time counter variable*/
@@ -533,7 +540,7 @@ TASK(TaskMotorControl){
 
 	left = right = 0;	//Initialize left and right black sensors counters
 
-	console_out("*MOTOR_TASK*");
+	//console_out("*MOTOR_TASK*");
 
 	//protect copy of delta_sensor to local sensor_time
 	WaitSem(&delta_sensor_sem);
@@ -616,27 +623,27 @@ int main(void)
 		STM_EVAL_COMInit(COM1, &USART_InitStructure);
 
 	//------------------------------
-	console_out("*System init*");
+	//console_out("*System init*");
 	/*Setup motors */
 	InitMotors();
-	console_out("*0");
+	//console_out("*0");
 	PWM_Config_and_En();
-	console_out("*1");
+	//console_out("*1");
 	//Enable motors
 	EnableMotors();
 
-	console_out("*2");
+	//console_out("*2");
 	//At the beginning motors are stopped
 	breakright();
-	console_out("*3");
+	//console_out("*3");
 	breakleft();
-	console_out("*4");
+	//console_out("*4");
 	/*Start line sensor*/
 	InitLineSensor();
-	console_out("*5");
+	//console_out("*5");
 	InitDataStruct();
 
-	console_out("*STRUCT_END");
+	//console_out("*STRUCT_END");
 
 	system_time = 0;
 
@@ -645,7 +652,7 @@ int main(void)
 	SetRelAlarm(IncrementTimeAlarm, 1, 1);//TODO: check the cycle value (1)
 	SetRelAlarm(MotorControlAlarm, 10, 10);	//TODO: check the cycle value (1)
 
-	console_out("**INIT END**");
+	//console_out("**INIT END**");
 
 	/* Forever loop: background activities (if any) should go here */
 	for (;;);
