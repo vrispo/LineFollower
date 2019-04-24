@@ -76,13 +76,13 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_xo8hcGXREemwVNjOsPY5MA" name="Block Definition Diagram">
       <packagedElement xmi:type="uml:Class" xmi:id="_BcjkIGXSEemwVNjOsPY5MA" name="Line Follower">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_aZOdE2XSEemwVNjOsPY5MA" name="discovery_1" type="_Icd8kGXSEemwVNjOsPY5MA" aggregation="composite" association="_aZOdEGXSEemwVNjOsPY5MA"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_2SymsmZbEemwVNjOsPY5MA" name="light_sensor_array_1" type="_iNttEGXSEemwVNjOsPY5MA" aggregation="composite" association="_2Sx_oGZbEemwVNjOsPY5MA"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_cunzcmZcEemwVNjOsPY5MA" name="motor_driver_1" type="_uOeJMGXSEemwVNjOsPY5MA" aggregation="composite" association="_cunMYGZcEemwVNjOsPY5MA"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_gFPxAGZcEemwVNjOsPY5MA" name="motor_1" type="_IG1skGZbEemwVNjOsPY5MA" aggregation="composite" association="_gFPJ8GZcEemwVNjOsPY5MA">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_h8eYYGZcEemwVNjOsPY5MA" value="2"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_h8hbsGZcEemwVNjOsPY5MA" value="2"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_e3wN4GaCEemV29yFkTZpMw" name="myLightSensorArray" type="_iNttEGXSEemwVNjOsPY5MA" aggregation="shared" association="_e3oSEGaCEemV29yFkTZpMw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_hgpiwmaCEemV29yFkTZpMw" name="myMotors" type="_IG1skGZbEemwVNjOsPY5MA" aggregation="shared" association="_hgo7sGaCEemV29yFkTZpMw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_kTp14GaCEemV29yFkTZpMw" value="2"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_kUh_oGaCEemV29yFkTZpMw" value="2"/>
         </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_l-bVomaCEemV29yFkTZpMw" name="myDiscovery" type="_Icd8kGXSEemwVNjOsPY5MA" aggregation="shared" association="_l-aukGaCEemV29yFkTZpMw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_m2x58maCEemV29yFkTZpMw" name="myMotorDriver" type="_uOeJMGXSEemwVNjOsPY5MA" aggregation="shared" association="_m2xS4GaCEemV29yFkTZpMw"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_Icd8kGXSEemwVNjOsPY5MA" name="Discovery">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_JFcX8GZdEemwVNjOsPY5MA" name="Vcc">
@@ -140,14 +140,8 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_aZOdEGXSEemwVNjOsPY5MA" memberEnd="_aZOdE2XSEemwVNjOsPY5MA _aZOdFGXSEemwVNjOsPY5MA">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_aZOdEWXSEemwVNjOsPY5MA" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_aZOdEmXSEemwVNjOsPY5MA" key="nature" value="SysML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_aZOdFGXSEemwVNjOsPY5MA" name="line follower_1" type="_BcjkIGXSEemwVNjOsPY5MA" association="_aZOdEGXSEemwVNjOsPY5MA"/>
-      </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_iNttEGXSEemwVNjOsPY5MA" name="Light_Sensor_Array">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_FUMSIWXUEemwVNjOsPY5MA" name="light_sensor_1" type="_9BKE8GXTEemwVNjOsPY5MA" aggregation="composite" association="_FULrEGXUEemwVNjOsPY5MA">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FUMSIWXUEemwVNjOsPY5MA" name="myLightSensors" type="_9BKE8GXTEemwVNjOsPY5MA" aggregation="composite" association="_FULrEGXUEemwVNjOsPY5MA">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_KASN0GXUEemwVNjOsPY5MA" value="8"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_KAV4MGXUEemwVNjOsPY5MA" value="8"/>
         </ownedAttribute>
@@ -188,7 +182,7 @@
         </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_9BKE8GXTEemwVNjOsPY5MA" name="Light_Sensor">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_FUMSImXUEemwVNjOsPY5MA" name="light_sensor_array_1" type="_iNttEGXSEemwVNjOsPY5MA" association="_FULrEGXUEemwVNjOsPY5MA"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_FUMSImXUEemwVNjOsPY5MA" name="myLightSensorArray" type="_iNttEGXSEemwVNjOsPY5MA" association="_FULrEGXUEemwVNjOsPY5MA"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_rEvtQGXUEemwVNjOsPY5MA" name="Level">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
         </ownedAttribute>
@@ -206,23 +200,29 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_2Sx_oGZbEemwVNjOsPY5MA" memberEnd="_2SymsmZbEemwVNjOsPY5MA _2SzNwGZbEemwVNjOsPY5MA">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2SymsGZbEemwVNjOsPY5MA" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2SymsWZbEemwVNjOsPY5MA" key="nature" value="SysML_Nature"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_e3oSEGaCEemV29yFkTZpMw" memberEnd="_e3wN4GaCEemV29yFkTZpMw _e3w08GaCEemV29yFkTZpMw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_e3u_wGaCEemV29yFkTZpMw" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_e3u_wWaCEemV29yFkTZpMw" key="nature" value="SysML_Nature"/>
         </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_2SzNwGZbEemwVNjOsPY5MA" name="line follower_1" type="_BcjkIGXSEemwVNjOsPY5MA" association="_2Sx_oGZbEemwVNjOsPY5MA"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_e3w08GaCEemV29yFkTZpMw" name="line follower" type="_BcjkIGXSEemwVNjOsPY5MA" association="_e3oSEGaCEemV29yFkTZpMw"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_cunMYGZcEemwVNjOsPY5MA" memberEnd="_cunzcmZcEemwVNjOsPY5MA _cunzc2ZcEemwVNjOsPY5MA">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cunzcGZcEemwVNjOsPY5MA" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cunzcWZcEemwVNjOsPY5MA" key="nature" value="SysML_Nature"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_hgo7sGaCEemV29yFkTZpMw" memberEnd="_hgpiwmaCEemV29yFkTZpMw _hgqJ0GaCEemV29yFkTZpMw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_hgpiwGaCEemV29yFkTZpMw" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_hgpiwWaCEemV29yFkTZpMw" key="nature" value="SysML_Nature"/>
         </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_cunzc2ZcEemwVNjOsPY5MA" name="line follower_1" type="_BcjkIGXSEemwVNjOsPY5MA" association="_cunMYGZcEemwVNjOsPY5MA"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_hgqJ0GaCEemV29yFkTZpMw" name="line follower" type="_BcjkIGXSEemwVNjOsPY5MA" association="_hgo7sGaCEemV29yFkTZpMw"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_gFPJ8GZcEemwVNjOsPY5MA" memberEnd="_gFPxAGZcEemwVNjOsPY5MA _gFPxAWZcEemwVNjOsPY5MA">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_gFPJ8WZcEemwVNjOsPY5MA" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_gFPJ8mZcEemwVNjOsPY5MA" key="nature" value="SysML_Nature"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_l-aukGaCEemV29yFkTZpMw" memberEnd="_l-bVomaCEemV29yFkTZpMw _l-b8sGaCEemV29yFkTZpMw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_l-bVoGaCEemV29yFkTZpMw" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_l-bVoWaCEemV29yFkTZpMw" key="nature" value="SysML_Nature"/>
         </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_gFPxAWZcEemwVNjOsPY5MA" name="line follower_1" type="_BcjkIGXSEemwVNjOsPY5MA" association="_gFPJ8GZcEemwVNjOsPY5MA"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_l-b8sGaCEemV29yFkTZpMw" name="line follower" type="_BcjkIGXSEemwVNjOsPY5MA" association="_l-aukGaCEemV29yFkTZpMw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_m2xS4GaCEemV29yFkTZpMw" memberEnd="_m2x58maCEemV29yFkTZpMw _m2yhAGaCEemV29yFkTZpMw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_m2x58GaCEemV29yFkTZpMw" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_m2x58WaCEemV29yFkTZpMw" key="nature" value="SysML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_m2yhAGaCEemV29yFkTZpMw" name="line follower" type="_BcjkIGXSEemwVNjOsPY5MA" association="_m2xS4GaCEemV29yFkTZpMw"/>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_7fqLEGXVEemwVNjOsPY5MA" name="Data_Types">
