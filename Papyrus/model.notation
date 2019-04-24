@@ -219,7 +219,7 @@
         <styles xmi:type="notation:TitleStyle" xmi:id="_shI2x2WoEemwVNjOsPY5MA"/>
       </children>
       <element xmi:type="uml:Class" href="model.uml#_qWEGUGWoEemwVNjOsPY5MA"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_shI2xGWoEemwVNjOsPY5MA" x="25" y="2" width="1256" height="686"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_shI2xGWoEemwVNjOsPY5MA" x="27" y="34" width="1256" height="686"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_skRDRWWoEemwVNjOsPY5MA" type="StereotypeComment">
       <styles xmi:type="notation:TitleStyle" xmi:id="_skRDRmWoEemwVNjOsPY5MA" showTitle="true"/>
@@ -997,11 +997,6 @@
       </styles>
       <element xsi:nil="true"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IHNgBWZbEemwVNjOsPY5MA" x="200"/>
-    </children>
-    <children xmi:type="notation:Shape" xmi:id="_lKaFQGZiEemwVNjOsPY5MA" type="2012">
-      <children xmi:type="notation:DecorationNode" xmi:id="_lKaFQmZiEemwVNjOsPY5MA" type="5038"/>
-      <element xmi:type="uml:Comment" href="model.uml#_lKYQEGZiEemwVNjOsPY5MA"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lKaFQWZiEemwVNjOsPY5MA" x="59" y="579"/>
     </children>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_-bK2wWXREemwVNjOsPY5MA"/>
     <styles xmi:type="style:PapyrusViewStyle" xmi:id="_-bK2wmXREemwVNjOsPY5MA">

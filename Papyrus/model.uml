@@ -75,10 +75,6 @@
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_xo8hcGXREemwVNjOsPY5MA" name="Block Definition Diagram">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_lKYQEGZiEemwVNjOsPY5MA">
-        <body>TIM3 and GPIO_0 to GPIO_4 go to the motor driver&#xD;
-GPIO_5 to GPIO_12 and 3V go to the light sensor array</body>
-      </ownedComment>
       <packagedElement xmi:type="uml:Class" xmi:id="_BcjkIGXSEemwVNjOsPY5MA" name="Line Follower">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_aZOdE2XSEemwVNjOsPY5MA" name="discovery_1" type="_Icd8kGXSEemwVNjOsPY5MA" aggregation="composite" association="_aZOdEGXSEemwVNjOsPY5MA"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_2SymsmZbEemwVNjOsPY5MA" name="light_sensor_array_1" type="_iNttEGXSEemwVNjOsPY5MA" aggregation="composite" association="_2Sx_oGZbEemwVNjOsPY5MA"/>
