@@ -3,110 +3,35 @@
   <uml:Model xmi:id="_LArUoGWkEemwVNjOsPY5MA" name="RootElement">
     <packagedElement xmi:type="uml:Package" xmi:id="_W0HwsGWoEemwVNjOsPY5MA" name="Platform (hardware)">
       <packagedElement xmi:type="uml:Class" xmi:id="_qWEGUGWoEemwVNjOsPY5MA" name="System">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_7hvvMGWoEemwVNjOsPY5MA" name="myBoard" type="__H59kGWoEemwVNjOsPY5MA" aggregation="composite" association="__IDukGWoEemwVNjOsPY5MA">
-          <qualifier xmi:type="uml:Port" xmi:id="_dd81UGWxEemwVNjOsPY5MA" name="GPIO_pin_1" aggregation="composite"/>
-          <qualifier xmi:type="uml:Port" xmi:id="_ditZgGWxEemwVNjOsPY5MA" name="GPIO_pin_2" aggregation="composite"/>
-          <qualifier xmi:type="uml:Port" xmi:id="_dnkEUGWxEemwVNjOsPY5MA" name="GPIO_pin_3" aggregation="composite"/>
-          <qualifier xmi:type="uml:Port" xmi:id="_drMnIGWxEemwVNjOsPY5MA" name="GPIO_pin_4" aggregation="composite"/>
-          <qualifier xmi:type="uml:Port" xmi:id="_dvqQYGWxEemwVNjOsPY5MA" name="GPIO_pin_5" aggregation="composite"/>
-          <qualifier xmi:type="uml:Port" xmi:id="_dziDwGWxEemwVNjOsPY5MA" name="GPIO_pin_6" aggregation="composite"/>
-          <qualifier xmi:type="uml:Port" xmi:id="_d5RfYGWxEemwVNjOsPY5MA" name="GPIO_pin_7" aggregation="composite"/>
-          <qualifier xmi:type="uml:Port" xmi:id="_QP5vkGXFEemwVNjOsPY5MA" name="GPIO_pin_9" aggregation="composite"/>
-          <qualifier xmi:type="uml:Port" xmi:id="_Sydy8GXFEemwVNjOsPY5MA" name="GPIO_pin_10" aggregation="composite"/>
-          <qualifier xmi:type="uml:Port" xmi:id="_UHUtEGXFEemwVNjOsPY5MA" name="GPIO_pin_11" aggregation="composite"/>
-          <qualifier xmi:type="uml:Port" xmi:id="_VJBaoGXFEemwVNjOsPY5MA" name="GPIO_pin_12" aggregation="composite"/>
-        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_7hvvMGWoEemwVNjOsPY5MA" name="myBoard" type="__H59kGWoEemwVNjOsPY5MA" aggregation="composite" association="__IDukGWoEemwVNjOsPY5MA"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_CWNsoGWpEemwVNjOsPY5MA" name="myMotor_Driver" type="_D9InIGWpEemwVNjOsPY5MA" aggregation="composite" association="_D9InImWpEemwVNjOsPY5MA">
-          <qualifier xmi:type="uml:Port" xmi:id="_WN2xMGXEEemwVNjOsPY5MA" name="Command_DX_1" aggregation="composite"/>
-          <qualifier xmi:type="uml:Port" xmi:id="_YKFNUGXEEemwVNjOsPY5MA" name="Command_SX_0" aggregation="composite"/>
-          <qualifier xmi:type="uml:Port" xmi:id="_Z9QbIGXEEemwVNjOsPY5MA" name="Command_SX_1" aggregation="composite"/>
-          <qualifier xmi:type="uml:Port" xmi:id="_gvaEYGXEEemwVNjOsPY5MA" name="PWM_sx" aggregation="composite"/>
-          <qualifier xmi:type="uml:Port" xmi:id="_hEKMYGXEEemwVNjOsPY5MA" name="PWM_dx" aggregation="composite"/>
+          <qualifier xmi:type="uml:Port" xmi:id="_gvaEYGXEEemwVNjOsPY5MA" name="Motor_Control" type="_Oe1K0GXWEemwVNjOsPY5MA" aggregation="composite"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_9nNtQGWwEemwVNjOsPY5MA" name="myLight_Sensor_Array" type="_BgbagGWxEemwVNjOsPY5MA" aggregation="composite" association="_BjHiIGWxEemwVNjOsPY5MA">
-          <qualifier xmi:type="uml:Port" xmi:id="_PdB4QGWxEemwVNjOsPY5MA" name="Light_Sensor_1" aggregation="composite"/>
-          <qualifier xmi:type="uml:Port" xmi:id="_Phb3IGWxEemwVNjOsPY5MA" name="Light_Sensor_2" aggregation="composite"/>
-          <qualifier xmi:type="uml:Port" xmi:id="_PlpBsGWxEemwVNjOsPY5MA" name="Light_Sensor_3" aggregation="composite"/>
-          <qualifier xmi:type="uml:Port" xmi:id="_Pp7r0GWxEemwVNjOsPY5MA" name="Light_Sensor_4" aggregation="composite"/>
-          <qualifier xmi:type="uml:Port" xmi:id="_Ptwb4GWxEemwVNjOsPY5MA" name="Light_Sensor_5" aggregation="composite"/>
-          <qualifier xmi:type="uml:Port" xmi:id="_PyHXcGWxEemwVNjOsPY5MA" name="Light_Sensor_6" aggregation="composite"/>
-          <qualifier xmi:type="uml:Port" xmi:id="_P2fhIGWxEemwVNjOsPY5MA" name="Light_Sensor_7" aggregation="composite"/>
-        </ownedAttribute>
-        <ownedConnector xmi:type="uml:Connector" xmi:id="_PNr_QGWyEemwVNjOsPY5MA">
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_PNr_QWWyEemwVNjOsPY5MA" partWithPort="_7hvvMGWoEemwVNjOsPY5MA" role="_dd81UGWxEemwVNjOsPY5MA"/>
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_PNr_QmWyEemwVNjOsPY5MA" partWithPort="_9nNtQGWwEemwVNjOsPY5MA" role="_PdB4QGWxEemwVNjOsPY5MA"/>
-        </ownedConnector>
-        <ownedConnector xmi:type="uml:Connector" xmi:id="_P2PNAGWyEemwVNjOsPY5MA">
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_P2P0EGWyEemwVNjOsPY5MA" partWithPort="_7hvvMGWoEemwVNjOsPY5MA" role="_ditZgGWxEemwVNjOsPY5MA"/>
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_P2P0EWWyEemwVNjOsPY5MA" partWithPort="_9nNtQGWwEemwVNjOsPY5MA" role="_Phb3IGWxEemwVNjOsPY5MA"/>
-        </ownedConnector>
-        <ownedConnector xmi:type="uml:Connector" xmi:id="_Qwz-4GWyEemwVNjOsPY5MA">
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_Qw0l8GWyEemwVNjOsPY5MA" partWithPort="_7hvvMGWoEemwVNjOsPY5MA" role="_dnkEUGWxEemwVNjOsPY5MA"/>
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_Qw0l8WWyEemwVNjOsPY5MA" partWithPort="_9nNtQGWwEemwVNjOsPY5MA" role="_PlpBsGWxEemwVNjOsPY5MA"/>
-        </ownedConnector>
-        <ownedConnector xmi:type="uml:Connector" xmi:id="_RayI8GWyEemwVNjOsPY5MA">
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_RaywAGWyEemwVNjOsPY5MA" partWithPort="_7hvvMGWoEemwVNjOsPY5MA" role="_drMnIGWxEemwVNjOsPY5MA"/>
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_RaywAWWyEemwVNjOsPY5MA" partWithPort="_9nNtQGWwEemwVNjOsPY5MA" role="_Pp7r0GWxEemwVNjOsPY5MA"/>
-        </ownedConnector>
-        <ownedConnector xmi:type="uml:Connector" xmi:id="_R-pD8GWyEemwVNjOsPY5MA">
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_R-pD8WWyEemwVNjOsPY5MA" partWithPort="_7hvvMGWoEemwVNjOsPY5MA" role="_dvqQYGWxEemwVNjOsPY5MA"/>
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_R-pD8mWyEemwVNjOsPY5MA" partWithPort="_9nNtQGWwEemwVNjOsPY5MA" role="_Ptwb4GWxEemwVNjOsPY5MA"/>
-        </ownedConnector>
-        <ownedConnector xmi:type="uml:Connector" xmi:id="_ScjvAGWyEemwVNjOsPY5MA">
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_SckWEGWyEemwVNjOsPY5MA" partWithPort="_7hvvMGWoEemwVNjOsPY5MA" role="_dziDwGWxEemwVNjOsPY5MA"/>
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_SckWEWWyEemwVNjOsPY5MA" partWithPort="_9nNtQGWwEemwVNjOsPY5MA" role="_PyHXcGWxEemwVNjOsPY5MA"/>
-        </ownedConnector>
-        <ownedConnector xmi:type="uml:Connector" xmi:id="_S_Z9YGWyEemwVNjOsPY5MA">
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_S_Z9YWWyEemwVNjOsPY5MA" partWithPort="_7hvvMGWoEemwVNjOsPY5MA" role="_d5RfYGWxEemwVNjOsPY5MA"/>
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_S_Z9YmWyEemwVNjOsPY5MA" partWithPort="_9nNtQGWwEemwVNjOsPY5MA" role="_P2fhIGWxEemwVNjOsPY5MA"/>
-        </ownedConnector>
-        <ownedConnector xmi:type="uml:Connector" xmi:id="_sb_sgGWyEemwVNjOsPY5MA">
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_scA6oGWyEemwVNjOsPY5MA" partWithPort="_7hvvMGWoEemwVNjOsPY5MA" role="_aUd74GWxEemwVNjOsPY5MA"/>
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_scA6oWWyEemwVNjOsPY5MA" partWithPort="_9nNtQGWwEemwVNjOsPY5MA" role="_Nn9NAGWxEemwVNjOsPY5MA"/>
-        </ownedConnector>
-        <ownedConnector xmi:type="uml:Connector" xmi:id="_bsJ1oGWzEemwVNjOsPY5MA">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_9nNtQGWwEemwVNjOsPY5MA" name="myLight_Sensor_Array" type="_BgbagGWxEemwVNjOsPY5MA" aggregation="composite" association="_BjHiIGWxEemwVNjOsPY5MA"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_QCucsGZpEemwVNjOsPY5MA" name="part1" type="_SCqUIGZpEemwVNjOsPY5MA" aggregation="composite" association="_SCq7MGZpEemwVNjOsPY5MA"/>
+        <ownedConnector xmi:type="uml:Connector" xmi:id="_bsJ1oGWzEemwVNjOsPY5MA" name="led_connector">
           <end xmi:type="uml:ConnectorEnd" xmi:id="_bsJ1oWWzEemwVNjOsPY5MA" partWithPort="_7hvvMGWoEemwVNjOsPY5MA" role="_VPVjMGWzEemwVNjOsPY5MA"/>
           <end xmi:type="uml:ConnectorEnd" xmi:id="_bsKcsGWzEemwVNjOsPY5MA" partWithPort="_9nNtQGWwEemwVNjOsPY5MA" role="_RahNwGWzEemwVNjOsPY5MA"/>
         </ownedConnector>
-        <ownedConnector xmi:type="uml:Connector" xmi:id="_Neew0GXFEemwVNjOsPY5MA">
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_Neew0WXFEemwVNjOsPY5MA" partWithPort="_7hvvMGWoEemwVNjOsPY5MA" role="_IL8gMGXFEemwVNjOsPY5MA"/>
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_Neew0mXFEemwVNjOsPY5MA" partWithPort="_CWNsoGWpEemwVNjOsPY5MA" role="__etfwGXDEemwVNjOsPY5MA"/>
-        </ownedConnector>
-        <ownedConnector xmi:type="uml:Connector" xmi:id="_cryogGXFEemwVNjOsPY5MA">
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_crzPkGXFEemwVNjOsPY5MA" partWithPort="_7hvvMGWoEemwVNjOsPY5MA" role="_QP5vkGXFEemwVNjOsPY5MA"/>
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_crzPkWXFEemwVNjOsPY5MA" partWithPort="_CWNsoGWpEemwVNjOsPY5MA" role="_Jbxl0GXEEemwVNjOsPY5MA"/>
-        </ownedConnector>
-        <ownedConnector xmi:type="uml:Connector" xmi:id="_epHQ0GXFEemwVNjOsPY5MA">
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_epHQ0WXFEemwVNjOsPY5MA" partWithPort="_7hvvMGWoEemwVNjOsPY5MA" role="_Sydy8GXFEemwVNjOsPY5MA"/>
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_epH34GXFEemwVNjOsPY5MA" partWithPort="_CWNsoGWpEemwVNjOsPY5MA" role="_WN2xMGXEEemwVNjOsPY5MA"/>
-        </ownedConnector>
-        <ownedConnector xmi:type="uml:Connector" xmi:id="_f3MNgGXFEemwVNjOsPY5MA">
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_f3MNgWXFEemwVNjOsPY5MA" partWithPort="_7hvvMGWoEemwVNjOsPY5MA" role="_UHUtEGXFEemwVNjOsPY5MA"/>
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_f3M0kGXFEemwVNjOsPY5MA" partWithPort="_CWNsoGWpEemwVNjOsPY5MA" role="_YKFNUGXEEemwVNjOsPY5MA"/>
-        </ownedConnector>
-        <ownedConnector xmi:type="uml:Connector" xmi:id="_hbU5wGXFEemwVNjOsPY5MA">
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_hbVg0GXFEemwVNjOsPY5MA" partWithPort="_7hvvMGWoEemwVNjOsPY5MA" role="_VJBaoGXFEemwVNjOsPY5MA"/>
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_hbVg0WXFEemwVNjOsPY5MA" partWithPort="_CWNsoGWpEemwVNjOsPY5MA" role="_Z9QbIGXEEemwVNjOsPY5MA"/>
-        </ownedConnector>
-        <ownedConnector xmi:type="uml:Connector" xmi:id="_1OTVAGXFEemwVNjOsPY5MA">
+        <ownedConnector xmi:type="uml:Connector" xmi:id="_1OTVAGXFEemwVNjOsPY5MA" name="motor_driver_connector">
           <end xmi:type="uml:ConnectorEnd" xmi:id="_1OTVAWXFEemwVNjOsPY5MA" partWithPort="_7hvvMGWoEemwVNjOsPY5MA" role="_wiuWsGXFEemwVNjOsPY5MA"/>
           <end xmi:type="uml:ConnectorEnd" xmi:id="_1OT8EGXFEemwVNjOsPY5MA" partWithPort="_CWNsoGWpEemwVNjOsPY5MA" role="_gvaEYGXEEemwVNjOsPY5MA"/>
         </ownedConnector>
-        <ownedConnector xmi:type="uml:Connector" xmi:id="_2qK2EGXFEemwVNjOsPY5MA">
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_2qLdIGXFEemwVNjOsPY5MA" partWithPort="_7hvvMGWoEemwVNjOsPY5MA" role="_tP7JMGXFEemwVNjOsPY5MA"/>
-          <end xmi:type="uml:ConnectorEnd" xmi:id="_2qLdIWXFEemwVNjOsPY5MA" partWithPort="_CWNsoGWpEemwVNjOsPY5MA" role="_hEKMYGXEEemwVNjOsPY5MA"/>
+        <ownedConnector xmi:type="uml:Connector" xmi:id="_pxKmQGZoEemwVNjOsPY5MA" name="light_sensors_connector">
+          <end xmi:type="uml:ConnectorEnd" xmi:id="_pxLNUGZoEemwVNjOsPY5MA" partWithPort="_7hvvMGWoEemwVNjOsPY5MA" role="_ezYqEGZoEemwVNjOsPY5MA"/>
+          <end xmi:type="uml:ConnectorEnd" xmi:id="_pxLNUWZoEemwVNjOsPY5MA" partWithPort="_9nNtQGWwEemwVNjOsPY5MA" role="_TBUKMGZoEemwVNjOsPY5MA"/>
+        </ownedConnector>
+        <ownedConnector xmi:type="uml:Connector" xmi:id="_ug4oQGZpEemwVNjOsPY5MA" name="motor_connector">
+          <end xmi:type="uml:ConnectorEnd" xmi:id="_ug5PUGZpEemwVNjOsPY5MA" partWithPort="_CWNsoGWpEemwVNjOsPY5MA" role="_WNO3IGZpEemwVNjOsPY5MA"/>
+          <end xmi:type="uml:ConnectorEnd" xmi:id="_ug5PUWZpEemwVNjOsPY5MA" partWithPort="_QCucsGZpEemwVNjOsPY5MA" role="_VJ9cQGZpEemwVNjOsPY5MA"/>
         </ownedConnector>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="__H59kGWoEemwVNjOsPY5MA" name="Discovery">
-        <ownedAttribute xmi:type="uml:Port" xmi:id="_aUd74GWxEemwVNjOsPY5MA" name="GPIO_pin_0" aggregation="composite"/>
         <ownedAttribute xmi:type="uml:Port" xmi:id="_VPVjMGWzEemwVNjOsPY5MA" name="3V" aggregation="composite">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Port" xmi:id="_IL8gMGXFEemwVNjOsPY5MA" name="GPIO_pin_8" aggregation="composite"/>
-        <ownedAttribute xmi:type="uml:Port" xmi:id="_tP7JMGXFEemwVNjOsPY5MA" name="TIM3_ch0" aggregation="composite">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EFloat"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Port" xmi:id="_wiuWsGXFEemwVNjOsPY5MA" name="TIM3_ch1" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_wiuWsGXFEemwVNjOsPY5MA" name="Motor_Control" type="_Oe1K0GXWEemwVNjOsPY5MA" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ezYqEGZoEemwVNjOsPY5MA" name="Light_sensor_values" type="__UH7MGXVEemwVNjOsPY5MA" aggregation="composite"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="__IDukGWoEemwVNjOsPY5MA" name="Association1" memberEnd="_7hvvMGWoEemwVNjOsPY5MA __IDuk2WoEemwVNjOsPY5MA">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="__IDukWWoEemwVNjOsPY5MA" source="org.eclipse.papyrus">
@@ -115,8 +40,9 @@
         <ownedEnd xmi:type="uml:Property" xmi:id="__IDuk2WoEemwVNjOsPY5MA" name="system" type="_qWEGUGWoEemwVNjOsPY5MA" association="__IDukGWoEemwVNjOsPY5MA"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_D9InIGWpEemwVNjOsPY5MA" name="Motor_Driver">
-        <ownedAttribute xmi:type="uml:Port" xmi:id="__etfwGXDEemwVNjOsPY5MA" name="Enable" aggregation="composite"/>
-        <ownedAttribute xmi:type="uml:Port" xmi:id="_Jbxl0GXEEemwVNjOsPY5MA" name="Command_DX_0" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_WNO3IGZpEemwVNjOsPY5MA" name="Speed_Control" aggregation="composite">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_D9InImWpEemwVNjOsPY5MA" name="Association2" memberEnd="_CWNsoGWpEemwVNjOsPY5MA _D9InJWWpEemwVNjOsPY5MA">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_D9InI2WpEemwVNjOsPY5MA" source="org.eclipse.papyrus">
@@ -125,12 +51,10 @@
         <ownedEnd xmi:type="uml:Property" xmi:id="_D9InJWWpEemwVNjOsPY5MA" name="system" type="_qWEGUGWoEemwVNjOsPY5MA" association="_D9InImWpEemwVNjOsPY5MA"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_BgbagGWxEemwVNjOsPY5MA" name="Light_Sensor_Array">
-        <ownedAttribute xmi:type="uml:Port" xmi:id="_Nn9NAGWxEemwVNjOsPY5MA" name="Light_Sensor_0" visibility="public" aggregation="composite">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EFloat"/>
-        </ownedAttribute>
         <ownedAttribute xmi:type="uml:Port" xmi:id="_RahNwGWzEemwVNjOsPY5MA" name="Led" aggregation="composite">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
         </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_TBUKMGZoEemwVNjOsPY5MA" name="Light_sensor_values" visibility="public" type="__UH7MGXVEemwVNjOsPY5MA" aggregation="composite"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_BjHiIGWxEemwVNjOsPY5MA" name="Association3" memberEnd="_9nNtQGWwEemwVNjOsPY5MA _BjHiI2WxEemwVNjOsPY5MA">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_BjHiIWWxEemwVNjOsPY5MA" source="org.eclipse.papyrus">
@@ -138,17 +62,87 @@
         </eAnnotations>
         <ownedEnd xmi:type="uml:Property" xmi:id="_BjHiI2WxEemwVNjOsPY5MA" name="system" type="_qWEGUGWoEemwVNjOsPY5MA" association="_BjHiIGWxEemwVNjOsPY5MA"/>
       </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_SCqUIGZpEemwVNjOsPY5MA" name="Motor">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_VJ9cQGZpEemwVNjOsPY5MA" name="Speed_Control" aggregation="composite">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_SCq7MGZpEemwVNjOsPY5MA" name="Association4" memberEnd="_QCucsGZpEemwVNjOsPY5MA _SCq7M2ZpEemwVNjOsPY5MA">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_SCq7MWZpEemwVNjOsPY5MA" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_SCq7MmZpEemwVNjOsPY5MA" key="nature" value="SysML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_SCq7M2ZpEemwVNjOsPY5MA" name="system" type="_qWEGUGWoEemwVNjOsPY5MA" association="_SCq7MGZpEemwVNjOsPY5MA"/>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_xo8hcGXREemwVNjOsPY5MA" name="Block Definition Diagram">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_lKYQEGZiEemwVNjOsPY5MA">
+        <body>TIM3 and GPIO_0 to GPIO_4 go to the motor driver&#xD;
+GPIO_5 to GPIO_12 and 3V go to the light sensor array</body>
+      </ownedComment>
       <packagedElement xmi:type="uml:Class" xmi:id="_BcjkIGXSEemwVNjOsPY5MA" name="Line Follower">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_aZOdE2XSEemwVNjOsPY5MA" name="discovery_1" type="_Icd8kGXSEemwVNjOsPY5MA" aggregation="composite" association="_aZOdEGXSEemwVNjOsPY5MA"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_2SymsmZbEemwVNjOsPY5MA" name="light_sensor_array_1" type="_iNttEGXSEemwVNjOsPY5MA" aggregation="composite" association="_2Sx_oGZbEemwVNjOsPY5MA"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_cunzcmZcEemwVNjOsPY5MA" name="motor_driver_1" type="_uOeJMGXSEemwVNjOsPY5MA" aggregation="composite" association="_cunMYGZcEemwVNjOsPY5MA"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_gFPxAGZcEemwVNjOsPY5MA" name="motor_1" type="_IG1skGZbEemwVNjOsPY5MA" aggregation="composite" association="_gFPJ8GZcEemwVNjOsPY5MA">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_h8eYYGZcEemwVNjOsPY5MA" value="2"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_h8hbsGZcEemwVNjOsPY5MA" value="2"/>
+        </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_Icd8kGXSEemwVNjOsPY5MA" name="Discovery">
-        <ownedAttribute xmi:type="uml:Port" xmi:id="_yPV9oGXSEemwVNjOsPY5MA" name="Light_Sensor_Port" type="__UH7MGXVEemwVNjOsPY5MA" aggregation="composite">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VoWSkGXTEemwVNjOsPY5MA" value="1"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VoakAGXTEemwVNjOsPY5MA" value="*"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_JFcX8GZdEemwVNjOsPY5MA" name="Vcc">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Port" xmi:id="_8JHNMGXUEemwVNjOsPY5MA" name="Motors_Port" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_LBvskGZdEemwVNjOsPY5MA" name="Ground">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_hWyfIGZhEemwVNjOsPY5MA" name="TIM3_ch0">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_mn2JEGZhEemwVNjOsPY5MA" name="TIM3_ch1">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_u6LysGZhEemwVNjOsPY5MA" name="GPIO_0">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xHqW4GZhEemwVNjOsPY5MA" name="GPIO_1">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_2qd4IGZhEemwVNjOsPY5MA" name="GPIO_2">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_7E0jkGZhEemwVNjOsPY5MA" name="GPIO_3">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_BmObEGZiEemwVNjOsPY5MA" name="GPIO_4">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_IiGyoGZjEemwVNjOsPY5MA" name="GPIO_5">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_LiurAGZjEemwVNjOsPY5MA" name="GPIO_6">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_OtZ3QGZjEemwVNjOsPY5MA" name="GPIO_7">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_Z7b18GZjEemwVNjOsPY5MA" name="GPIO_8">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_b_O5sGZjEemwVNjOsPY5MA" name="GPIO_9">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_dbZ8wGZjEemwVNjOsPY5MA" name="GPIO_10">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_gkmiUGZjEemwVNjOsPY5MA" name="GPIO_11">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_iH46AGZjEemwVNjOsPY5MA" name="GPIO_12">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_rS4C4GZjEemwVNjOsPY5MA" name="3V">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_aZOdEGXSEemwVNjOsPY5MA" memberEnd="_aZOdE2XSEemwVNjOsPY5MA _aZOdFGXSEemwVNjOsPY5MA">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_aZOdEWXSEemwVNjOsPY5MA" source="org.eclipse.papyrus">
@@ -157,7 +151,6 @@
         <ownedEnd xmi:type="uml:Property" xmi:id="_aZOdFGXSEemwVNjOsPY5MA" name="line follower_1" type="_BcjkIGXSEemwVNjOsPY5MA" association="_aZOdEGXSEemwVNjOsPY5MA"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_iNttEGXSEemwVNjOsPY5MA" name="Light_Sensor_Array">
-        <ownedAttribute xmi:type="uml:Port" xmi:id="_5goZ8GXSEemwVNjOsPY5MA" name="Discovery_Port" type="__UH7MGXVEemwVNjOsPY5MA" aggregation="composite"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_FUMSIWXUEemwVNjOsPY5MA" name="light_sensor_1" type="_9BKE8GXTEemwVNjOsPY5MA" aggregation="composite" association="_FULrEGXUEemwVNjOsPY5MA">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_KASN0GXUEemwVNjOsPY5MA" value="8"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_KAV4MGXUEemwVNjOsPY5MA" value="8"/>
@@ -171,9 +164,33 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_iyFTgGXUEemwVNjOsPY5MA" name="Led">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
         </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_WL47sGZbEemwVNjOsPY5MA" name="Level">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_uOeJMGXSEemwVNjOsPY5MA" name="Motor_Driver"/>
-      <packagedElement xmi:type="uml:Usage" xmi:id="_Dg9PYGXTEemwVNjOsPY5MA" client="_yPV9oGXSEemwVNjOsPY5MA" supplier="_5goZ8GXSEemwVNjOsPY5MA"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_uOeJMGXSEemwVNjOsPY5MA" name="Motor_Driver">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_9BdkgGZjEemwVNjOsPY5MA" name="Vcc">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_Ajqf8GZkEemwVNjOsPY5MA" name="Ground">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_C_rPYGZkEemwVNjOsPY5MA" name="Enable">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_G_tWUGZkEemwVNjOsPY5MA" name="PWM_left">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_JZreYGZkEemwVNjOsPY5MA" name="PWM_right">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_P271sGZkEemwVNjOsPY5MA" name="Command_left">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_SIUpgGZkEemwVNjOsPY5MA" name="Command_right">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
+      </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_9BKE8GXTEemwVNjOsPY5MA" name="Light_Sensor">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_FUMSImXUEemwVNjOsPY5MA" name="light_sensor_array_1" type="_iNttEGXSEemwVNjOsPY5MA" association="_FULrEGXUEemwVNjOsPY5MA"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_rEvtQGXUEemwVNjOsPY5MA" name="Level">
@@ -184,6 +201,32 @@
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FULrEWXUEemwVNjOsPY5MA" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FUMSIGXUEemwVNjOsPY5MA" key="nature" value="SysML_Nature"/>
         </eAnnotations>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_IG1skGZbEemwVNjOsPY5MA" name="Motor">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_ClcfkGZmEemwVNjOsPY5MA" name="Vcc">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_D5ux8GZmEemwVNjOsPY5MA" name="Ground">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_2Sx_oGZbEemwVNjOsPY5MA" memberEnd="_2SymsmZbEemwVNjOsPY5MA _2SzNwGZbEemwVNjOsPY5MA">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2SymsGZbEemwVNjOsPY5MA" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2SymsWZbEemwVNjOsPY5MA" key="nature" value="SysML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_2SzNwGZbEemwVNjOsPY5MA" name="line follower_1" type="_BcjkIGXSEemwVNjOsPY5MA" association="_2Sx_oGZbEemwVNjOsPY5MA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_cunMYGZcEemwVNjOsPY5MA" memberEnd="_cunzcmZcEemwVNjOsPY5MA _cunzc2ZcEemwVNjOsPY5MA">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cunzcGZcEemwVNjOsPY5MA" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cunzcWZcEemwVNjOsPY5MA" key="nature" value="SysML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_cunzc2ZcEemwVNjOsPY5MA" name="line follower_1" type="_BcjkIGXSEemwVNjOsPY5MA" association="_cunMYGZcEemwVNjOsPY5MA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_gFPJ8GZcEemwVNjOsPY5MA" memberEnd="_gFPxAGZcEemwVNjOsPY5MA _gFPxAWZcEemwVNjOsPY5MA">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_gFPJ8WZcEemwVNjOsPY5MA" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_gFPJ8mZcEemwVNjOsPY5MA" key="nature" value="SysML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_gFPxAWZcEemwVNjOsPY5MA" name="line follower_1" type="_BcjkIGXSEemwVNjOsPY5MA" association="_gFPJ8GZcEemwVNjOsPY5MA"/>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_7fqLEGXVEemwVNjOsPY5MA" name="Data_Types">
@@ -271,41 +314,19 @@
   <Blocks:Block xmi:id="__H59kWWoEemwVNjOsPY5MA" base_Class="__H59kGWoEemwVNjOsPY5MA"/>
   <Blocks:Block xmi:id="_D9InIWWpEemwVNjOsPY5MA" base_Class="_D9InIGWpEemwVNjOsPY5MA"/>
   <Blocks:Block xmi:id="_BgbagWWxEemwVNjOsPY5MA" base_Class="_BgbagGWxEemwVNjOsPY5MA"/>
-  <PortAndFlows:FlowPort xmi:id="_Nn9NAWWxEemwVNjOsPY5MA" base_Port="_Nn9NAGWxEemwVNjOsPY5MA"/>
-  <PortAndFlows:FlowPort xmi:id="_PdCfUGWxEemwVNjOsPY5MA" base_Port="_PdB4QGWxEemwVNjOsPY5MA"/>
-  <PortAndFlows:FlowPort xmi:id="_PhceMGWxEemwVNjOsPY5MA" base_Port="_Phb3IGWxEemwVNjOsPY5MA"/>
-  <PortAndFlows:FlowPort xmi:id="_PlpowGWxEemwVNjOsPY5MA" base_Port="_PlpBsGWxEemwVNjOsPY5MA"/>
-  <PortAndFlows:FlowPort xmi:id="_Pp8TAGWxEemwVNjOsPY5MA" base_Port="_Pp7r0GWxEemwVNjOsPY5MA"/>
-  <PortAndFlows:FlowPort xmi:id="_PtxC8GWxEemwVNjOsPY5MA" base_Port="_Ptwb4GWxEemwVNjOsPY5MA"/>
-  <PortAndFlows:FlowPort xmi:id="_PyH-gGWxEemwVNjOsPY5MA" base_Port="_PyHXcGWxEemwVNjOsPY5MA"/>
-  <PortAndFlows:FlowPort xmi:id="_P2gIMGWxEemwVNjOsPY5MA" base_Port="_P2fhIGWxEemwVNjOsPY5MA"/>
-  <PortAndFlows:FlowPort xmi:id="_aUd74WWxEemwVNjOsPY5MA" base_Port="_aUd74GWxEemwVNjOsPY5MA"/>
-  <PortAndFlows:FlowPort xmi:id="_dd-DcGWxEemwVNjOsPY5MA" base_Port="_dd81UGWxEemwVNjOsPY5MA"/>
-  <PortAndFlows:FlowPort xmi:id="_diuAkGWxEemwVNjOsPY5MA" base_Port="_ditZgGWxEemwVNjOsPY5MA"/>
-  <PortAndFlows:FlowPort xmi:id="_dnkrgGWxEemwVNjOsPY5MA" base_Port="_dnkEUGWxEemwVNjOsPY5MA"/>
-  <PortAndFlows:FlowPort xmi:id="_drN1QGWxEemwVNjOsPY5MA" base_Port="_drMnIGWxEemwVNjOsPY5MA"/>
-  <PortAndFlows:FlowPort xmi:id="_dvq3cGWxEemwVNjOsPY5MA" base_Port="_dvqQYGWxEemwVNjOsPY5MA"/>
-  <PortAndFlows:FlowPort xmi:id="_dziq6GWxEemwVNjOsPY5MA" base_Port="_dziDwGWxEemwVNjOsPY5MA"/>
-  <PortAndFlows:FlowPort xmi:id="_d5SGkGWxEemwVNjOsPY5MA" base_Port="_d5RfYGWxEemwVNjOsPY5MA"/>
   <PortAndFlows:FlowPort xmi:id="_Raib4GWzEemwVNjOsPY5MA" base_Port="_RahNwGWzEemwVNjOsPY5MA" direction="in"/>
   <PortAndFlows:FlowPort xmi:id="_VPWxUGWzEemwVNjOsPY5MA" base_Port="_VPVjMGWzEemwVNjOsPY5MA" direction="out"/>
-  <PortAndFlows:FlowPort xmi:id="__euG0GXDEemwVNjOsPY5MA" base_Port="__etfwGXDEemwVNjOsPY5MA" direction="in"/>
-  <PortAndFlows:FlowPort xmi:id="_JbyM4GXEEemwVNjOsPY5MA" base_Port="_Jbxl0GXEEemwVNjOsPY5MA" direction="in"/>
-  <PortAndFlows:FlowPort xmi:id="_WN3YQGXEEemwVNjOsPY5MA" base_Port="_WN2xMGXEEemwVNjOsPY5MA" direction="in"/>
-  <PortAndFlows:FlowPort xmi:id="_YKF0YGXEEemwVNjOsPY5MA" base_Port="_YKFNUGXEEemwVNjOsPY5MA" direction="in"/>
-  <PortAndFlows:FlowPort xmi:id="_Z9RCMGXEEemwVNjOsPY5MA" base_Port="_Z9QbIGXEEemwVNjOsPY5MA" direction="in"/>
   <PortAndFlows:FlowPort xmi:id="_gvcgoGXEEemwVNjOsPY5MA" base_Port="_gvaEYGXEEemwVNjOsPY5MA" direction="in"/>
-  <PortAndFlows:FlowPort xmi:id="_hEKzcGXEEemwVNjOsPY5MA" base_Port="_hEKMYGXEEemwVNjOsPY5MA" direction="in"/>
-  <PortAndFlows:FlowPort xmi:id="_IL9HQGXFEemwVNjOsPY5MA" base_Port="_IL8gMGXFEemwVNjOsPY5MA" direction="out"/>
-  <PortAndFlows:FlowPort xmi:id="_QP69sGXFEemwVNjOsPY5MA" base_Port="_QP5vkGXFEemwVNjOsPY5MA" direction="out"/>
-  <PortAndFlows:FlowPort xmi:id="_SyeaAGXFEemwVNjOsPY5MA" base_Port="_Sydy8GXFEemwVNjOsPY5MA" direction="out"/>
-  <PortAndFlows:FlowPort xmi:id="_UHVUIGXFEemwVNjOsPY5MA" base_Port="_UHUtEGXFEemwVNjOsPY5MA" direction="out"/>
-  <PortAndFlows:FlowPort xmi:id="_VJCBsGXFEemwVNjOsPY5MA" base_Port="_VJBaoGXFEemwVNjOsPY5MA" direction="out"/>
-  <PortAndFlows:FlowPort xmi:id="_tP7wQGXFEemwVNjOsPY5MA" base_Port="_tP7JMGXFEemwVNjOsPY5MA" direction="out"/>
   <PortAndFlows:FlowPort xmi:id="_wiu9wGXFEemwVNjOsPY5MA" base_Port="_wiuWsGXFEemwVNjOsPY5MA" direction="out"/>
   <Blocks:Block xmi:id="_BckyQGXSEemwVNjOsPY5MA" base_Class="_BcjkIGXSEemwVNjOsPY5MA"/>
   <Blocks:Block xmi:id="_IcejoGXSEemwVNjOsPY5MA" base_Class="_Icd8kGXSEemwVNjOsPY5MA"/>
   <Blocks:Block xmi:id="_iNuUIGXSEemwVNjOsPY5MA" base_Class="_iNttEGXSEemwVNjOsPY5MA"/>
   <Blocks:Block xmi:id="_uOfXUGXSEemwVNjOsPY5MA" base_Class="_uOeJMGXSEemwVNjOsPY5MA"/>
   <Blocks:Block xmi:id="_9BKsAGXTEemwVNjOsPY5MA" base_Class="_9BKE8GXTEemwVNjOsPY5MA"/>
+  <Blocks:Block xmi:id="_IG3hwGZbEemwVNjOsPY5MA" base_Class="_IG1skGZbEemwVNjOsPY5MA"/>
+  <PortAndFlows:FlowPort xmi:id="_TBVYUGZoEemwVNjOsPY5MA" base_Port="_TBUKMGZoEemwVNjOsPY5MA"/>
+  <PortAndFlows:FlowPort xmi:id="_ezYqEWZoEemwVNjOsPY5MA" base_Port="_ezYqEGZoEemwVNjOsPY5MA"/>
+  <Blocks:Block xmi:id="_SCqUIWZpEemwVNjOsPY5MA" base_Class="_SCqUIGZpEemwVNjOsPY5MA"/>
+  <PortAndFlows:FlowPort xmi:id="_VJ-DUGZpEemwVNjOsPY5MA" base_Port="_VJ9cQGZpEemwVNjOsPY5MA" direction="in"/>
+  <PortAndFlows:FlowPort xmi:id="_WNPeMGZpEemwVNjOsPY5MA" base_Port="_WNO3IGZpEemwVNjOsPY5MA" direction="out"/>
 </xmi:XMI>
