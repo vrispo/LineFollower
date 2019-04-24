@@ -1058,7 +1058,7 @@
         <layoutConstraint xmi:type="notation:Location" xmi:id="_e4mid2aCEemV29yFkTZpMw" y="-10"/>
       </children>
       <children xmi:type="notation:DecorationNode" xmi:id="_e4nJgGaCEemV29yFkTZpMw" type="linklabel_uml_association_target_multiplicity">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_e4nJgWaCEemV29yFkTZpMw" y="10"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_e4nJgWaCEemV29yFkTZpMw" x="33" y="11"/>
       </children>
       <styles xmi:type="notation:EObjectValueStyle" xmi:id="_e4jfIWaCEemV29yFkTZpMw" name="semantic_source_end">
         <eObjectValue xmi:type="uml:Property" href="model.uml#_e3wN4GaCEemV29yFkTZpMw"/>
@@ -1089,7 +1089,7 @@
         <layoutConstraint xmi:type="notation:Location" xmi:id="_hhBWNWaCEemV29yFkTZpMw" y="-10"/>
       </children>
       <children xmi:type="notation:DecorationNode" xmi:id="_hhBWNmaCEemV29yFkTZpMw" type="linklabel_uml_association_target_multiplicity">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_hhBWN2aCEemV29yFkTZpMw" y="10"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_hhBWN2aCEemV29yFkTZpMw" x="42" y="-11"/>
       </children>
       <styles xmi:type="notation:EObjectValueStyle" xmi:id="_hhAIEWaCEemV29yFkTZpMw" name="semantic_source_end">
         <eObjectValue xmi:type="uml:Property" href="model.uml#_hgpiwmaCEemV29yFkTZpMw"/>
@@ -1120,7 +1120,7 @@
         <layoutConstraint xmi:type="notation:Location" xmi:id="_l-8TAWaCEemV29yFkTZpMw" y="-10"/>
       </children>
       <children xmi:type="notation:DecorationNode" xmi:id="_l-8TAmaCEemV29yFkTZpMw" type="linklabel_uml_association_target_multiplicity">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_l-8TA2aCEemV29yFkTZpMw" y="10"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_l-8TA2aCEemV29yFkTZpMw" x="35" y="9"/>
       </children>
       <styles xmi:type="notation:EObjectValueStyle" xmi:id="_l-6d0WaCEemV29yFkTZpMw" name="semantic_source_end">
         <eObjectValue xmi:type="uml:Property" href="model.uml#_l-bVomaCEemV29yFkTZpMw"/>
@@ -1151,7 +1151,7 @@
         <layoutConstraint xmi:type="notation:Location" xmi:id="_m3PM82aCEemV29yFkTZpMw" y="-10"/>
       </children>
       <children xmi:type="notation:DecorationNode" xmi:id="_m3PM9GaCEemV29yFkTZpMw" type="linklabel_uml_association_target_multiplicity">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_m3PM9WaCEemV29yFkTZpMw" y="10"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_m3PM9WaCEemV29yFkTZpMw" x="18" y="31"/>
       </children>
       <styles xmi:type="notation:EObjectValueStyle" xmi:id="_m3N-0WaCEemV29yFkTZpMw" name="semantic_source_end">
         <eObjectValue xmi:type="uml:Property" href="model.uml#_m2x58maCEemV29yFkTZpMw"/>
