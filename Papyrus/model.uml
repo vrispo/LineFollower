@@ -230,16 +230,31 @@ GPIO_5 to GPIO_12 and 3V go to the light sensor array</body>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_7fqLEGXVEemwVNjOsPY5MA" name="Data_Types">
-      <packagedElement xmi:type="uml:DataType" xmi:id="__UH7MGXVEemwVNjOsPY5MA" name="Real Array"/>
-      <packagedElement xmi:type="uml:DataType" xmi:id="_Oe1K0GXWEemwVNjOsPY5MA" name="Motors Control">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_ZdHdUGXWEemwVNjOsPY5MA" name="Enable">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_gu_vgGXWEemwVNjOsPY5MA" name="PWM ">
+      <packagedElement xmi:type="uml:DataType" xmi:id="__UH7MGXVEemwVNjOsPY5MA" name="Real Array">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_5L_DkGZqEemwVNjOsPY5MA" name="Values">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BJFdAGZrEemwVNjOsPY5MA" value="8"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BJJHYGZrEemwVNjOsPY5MA" value="8"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_nLsGIGXWEemwVNjOsPY5MA" name="Command">
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_Oe1K0GXWEemwVNjOsPY5MA" name="Motors Control">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_G0LXkGZrEemwVNjOsPY5MA" name="Enable">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_NLGdYGZrEemwVNjOsPY5MA" name="PWM">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QKpXsGZrEemwVNjOsPY5MA" value="2"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_QKtCEGZrEemwVNjOsPY5MA" value="2"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_QbOxYGZrEemwVNjOsPY5MA" name="Command_left">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_V0mp0GZrEemwVNjOsPY5MA" value="2"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_V0ofAGZrEemwVNjOsPY5MA" value="2"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_WDs1wGZrEemwVNjOsPY5MA" name="Command_right">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_YNzV0GZrEemwVNjOsPY5MA" value="2"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YN1LAGZrEemwVNjOsPY5MA" value="2"/>
         </ownedAttribute>
       </packagedElement>
     </packagedElement>
